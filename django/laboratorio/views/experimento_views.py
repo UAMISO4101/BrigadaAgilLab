@@ -14,6 +14,7 @@ class ExperimentoView(ContenidoJsonBaseView):
 
 
 class ExperimentoProtocoloView(LaboratorioBaseView):
+
     def get(self, request, id_experimento=None, *args, **kwargs):
         """
         Entrega la informacion de los protocolos de un experimento

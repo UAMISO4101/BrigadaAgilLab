@@ -11,6 +11,18 @@ class ProtocoloView(ContenidoJsonBaseView):
     def __init__(self):
         self.model = Protocolo
 
+    def buscar_en_experimento_por_nombre(self, request, id_experimento=None, nombre=None):
+        """
+        Entrega la informacion basica de los protocolos de un experimento con su avance para el proyecto
+        :param id_proyecto:
+        :param nombre:
+        """
+        print"buscar_en_experimento_por_nombre"
+        contenido_modelo = ExperimentoProtocolo.objects.filter(experimento__id=id_experimento).values(
+            "protocolo__contenido")
+        lista = map(lambda x: json.loads(x["protocolo__contenido"]), contenido_modelo)
+        return HttpResponse(json.dumps(lista), content_type="application/json")
+
 
 class ProtocolosExperimentosProyectoView(LaboratorioBaseView):
     def get(self, request, id_proyecto=None, id_experimento=None, *args, **kwargs):

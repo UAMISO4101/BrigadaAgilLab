@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input } from "@angular/core";
+import {Component, OnChanges, SimpleChanges, Input} from "@angular/core";
 import {ProtocoloService} from "./service/protocolo.service";
 import {Protocolo} from "./service/protocolo";
 import {OnInit} from "@angular/core";
@@ -8,28 +8,37 @@ import {OnInit} from "@angular/core";
     moduleId: module.id,
     templateUrl: 'protocolo.buscador.component.html'
 })
-export class ProtocoloBuscadorComponent{
+export class ProtocoloBuscadorComponent {
 
-    public protocolos: Protocolo[] = [];
+    public protocolos:Protocolo[] = [];
 
-    @Input() nombre: string = "";
+    @Input() nombre:string = "";
+    @Input() fuente:string;
 
-    constructor(private _protocoloService: ProtocoloService) {
+    constructor(private _protocoloService:ProtocoloService) {
     }
 
     listarProtocolos() {
-        if(this.nombre != ""){
-            this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
-        }else{
-            this._protocoloService.listarProtocolos().subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+        console.log("Aqui se inicia la carga de protocolos")
+        if (this.fuente != null) {
+            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+            console.log("get listarProtocolosFiltradosEnExperimentoPorNombre")
+        } else {
+            if (this.nombre != "") {
+                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+                console.log("get listarProtocolosFiltradosNombre")
+            } else {
+                this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+                console.log("get listarProtocolos")
+            }
         }
     }
 
-    keyup(){
+    keyup() {
         this.listarProtocolos();
     }
 
-    ngOnInit(): any {
+    ngOnInit():any {
         this.listarProtocolos();
     }
 }
