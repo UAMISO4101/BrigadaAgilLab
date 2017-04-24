@@ -115,5 +115,6 @@ export class LabModule {
     constructor(private breadcrumbService: BreadcrumbService) {
         breadcrumbService.addFriendlyNameForRoute('/proyecto', 'Proyectos');
         breadcrumbService.addFriendlyNameForRoute('/proyecto/nuevo', 'Nuevo Proyecto');
+        breadcrumbService.addFriendlyNameForRouteRegex('/proyecto/[0-9]', 'Detalle de Proyecto');
     }
 }

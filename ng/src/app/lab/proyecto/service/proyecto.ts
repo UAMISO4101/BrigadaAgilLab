@@ -1,4 +1,3 @@
-import {Experimentos} from "../../experimento/experimento";
 /**
  * Created by alejandroquintero on 23/03/17.
  */
