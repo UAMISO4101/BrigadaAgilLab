@@ -1,8 +1,11 @@
 # coding=utf-8
 import json
 
-from ..models import Experimento, ExperimentoProtocolo
+from django.core import serializers
+
+from ..models import Experimento, ExperimentoProtocolo, Usuario
 from ..views import ContenidoJsonBaseView, LaboratorioBaseView, LaboratorioException, HttpResponse
+from django.http import HttpResponse
 
 
 class ExperimentoView(ContenidoJsonBaseView):

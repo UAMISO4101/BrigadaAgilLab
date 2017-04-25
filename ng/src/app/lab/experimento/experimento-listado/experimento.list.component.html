@@ -20,7 +20,7 @@
                 <td>{{ item.experimento }}</td>
               <td>{{ item.objetivo }}</td>
                 <td>{{ item.fecha }}</td>
-              <td><a href="#"><i class="fa fa-sign-in text-navy"></i></a></td>
+              <td><a [routerLink]="['/experimento', item.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
             </tr>
 
         </table>
