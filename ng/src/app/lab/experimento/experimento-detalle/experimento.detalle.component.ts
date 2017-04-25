@@ -37,31 +37,3 @@ export class ExperimentoDetalleComponent implements OnInit {
   }
 }
 
-@Component({
-   selector: 'myApp',
-   template: `<select [(ngModel)]="selectedValue">
-                 <option *ngFor="let c of model" value=c.id>prueba</option>
-              </select>`,
-    providers: [UsuarioService]
-})
-export class AppComponent{
-    public usuario: Usuario[] = [];
-
-    constructor(route: ActivatedRoute, private _usuarioService: UsuarioService) {
-  }
-
-    getUsuario() {
-    this._usuarioService
-      .getUsuarios()
-      .subscribe((usuarios: Usuario[]) =>
-          this.usuario = JSON.parse(JSON.stringify(usuarios))
-            .pop()),
-        error => console.log(error),
-        () => console.log(this.usuario);
-  }
-
-  ngOnInit(): any {
-    this.getUsuario();
-  }
-  selectedValue=null
-}

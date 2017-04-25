@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Asociar asistentes</h2>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tbody>
+        <tr *ngFor="let usuario of usuarios">
+            <td><li>{{ usuario.fields.nombre }}</li></td>
+            <button [routerLink]="['/proyecto',idProyecto]" target="_self" class="btn btn-primary btn-md" (click)="getProyecto(experimento)">
+            Agregar
+            </button>
+        </tr>
+    </tbody>
+</table>

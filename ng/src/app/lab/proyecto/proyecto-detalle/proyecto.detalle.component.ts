@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
-import {ExperimentoService} from "../../experimento/experimento.service";
+import {ExperimentoService} from "../../experimento/service/experimento.service";
 
 
 @Component({

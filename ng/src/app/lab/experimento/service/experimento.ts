@@ -7,5 +7,5 @@ export interface Experimento{
     fecha: string;
     descripcion:string;
     insumos:string;
-    asistentes:Usuario[];
+    asistentes:string;
 }

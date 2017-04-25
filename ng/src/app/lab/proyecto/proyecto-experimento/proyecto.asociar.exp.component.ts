@@ -2,8 +2,8 @@ import {Component} from "@angular/core";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
 import {OnInit} from "@angular/core";
-import {Experimentos} from "../../experimento/experimento";
-import {ExperimentoService} from "../../experimento/experimento.service";
+import {Experimento} from "../../experimento/service/experimento";
+import {ExperimentoService} from "../../experimento/service/experimento.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -12,8 +12,8 @@ import {ActivatedRoute} from "@angular/router";
   providers: [ProyectoService, ExperimentoService]
 })
 export class ProyectoAsociarExpComponent implements OnInit {
-  public experimentos: Experimentos[] = [];
-  public experimento: Experimentos[] = [];
+  public experimentos: Experimento[] = [];
+  public experimento: Experimento[] = [];
   public idProyecto: string;
   public proyecto: Proyecto[] = [];
   public show:string;
@@ -29,11 +29,11 @@ export class ProyectoAsociarExpComponent implements OnInit {
   getExperimentos() {
     this._experimentoService
       .getExperimentos()
-      .subscribe((experimentos: Experimentos[]) =>
+      .subscribe((experimentos: Experimento[]) =>
         this.experimentos = experimentos);
   }
 
-  onSelect(item: Experimentos[]) {
+  onSelect(item: Experimento[]) {
 
     this.experimento = item;
     this.getProtocolos(item);
@@ -55,7 +55,7 @@ export class ProyectoAsociarExpComponent implements OnInit {
     if (!this.proyecto["experimentos"])
       this.proyecto["experimentos"] = [];
     this.proyecto["experimentos"]
-      .push(<Experimentos>item);
+      .push(<Experimento>item);
     this._proyectoService
       .asociarProyecto(this.proyecto)
       .subscribe(res => console.log(res));

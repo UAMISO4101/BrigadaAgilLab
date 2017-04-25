@@ -1,27 +1,53 @@
-<div>
-    <div class="form-group"><label class="col-lg-4 control-label">Nombre:</label>
-        <div class="col-lg-8">{{ experimento.experimento }}</div>
+<div class="row">
+    <div class="ibox-title">
+        <h5>Experimento</h5>
     </div>
-    <div class="form-group"><label class="col-lg-4 control-label">Objetivo:</label>
-        <div class="col-lg-8">{{ experimento.objetivo }}</div>
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre </th>
+                    <th>Objetivo </th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ experimento.experimento }}</td>
+                    <td>{{ experimento.objetivo }}</td>
+                    <td>{{ experimento.fecha }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="form-group"><label class="col-lg-4 control-label">Fecha:</label>
-        <div class="col-lg-8">{{ experimento.fecha }}</div>
-    </div>
-    <div class="form-group"><label class="col-lg-4 control-label">Protocolos Asociados:</label>
-        <div class="col-lg-8" style="word-wrap:break-word;">
-            <li>BG-45</li>
-            <li>BW-38</li>
-            <li>B-12</li>
-        </div>
-    </div>
-    <div class="form-group"><label class="col-lg-4 control-label">Asistentes:</label>
-          <div class="col-lg-8" style="word-wrap:break-word;" *ngFor="let asistente of experimento.asistentes">
-              <li>{{ asistente.nombre }}</li>
-
-          </div>
-      <myApp></myApp>
-
-      </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox-title">
+            <h5>Asistentes</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a [routerLink]="['/usuario']">agregar asistente</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <table class="table table-striped">
+            <tbody>
+                <tr *ngFor="let asistente of experimento.asistentes">
+                    <td><li>{{ asistente.nombre }}</li></td>
+                </tr>
+            </tbody>
+        </table>
+        <experimento-usuario></experimento-usuario>
+    </div>
+</div>
+
 
