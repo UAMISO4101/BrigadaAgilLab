@@ -4,7 +4,7 @@ import {environment} from "../../../../environments/environment";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import {Proyecto} from "./proyecto";
-import {Experimentos} from "../../experimento/experimento";
+import {Experimento} from "../../experimento/service/experimento";
 import {ExperimentoProyecto} from "./proyecto-experimento";
 
 

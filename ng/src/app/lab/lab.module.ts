@@ -3,7 +3,6 @@ import {Ng2BreadcrumbModule, BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcr
 import {ProyectoService} from "./proyecto/service/proyecto.service";
 import {ProtocoloService} from "./protocolo/service/protocolo.service";
 import {MuestraService} from "./muestra/muestra.service";
-import {ExperimentoService} from "./experimento/experimento.service";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {ProyectoAdjuntosComponent} from "./proyecto/proyecto-detalle/proyecto.adjuntos.component";
