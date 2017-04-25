@@ -4,6 +4,9 @@ import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
 import {ExperimentoService} from "../../experimento/experimento.service";
 import {LabelsService} from "../../labels.service";
+import {Experimentos} from "../../experimento/experimento";
+import {ExperimentoProyecto} from "../service/proyecto-experimento";
+import {Protocolo} from "../../protocolo/service/protocolo";
 
 
 @Component({
@@ -11,9 +14,12 @@ import {LabelsService} from "../../labels.service";
     providers: [ProyectoService, LabelsService]
 })
 export class ProyectoDetalleComponent implements OnInit {
-    public idProyecto: string;
-    public proyecto: Proyecto;
-    public show: string;
+    idProyecto: string;
+    proyecto: Proyecto;
+    experimentos: ExperimentoProyecto[];
+    experimentoSeleccionado: ExperimentoProyecto;
+    protocolos: Protocolo[];
+    protocoloSeleccionado: Protocolo;
 
     _: {};
 
@@ -21,21 +27,30 @@ export class ProyectoDetalleComponent implements OnInit {
                 private _labelsService: LabelsService) {
         this.idProyecto = route.snapshot.params['id'];
         this._ = _labelsService.getLabels();
-
     }
 
-    getProyecto() {
+    private getProyecto() {
         this._proyectoService
             .getProyecto(this.idProyecto)
             .subscribe(
                 product => this.proyecto = product,
                 error => console.log(<any>error));
-        ;
     }
-
 
     ngOnInit(): any {
         this.getProyecto();
+        this.getExperimentosProyecto();
+    }
 
+    private getExperimentosProyecto() {
+        this._proyectoService
+            .getExperimentosProyecto(this.idProyecto)
+            .subscribe(
+                product => this.experimentos = product,
+                error => console.log(<any>error));
+    }
+
+    private hayExperimentos(): boolean {
+        return this.experimentos && this.experimentos.length > 0
     }
 }

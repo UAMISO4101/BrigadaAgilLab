@@ -7,6 +7,7 @@ export const LABELS = {
     tit_proyectos: "Proyectos",
     tit_experimento: "Experimento",
     tit_experimentos: "Experimentos",
+    tit_res_experimento: "Resumen Experimento",
     tit_protocolo: "Protocolo",
     tit_protocolos: "Protocolos",
     tit_nuevo_proyecto: "Nuevo Proyecto",

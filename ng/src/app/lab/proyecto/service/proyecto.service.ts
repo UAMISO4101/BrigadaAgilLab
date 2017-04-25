@@ -2,14 +2,16 @@ import {Injectable} from "@angular/core";
 import {Http, Response, RequestOptions} from "@angular/http";
 import {environment} from "../../../../environments/environment";
 import {Observable} from "rxjs/Observable";
-import 'rxjs/add/operator/map';
+import "rxjs/add/operator/map";
 import {Proyecto} from "./proyecto";
-import 'rxjs/add/operator/map';
+import {Experimentos} from "../../experimento/experimento";
+import {ExperimentoProyecto} from "./proyecto-experimento";
 
 
 @Injectable()
 export class ProyectoService {
     private url_servicios_proyectos = environment.url_servicios + "proyecto/";
+    private url_servicios_proyecto_experimento = environment.url_servicios + "proyecto/{0}/experimento/";
 
     constructor(private _http: Http) {
     }
@@ -17,6 +19,11 @@ export class ProyectoService {
     getProyecto(idProyecto: string): Observable<Proyecto> {
         return this._http.get(this.url_servicios_proyectos + idProyecto + "/")
             .map((response: Response) => <Proyecto>response.json());
+    }
+
+    getExperimentosProyecto(idProyecto: string): Observable<ExperimentoProyecto[]> {
+        return this._http.get(this.url_servicios_proyecto_experimento.replace("{0}", idProyecto))
+            .map((response: Response) => <ExperimentoProyecto[]>response.json());
     }
 
     getProyectos(): Observable<Proyecto[]> {
