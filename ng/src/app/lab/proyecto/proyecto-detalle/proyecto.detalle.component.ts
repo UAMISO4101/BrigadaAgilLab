@@ -12,7 +12,7 @@ import {LabelsService} from "../../labels.service";
 })
 export class ProyectoDetalleComponent implements OnInit {
     public idProyecto: string;
-    public proyecto: Proyecto[] = [];
+    public proyecto: Proyecto;
     public show: string;
 
     _: {};
@@ -26,12 +26,10 @@ export class ProyectoDetalleComponent implements OnInit {
 
     getProyecto() {
         this._proyectoService
-            .getProyectos()
-            .subscribe((proyectos: Proyecto[]) =>
-                    this.proyecto = JSON.parse(JSON.stringify(proyectos.filter(p => p.id == parseInt(this.idProyecto))
-                        .pop())),
-                error => console.log(error),
-                () => this.show = "true");
+            .getProyecto(this.idProyecto)
+            .subscribe((proy: Proyecto) => this.proyecto = proy),
+            error => console.log(error),
+            () => this.show = "true";
     }
 
 
