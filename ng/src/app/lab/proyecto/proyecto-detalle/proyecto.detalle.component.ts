@@ -8,7 +8,7 @@ import {LabelsService} from "../../labels.service";
 
 @Component({
     templateUrl: 'proyecto.detalle.component.html',
-    providers: [ProyectoService]
+    providers: [ProyectoService, LabelsService]
 })
 export class ProyectoDetalleComponent implements OnInit {
     public idProyecto: string;
@@ -27,9 +27,10 @@ export class ProyectoDetalleComponent implements OnInit {
     getProyecto() {
         this._proyectoService
             .getProyecto(this.idProyecto)
-            .subscribe((proy: Proyecto) => this.proyecto = proy),
-            error => console.log(error),
-            () => this.show = "true";
+            .subscribe(
+                product => this.proyecto = product,
+                error => console.log(<any>error));
+        ;
     }
 
 

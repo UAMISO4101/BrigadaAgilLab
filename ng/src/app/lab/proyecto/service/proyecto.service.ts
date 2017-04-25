@@ -14,8 +14,8 @@ export class ProyectoService {
     constructor(private _http: Http) {
     }
 
-    getProyecto(idProyecto : string):Observable<Proyecto>{
-        return this._http.get(this.url_servicios_proyectos+"/"+idProyecto+"/")
+    getProyecto(idProyecto: string): Observable<Proyecto> {
+        return this._http.get(this.url_servicios_proyectos + idProyecto + "/")
             .map((response: Response) => <Proyecto>response.json());
     }
 
