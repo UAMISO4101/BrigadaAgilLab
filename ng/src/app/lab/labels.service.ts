@@ -2,11 +2,19 @@ import {Injectable} from '@angular/core';
 
 export const LABELS = {
     tit_inicio: "Inicio",
-    tit_proyectos: "Proyectos",
+    tit_acciones: "Acciones",
     tit_proyecto: "Proyecto",
+    tit_proyectos: "Proyectos",
+    tit_experimento: "Experimento",
+    tit_experimentos: "Experimentos",
+    tit_protocolo: "Protocolo",
+    tit_protocolos: "Protocolos",
     tit_nuevo_proyecto: "Nuevo Proyecto",
     tit_todos_proyectos: "Todos los Proyectos",
+    tit_info_basica: "Información Basica",
+
     cmp_nombre: "Nombre",
+    cmp_objetivo: "Objetivo",
     cmp_identificador: "Identificador",
     cmp_descripcion: "Descripción",
     cmp_cientifico_leader: "Cientifico Lider",

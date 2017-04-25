@@ -5,12 +5,12 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="proyecto">
     <div class="col-sm-12">
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Información Basica</h5>
+                    <h5>{{_['tit_info_basica']}}</h5>
                 </div>
                 <div class="ibox-content">
                     <proyecto-informacion-basica *ngIf="proyecto" [proyecto]='proyecto'></proyecto-informacion-basica>
@@ -20,27 +20,22 @@
             <!----------------------->
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Experimentos</h5>
+                    <h5>{{_['tit_experimentos']}}</h5>
                 </div>
                 <div class="ibox-content">
                     <div class="table-responsive ">
                         <table class="table table-striped" *ngIf="show">
                             <thead>
                             <tr>
-                                <th>Experimento</th>
-                                <th>Actualizado en</th>
-                                <th>objetivo</th>
-                                <th>Acciones</th>
-
+                                <th>{{_['tit_experimento']}}</th>
+                                <th>{{_['cmp_objetivo']}}</th>
+                                <th>{{_['tit_acciones']}}</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr *ngFor="let exp of proyecto.experimentos">
-
                                 <td>{{ exp.experimento}}</td>
-                                <td>{{ exp.fecha }}</td>
                                 <td>{{exp.objetivo }}</td>
-
                                 <td><a><i class="fa fa-sign-in text-navy"></i></a></td>
                             </tr>
 
