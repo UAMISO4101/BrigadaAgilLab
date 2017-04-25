@@ -32,8 +32,8 @@ export class ProyectoGraficaComponent   implements OnInit {
         displayAllSelectedText: true
     };
 
-    protected dataService: CompleterData;
-    protected searchStr: string;
+    public dataService: CompleterData;
+    public searchStr: string;
 
     public captain: string;
 

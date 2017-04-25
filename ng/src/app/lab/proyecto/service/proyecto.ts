@@ -1,4 +1,3 @@
-import {Experimento} from "../../experimento/service/experimento";
 /**
  * Created by alejandroquintero on 23/03/17.
  */
@@ -7,6 +6,7 @@ export interface Proyecto {
     identificador: string;
     nombre: string;
     descripcion: string;
+    estado: string;
     fecha_creacion: string;
     fecha_inicio: string;
     cientifico_lider: string;

@@ -1,14 +1,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Proyectos</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a href="/">Inicio</a>
-            </li>
-            <li class="active">
-                <strong>Proyectos</strong>
-            </li>
-        </ol>
+        <h2>{{_["tit_proyectos"]}}</h2>
+        <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
     </div>
 </div>
 
@@ -17,10 +10,10 @@
         <div class="wrapper wrapper-content animated fadeInUp">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Todos los Proyectos</h5>
+                    <h5>{{_["tit_todos_proyectos"]}}</h5>
                     <div class="ibox-tools">
                         <a [routerLink]="['/proyecto/nuevo']" class="btn btn-sm btn-primary pull-right m-t-n-xs">
-                            Nuevo Proyecto</a>
+                            {{_["tit_nuevo_proyecto"]}}</a>
                     </div>
                 </div>
                 <proyecto-list></proyecto-list>

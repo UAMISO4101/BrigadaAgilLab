@@ -1,7 +1,9 @@
 import {NgModule} from "@angular/core";
+import {Ng2BreadcrumbModule, BreadcrumbService} from 'ng2-breadcrumb/ng2-breadcrumb';
 import {ProyectoService} from "./proyecto/service/proyecto.service";
 import {ProtocoloService} from "./protocolo/service/protocolo.service";
 import {MuestraService} from "./muestra/muestra.service";
+import {ExperimentoService} from "./experimento/experimento.service";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {ProyectoAdjuntosComponent} from "./proyecto/proyecto-detalle/proyecto.adjuntos.component";
@@ -43,6 +45,7 @@ import {Ng2CompleterModule} from "ng2-completer";
     imports: [
         CommonModule,
         FormsModule,
+        Ng2BreadcrumbModule,
         RouterModule.forChild([
             {path: 'proyecto', component: ProyectoControladorComponent},
             {path: 'proyecto/nuevo', component: ProyectoNuevoComponent},
@@ -104,6 +107,7 @@ import {Ng2CompleterModule} from "ng2-completer";
 
     ],
     providers: [
+        BreadcrumbService,
         ProyectoService,
         ProtocoloService,
         MuestraService,
@@ -118,5 +122,9 @@ import {Ng2CompleterModule} from "ng2-completer";
 
 })
 export class LabModule {
-
+    constructor(private breadcrumbService: BreadcrumbService) {
+        breadcrumbService.addFriendlyNameForRoute('/proyecto', 'Proyectos');
+        breadcrumbService.addFriendlyNameForRoute('/proyecto/nuevo', 'Nuevo Proyecto');
+        breadcrumbService.addFriendlyNameForRouteRegex('/proyecto/[0-9]', 'Detalle de Proyecto');
+    }
 }

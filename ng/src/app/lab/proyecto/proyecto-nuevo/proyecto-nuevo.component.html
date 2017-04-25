@@ -1,6 +1,13 @@
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>{{_["tit_proyectos"]}}</h2>
+        <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>{{_["tit_nuevo_proyecto"]}}</h5>
@@ -24,7 +31,7 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a [routerLink]="['/proyecto']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>
-                                <button  class="btn btn-primary" type="submit">{{_['acc_guardar']}}</button>
+                                <button class="btn btn-primary" type="submit">{{_['acc_guardar']}}</button>
                             </div>
                         </div>
                     </form>
