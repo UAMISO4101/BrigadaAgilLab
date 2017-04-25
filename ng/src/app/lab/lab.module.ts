@@ -50,7 +50,9 @@ import { Ng2CompleterModule } from "ng2-completer";
             {path: 'protocolo', component: ProtocoloComponent},
             {path: 'proyecto/:id/experimento', component: ProyectoAsociarExpComponent},
             {path: 'experimento', component: ExperimentoBuscadorComponent},
-            {path: 'proyecto/:id/experimento/:id/protocolos',component: ExperimentoAsociarProtocoloComponent}
+            {path: 'proyecto/:id/experimento/:id/protocolos',component: ExperimentoAsociarProtocoloComponent},
+            {path: 'herramientas', component: EquiposComponent},
+            {path: 'insumos', component: InsumosComponent},
         ]),
         UIModule,
         HttpModule,
