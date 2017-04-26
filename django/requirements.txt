@@ -6,4 +6,3 @@ psycopg2==2.6.2
 whitenoise==3.3.0
 django-cors-headers==2.0.2
 selenium
-python-2.7.13
