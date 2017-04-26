@@ -11,7 +11,7 @@ import {ExperimentoProyecto} from "./proyecto-experimento";
 
 @Injectable()
 export class ProyectoService {
-    private url_servicios_proyectos = environment.url_servicios + "proyecto/";
+    private url_servicios_proyectos = process.env.URL_SERVICIOS + "proyecto/";
     private url_servicios_proyecto_experimento = environment.url_servicios + "proyecto/{0}/experimento/";
 
     constructor(private _http: Http) {
