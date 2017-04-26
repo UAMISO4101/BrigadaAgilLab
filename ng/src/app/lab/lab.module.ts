@@ -46,6 +46,7 @@ import {Ng2CompleterModule} from "ng2-completer";
         FormsModule,
         Ng2BreadcrumbModule,
         RouterModule.forChild([
+            {path: 'insumo', component: InsumosComponent},
             {path: 'proyecto', component: ProyectoControladorComponent},
             {path: 'proyecto/nuevo', component: ProyectoNuevoComponent},
             {path: 'proyecto/:id', component: ProyectoDetalleComponent},
