@@ -63,6 +63,7 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         """
         Entrega el contenido JSON (informacion basica) del modelo asociado
         """
+        print"get"
         contenido_modelo = self.model.objects.values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
@@ -87,11 +88,11 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_id(self, request, id=None):
+        print("get_por_id: "+id)
         modelo = self.model.objects.get(pk=id)
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_nombre(self, request, nombre=None):
-        print("Servicio consumido con el parametro: " + nombre)
         contenido_modelo = self.model.objects.filter(contenido__contains='"nombre": "'+nombre)[:5].values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")

@@ -30,11 +30,8 @@ export class ProyectoDetalleComponent implements OnInit {
     }
 
     private getProyecto() {
-        this._proyectoService
-            .getProyecto(this.idProyecto)
-            .subscribe(
-                product => this.proyecto = product,
-                error => console.log(<any>error));
+        console.log("Esto es el id del proyecto: "+this.idProyecto)
+        this.proyecto = this._proyectoService.obtenerPorId(this.idProyecto);
     }
 
     ngOnInit(): any {

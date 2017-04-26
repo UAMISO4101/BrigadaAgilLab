@@ -16,9 +16,22 @@ export class ProtocoloService {
     }
 
     listarProtocolos():Observable<Protocolo[]> {
+        console.log("listarProtocolos")
         return this._http.get(this.url_servicios_protocolo).map((response: Response) => <Protocolo[]>response.json());
     }
     listarProtocolosFiltradosNombre(nombre):Observable<Protocolo[]> {
+        console.log("listarProtocolosFiltradosNombre")
         return this._http.get(this.url_servicios_protocolo_filtro_nombre+nombre).map((response: Response) => <Protocolo[]>response.json());
     }
+    listarProtocolosFiltradosEnExperimentoPorNombre(id_experimento,nombre):Observable<Protocolo[]> {
+        console.log("Parametros "+id_experimento+" "+nombre)
+        var nombreEnviar = "%20"
+        if(nombre!=""){
+            nombreEnviar = nombre
+        }
+        console.log("Esta la url de mi proyecto "+this.url_servicios_protocolo_filtro_nombre+id_experimento+"/"+nombreEnviar+"/")
+        return this._http.get(this.url_servicios_protocolo_filtro_nombre+id_experimento+"/"+nombreEnviar+"/").map((response: Response) => <Protocolo[]>response.json());
+    }
+    
+    
 }
