@@ -37,6 +37,7 @@ import {ExperimentoAsociarProtocoloComponent} from "./experimento/experimento.as
         CommonModule,
         FormsModule,
         RouterModule.forChild([
+            {path: 'insumo', component: InsumosComponent},
             {path: 'proyecto', component: ProyectoControladorComponent},
             {path: 'proyecto/nuevo', component: ProyectoNuevoComponent},
             {path: 'proyecto/:id', component: ProyectoDetalleComponent},
@@ -44,8 +45,6 @@ import {ExperimentoAsociarProtocoloComponent} from "./experimento/experimento.as
             {path: 'proyecto/:id/experimento', component: ProyectoAsociarExpComponent},
             {path: 'experimento', component: ExperimentoBuscadorComponent},
             {path: 'proyecto/:id/experimento/:id/protocolos',component: ExperimentoAsociarProtocoloComponent}
-
-
 
         ]),
         UIModule,
