@@ -63,7 +63,6 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         """
         Entrega el contenido JSON (informacion basica) del modelo asociado
         """
-        print"get"
         contenido_modelo = self.model.objects.values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
