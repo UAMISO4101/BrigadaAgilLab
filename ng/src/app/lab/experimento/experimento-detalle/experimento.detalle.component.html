@@ -13,9 +13,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ experimento.experimento }}</td>
-                    <td>{{ experimento.objetivo }}</td>
-                    <td>{{ experimento.fecha }}</td>
+                    <td>{{ experimento[0].experimento }}</td>
+                    <td>{{ experimento[0].objetivo }}</td>
+                    <td>{{ experimento[0].fecha }}</td>
                 </tr>
             </tbody>
         </table>
@@ -39,14 +39,9 @@
                     </ul>
                 </div>
         </div>
-        <table class="table table-striped">
-            <tbody>
-                <tr *ngFor="let asistente of experimento.asistentes">
-                    <td><li>{{ asistente.nombre }}</li></td>
-                </tr>
-            </tbody>
-        </table>
-        <experimento-usuario></experimento-usuario>
+
+
+         <experimento-usuario></experimento-usuario>
     </div>
 </div>
 
