@@ -19,7 +19,7 @@ class LaboratorioBaseView(View):
         try:
             return super(LaboratorioBaseView, self).dispatch(request, *args, **kwargs)
         except LaboratorioException as e:
-            return HttpResponseServerError("<h1>" + e.message + "</h1>")
+            return HttpResponseServerError(e.message)
 
     @staticmethod
     def guardar_y_agregar_id_contenido_json(instancia_modelo, request):
@@ -29,7 +29,6 @@ class LaboratorioBaseView(View):
         instancia_modelo.contenido = json.dumps(json_as_mapa)
         instancia_modelo.save()
         return HttpResponse(instancia_modelo.contenido, content_type="application/json")
-
 
     @staticmethod
     def contenido_json_a_mapa_con_id(contenido_json):
@@ -73,6 +72,7 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         y luego le asigna el atributo id de la pk generada
         """
         LaboratorioBaseView.contenido_json_valido(request.body)
+        self.pre_validar_creacion(request, *args, **kwargs)
         modelo = self.model(contenido="{}")
         return LaboratorioBaseView.guardar_y_agregar_id_contenido_json(modelo, request)
 
@@ -88,12 +88,12 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_id(self, request, id=None):
-        print("get_por_id: "+id)
+        print("get_por_id: " + id)
         modelo = self.model.objects.get(pk=id)
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_nombre(self, request, nombre=None):
-        contenido_modelo = self.model.objects.filter(contenido__contains='"nombre": "'+nombre)[:5].values('contenido')
+        contenido_modelo = self.model.objects.filter(contenido__contains='"nombre": "' + nombre)[:5].values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
 
@@ -102,3 +102,9 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         contenido_modelo = self.model.objects.values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
+
+    def pre_validar_creacion(self, request, *args, **kwargs):
+        pass
+
+    def pre_validar_actualizacion(self, request, *args, **kwargs):
+        pass

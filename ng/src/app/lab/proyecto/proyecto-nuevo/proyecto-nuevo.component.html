@@ -16,10 +16,10 @@
 
                     <form #nuevoProyecto="ngForm" (ngSubmit)="guardar(nuevoProyecto)" class="form-horizontal">
                         <lab-form-field [label]="_['cmp_nombre']">
-                            <input type="text" class="form-control" name="nombre" ngModel>
+                            <input required type="text" class="form-control panel-warning" name="nombre" ngModel>
                         </lab-form-field>
                         <lab-form-field [label]="_['cmp_identificador']">
-                            <input type="text" class="form-control" name="identificador" ngModel>
+                            <input required type="text" class="form-control panel-warning" name="identificador" ngModel>
                         </lab-form-field>
                         <lab-form-field [label]="_['cmp_descripcion']">
                             <textarea class="form-control message-input" name="descripcion" ngModel></textarea>
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a [routerLink]="['/proyecto']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>
-                                <button class="btn btn-primary" type="submit">{{_['acc_guardar']}}</button>
+                                <button class="btn btn-primary" type="submit" [disabled]="!nuevoProyecto.form.valid">{{_['acc_guardar']}}</button>
                             </div>
                         </div>
                     </form>
