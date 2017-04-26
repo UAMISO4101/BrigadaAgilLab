@@ -13,7 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProyectoAsociarExpComponent implements OnInit {
     public experimentos: Experimento[] = [];
-    public experimento: Experimento[] = [];
+    public experimento: Experimento;
     public idProyecto: string;
     public proyecto: Proyecto[] = [];
     public show: string;
@@ -32,31 +32,17 @@ export class ProyectoAsociarExpComponent implements OnInit {
                 this.experimentos = experimentos);
     }
 
-    onSelect(item: Experimento[]) {
-
+    onSelect(item: Experimento) {
         this.experimento = item;
         this.getProtocolos(item);
         this.show = "true";
     }
 
-    getProyecto(item) {
-        this._proyectoService
-            .getProyectos()
-            .subscribe((proyectos: Proyecto[]) =>
-                    this.proyecto = JSON.parse(JSON.stringify(proyectos.filter(p => p.id == parseInt(this.idProyecto))
-                        .pop())),
-                error => console.log(error),
-                () => this.addExperimento(item));
-    }
-
-    addExperimento(item) {
-        if (!this.proyecto["experimentos"])
-            this.proyecto["experimentos"] = [];
-        this.proyecto["experimentos"]
-            .push(<Experimento>item);
-        this._proyectoService
-            .asociarProyecto(this.proyecto)
-            .subscribe(res => console.log(res));
+    asociar() {
+        this._proyectoService.asociarExperimento(this.idProyecto, this.experimento.id)
+            .subscribe(
+                product => console.log(product),
+                error => console.log(<any>error));
     }
 
     getProtocolos(item) {

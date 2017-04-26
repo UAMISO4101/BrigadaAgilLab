@@ -86,12 +86,12 @@
                             <div class="col-md-4">
                                 <button [routerLink]="['/proyecto',idProyecto]" target="_self"
                                         class="btn btn-primary btn-md"
-                                        (click)="getProyecto(experimento)">
+                                        (click)="asociar(experimento)">
                                     Agregar
                                 </button>
                                 <button [routerLink]="[experimento.id,'protocolos']" target="_self"
                                         class="btn btn-primary btn-md"
-                                        (click)="getProyecto(experimento)">
+                                        (click)="getProtocolos(experimento)">
                                     Asociar protocolo
                                 </button>
                             </div>
