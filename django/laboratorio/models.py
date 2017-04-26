@@ -127,3 +127,14 @@ class AvanceProtocoloExperimentoProyecto(models.Model):
     protocolo = models.ForeignKey(Protocolo)
     # Almacena el avance del protocolo asociado a un experimento de un proyecto
     contenido = models.TextField()
+
+
+class ExperimentoAsistente(models.Model):
+    # Permite establecer la plantilla de los protocolos de un experimento
+    experimento = models.ForeignKey(Experimento)
+    asistente = models.ForeignKey(Usuario)
+    # No usado
+    contenido = models.TextField()
+
+    class Meta:
+        unique_together = ('experimento', 'asistente')
