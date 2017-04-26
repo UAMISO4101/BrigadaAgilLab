@@ -138,6 +138,7 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+CORS_ORIGIN_ALLOW_ALL = True
 # https://github.com/ottoyiu/django-cors-headers/
 CORS_ORIGIN_WHITELIST = (
     # Agregar la URL del despliegue en heroku de angular
