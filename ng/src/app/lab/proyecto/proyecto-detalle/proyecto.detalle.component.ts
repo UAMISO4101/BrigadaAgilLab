@@ -17,6 +17,7 @@ export class ProyectoDetalleComponent implements OnInit {
     idProyecto: string;
     proyecto: Proyecto;
     experimentos: ExperimentoProyecto[];
+    documentos: any[];
     experimentoSeleccionado: ExperimentoProyecto;
     protocolos: Protocolo[];
     protocoloSeleccionado: Protocolo;
@@ -48,6 +49,16 @@ export class ProyectoDetalleComponent implements OnInit {
     }
 
     private hayExperimentos(): boolean {
-        return this.experimentos && this.experimentos.length > 0
+        return this.experimentos && this.experimentos.length > 0;
     }
+
+    private hayDocumentos(): boolean {
+        return true;
+    }
+
+    private seleccionarExperimento(seleccion: ExperimentoProyecto) {
+        this.experimentoSeleccionado = seleccion;
+
+    }
+
 }

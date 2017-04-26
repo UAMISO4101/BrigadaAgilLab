@@ -73,6 +73,7 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         Permite inicializar un modelo con contenido JSON, lo crea en la bd
         y luego le asigna el atributo id de la pk generada
         """
+        LaboratorioBaseView.contenido_json_valido(request.body)
         modelo = self.model(contenido="{}")
         return LaboratorioBaseView.guardar_y_agregar_id_contenido_json(modelo, request)
 

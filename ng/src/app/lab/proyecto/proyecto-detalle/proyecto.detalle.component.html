@@ -11,10 +11,24 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>{{_['tit_info_basica']}}</h5>
+                    <ui-ibox-tools [collapse]='true'></ui-ibox-tools>
                 </div>
                 <div class="ibox-content">
                     <proyecto-informacion-basica *ngIf="proyecto" [proyecto]='proyecto'></proyecto-informacion-basica>
-                    <proyecto-adjuntos></proyecto-adjuntos>
+                </div>
+            </div>
+            <!----------------------->
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{_['tit_docs_adjuntos']}}</h5>
+                    <ui-ibox-tools [collapse]='true'></ui-ibox-tools>
+                </div>
+                <div class="ibox-content">
+                    <proyecto-adjuntos *ngIf="hayDocumentos()"></proyecto-adjuntos>
+
+                    <div class="alert alert-info" *ngIf="!hayDocumentos()">
+                        {{_['msg_no_docs_proyecto']}}
+                    </div>
                 </div>
             </div>
             <!----------------------->
@@ -34,32 +48,24 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let el of experimentos">
-                                <td>{{el.experimento.experimento}}</td>
-                                <td>{{el.experimento.objetivo }}</td>
+                                <td style="cursor: pointer;" (click)="seleccionarExperimento(el)">
+                                    {{el.experimento.experimento}}
+                                </td>
+                                <td style="cursor: pointer;" (click)="seleccionarExperimento(el)">
+                                    {{el.experimento.objetivo }}
+                                </td>
                                 <td><a><i class="fa fa-sign-in text-navy"></i></a></td>
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
-                    <div *ngIf="!hayExperimentos()">
-                        <a class="btn btn-block btn-primary">No existen experimentos asociados al proyecto. Click acá para agregar.</a>
-                    </div>
-                    <div class="row" *ngIf="experimentoSeleccionado">
-                        <div class="col-lg-12">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-title">
-                                    <h5>{{_['tit_res_experimento']}}</h5>
-                                </div>
-                                <div class="ibox-content">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="alert alert-info" *ngIf="!hayExperimentos()">
+                        {{_['msg_no_exp_proyecto']}} <a class="alert-link">{{_['msg_click_agregar']}}</a>
                     </div>
                 </div>
             </div>
 
-            <div class="ibox float-e-margins" *ngIf="hayExperimentos()">
+            <div class="ibox float-e-margins" *ngIf="experimentoSeleccionado">
                 <div class="ibox-title">
                     <h5>{{_['tit_protocolos']}}</h5>
                 </div>
