@@ -43,7 +43,7 @@
                         </table>
                     </div>
                     <div *ngIf="!hayExperimentos()">
-                        <a class="btn btn-block btn-primary">No existen experimentos asociados al proyecto. Click acá para agregar.</a>
+                        <a class="btn btn-block btn-primary">{{_['msg_no_exp_proyecto']}}</a>
                     </div>
                     <div class="row" *ngIf="experimentoSeleccionado">
                         <div class="col-lg-12">
