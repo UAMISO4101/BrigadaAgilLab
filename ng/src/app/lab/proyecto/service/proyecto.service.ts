@@ -15,20 +15,21 @@ export class ProyectoService {
     private url_servicios_proyecto_experimento = environment.url_servicios + "proyecto/{0}/experimento/";
 
     constructor(private _http: Http) {
+        console.log('Valor de ambiente ' + process.env.URL_SERVICIOS);
     }
 
-    obtenerPorId(idProyecto):Proyecto {
+    obtenerPorId(idProyecto): Proyecto {
         let proyectoReturn;
         this._http.get(this.url_servicios_proyectos + "1")
-            .map((response:any) => {
+            .map((response: any) => {
                 return response.json();
-            }).toPromise().then((proyecto:Proyecto) => {
+            }).toPromise().then((proyecto: Proyecto) => {
             proyectoReturn = proyecto;
         });
 
         return proyectoReturn;
     }
-    
+
     getProyecto(idProyecto: string): Observable<Proyecto> {
         return this._http.get(this.url_servicios_proyectos + idProyecto + "/")
             .map((response: Response) => <Proyecto>response.json());
