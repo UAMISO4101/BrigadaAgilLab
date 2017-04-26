@@ -36,6 +36,7 @@ export class ProyectoNuevoComponent implements OnInit {
     }
 
     errorNuevo(error): void {
-        this._notif.error('Error en la Creación', error);
+        console.log(error);
+        this._notif.error('Error en la Creación', error._body);
     }
 }
