@@ -35,6 +35,10 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>{{_['tit_experimentos']}}</h5>
+                    <div class="ibox-tools">
+                        <a [routerLink]="['/proyecto',idProyecto,'experimento']" class="btn btn-sm btn-primary pull-right m-t-n-xs">
+                            Asociar Experimento</a>
+                    </div>
                 </div>
                 <div class="ibox-content">
                     <div class="table-responsive" *ngIf="hayExperimentos()">
@@ -60,7 +64,7 @@
                         </table>
                     </div>
                     <div class="alert alert-info" *ngIf="!hayExperimentos()">
-                        {{_['msg_no_exp_proyecto']}} <a class="alert-link">{{_['msg_click_agregar']}}</a>
+                        {{_['msg_no_exp_proyecto']}}
                     </div>
                 </div>
             </div>
