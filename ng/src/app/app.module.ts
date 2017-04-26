@@ -17,6 +17,7 @@ import { LabModule } from "./lab/lab.module";
 import { UIModule } from "./ui/ui.module";
 import { PanelAsistenteComponent } from "./panel-control/panel-asistente.component";
 import { PanelCientificoComponent } from "./panel-control/panel-cientifico.component";
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
     declarations: [AppComponent,
@@ -43,6 +44,7 @@ import { PanelCientificoComponent } from "./panel-control/panel-cientifico.compo
         ]),
         LabModule,
         UIModule,
+        SimpleNotificationsModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
