@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
+from laboratorio.views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
     ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView
 
 
