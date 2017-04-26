@@ -13,6 +13,7 @@ export const LABELS = {
     tit_nuevo_proyecto: 'Nuevo Proyecto',
     tit_todos_proyectos: 'Todos los Proyectos',
     tit_info_basica: 'Información Básica',
+    tit_docs_adjuntos: 'Documentos Adjuntos',
 
     cmp_nombre: 'Nombre',
     cmp_objetivo: 'Objetivo',
@@ -26,7 +27,9 @@ export const LABELS = {
     acc_guardar: 'Guardar',
     acc_cancelar: 'Cancelar',
 
-    msg_no_exp_proyecto: 'No existen experimentos asociados al proyecto. Click acá para agregar.'
+    msg_no_exp_proyecto: 'No existen experimentos asociados al proyecto.',
+    msg_no_docs_proyecto: 'No existen documentos asociados al proyecto.',
+    msg_click_agregar: 'Click acá para agregar.'
 };
 
 @Injectable()
