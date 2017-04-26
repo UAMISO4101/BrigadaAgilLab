@@ -15,7 +15,6 @@ export class ProyectoService {
     private url_servicios_proyecto_experimento = environment.url_servicios + "proyecto/{0}/experimento/";
 
     constructor(private _http: Http) {
-        console.log('Valor de ambiente ' + process.env.URL_SERVICIOS);
     }
 
     obtenerPorId(idProyecto): Proyecto {
