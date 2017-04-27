@@ -56,7 +56,9 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
             {path: 'experimento', component: ExperimentoControladorComponent},
             {path: 'experimento/:id', component: ExperimentoDetalleComponent},
             {path: 'proyecto/:id/experimento/:id/protocolos', component: ExperimentoAsociarProtocoloComponent},
-            {path: 'usuario', component: UsuarioListComponent}
+            {path: 'usuario', component: UsuarioListComponent},
+            {path: 'herramientas', component: EquiposComponent},
+            {path: 'insumos', component: InsumosComponent}
         ]),
         UIModule,
         HttpModule,
