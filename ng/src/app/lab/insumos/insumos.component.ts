@@ -1,16 +1,16 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Insumo } from './insumo';
 import { InsumosService } from "./insumos.service";
+import {LabelsService} from "../labels.service";
 //declare var jQuery:any;
 
 @Component({
     selector: 'lab-insumos',
-    moduleId: module.id,
     templateUrl: 'insumos.component.html'
 })
 
 export class InsumosComponent implements OnInit{
-
+    _: {};
     list: Insumo[] = [];
     listP: Insumo[] = [];
     itemInsumoD: Insumo = {
@@ -28,12 +28,12 @@ export class InsumosComponent implements OnInit{
     search: string = '';
     selectedOrder: string = "-nombre";
 
-    constructor(private _insumoService: InsumosService) {
+    constructor(private _insumoService: InsumosService,private _labelsService: LabelsService) {
+        this._ = _labelsService.getLabels();
 
     }
 
     ngOnInit(): void {
-
         this.getInsumos();
         this.getInsumosP();
     }

@@ -1,10 +1,22 @@
-
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Insumos</h2>
+        <breadcrumb prefix="Inicio"></breadcrumb>
+    </div>
+</div>
 <div class="tabs-container">
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#tab-3"> <i class="fa fa-flask"></i></a></li>
         <li class=""><a data-toggle="tab" href="#tab-4"><i class="fa fa-truck"></i></a></li>
         <li class=""><a data-toggle="tab" href="#tab-5"><i class="fa fa-database"></i></a></li>
     </ul>
+    <div class="ibox-title">
+        <h5>{{_["tit_todos_proyectos"]}}</h5>
+        <div class="ibox-tools">
+            <a [routerLink]="['/insumo/nuevo']" class="btn btn-sm btn-primary pull-right m-t-n-xs">
+                Nuevo Insumo</a>
+        </div>
+    </div>
     <div class="tab-content">
         <div id="tab-3" class="tab-pane active">
             <div class="panel-body">
