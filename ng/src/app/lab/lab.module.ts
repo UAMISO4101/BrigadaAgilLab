@@ -25,6 +25,7 @@ import {InsumosComponent} from './insumos/insumos.component';
 import {InsumosService} from './insumos/insumos.service';
 import {ExperimentoDetalleComponent} from './experimento/experimento-detalle/experimento.detalle.component';
 import {ProyectoNuevoComponent} from './proyecto/proyecto-nuevo/proyecto-nuevo.component';
+import {InsumoNuevoComponent} from './insumos/nuevo/insumo-nuevo.component';
 import {ProyectoControladorComponent} from './proyecto/proyecto-controlador/proyecto-controlador.component';
 import {UIModule} from '../ui/ui.module';
 import {LabelsService} from './labels.service';
@@ -50,6 +51,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
             {path: 'insumo', component: InsumosComponent},
             {path: 'proyecto', component: ProyectoControladorComponent},
             {path: 'proyecto/nuevo', component: ProyectoNuevoComponent},
+            {path: 'insumo/nuevo', component: InsumoNuevoComponent},
             {path: 'proyecto/:id', component: ProyectoDetalleComponent},
             {path: 'protocolo', component: ProtocoloComponent},
             {path: 'proyecto/:id/experimento', component: ProyectoAsociarExpComponent},
@@ -84,6 +86,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         KeysPipe,
         EquiposComponent,
         InsumosComponent,
+        InsumoNuevoComponent,
         ProyectoNuevoComponent,
         ProyectoControladorComponent,
         ProyectoAsociarExpComponent,
@@ -107,6 +110,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProyectoResumenComponent,
         EquiposComponent,
         InsumosComponent,
+        InsumoNuevoComponent,
         ProyectoGraficaComponent
 
     ],

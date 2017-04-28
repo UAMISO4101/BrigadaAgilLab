@@ -3,6 +3,8 @@ import {Injectable} from '@angular/core';
 export const LABELS = {
     tit_inicio: 'Inicio',
     tit_acciones: 'Acciones',
+    tit_insumos: 'Insumos',
+    tit_insumo: 'Insumo',
     tit_proyecto: 'Proyecto',
     tit_proyectos: 'Proyectos',
     tit_experimento: 'Experimento',
