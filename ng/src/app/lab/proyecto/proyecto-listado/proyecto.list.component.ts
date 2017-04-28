@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
 import {OnInit} from "@angular/core";
@@ -11,7 +11,15 @@ import {OnInit} from "@angular/core";
 export class ProyectoListComponent implements OnInit {
     public proyectos: Proyecto[] = [];
 
+    @Input() filtro:string = "";
+
     constructor(private _proyectoService: ProyectoService) {
+
+    }
+
+    filtrar() {
+        console.log("Controlador filtrando proyectos")
+        this._proyectoService.listarProyectosFiltrados(this.filtro).subscribe((proyectos: Proyecto[]) => this.proyectos = proyectos);
     }
 
     getProyectos() {

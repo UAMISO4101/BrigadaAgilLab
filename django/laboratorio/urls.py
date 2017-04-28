@@ -21,6 +21,8 @@ from laboratorio.views import ProyectoExperimentoView, ExperimentoView, Protocol
 
 urlpatterns = [
     url(r'^proyecto/$', ProyectoView.as_view()),
+    #Buscar protocolos que contengan en nombre
+    url(r'^proyecto/filtro/(?P<nombre>.+)/$', ProyectoView().get_por_nombre),
     url(r'^proyecto/(?P<id>\d+)/$', ProyectoView().get_por_id),
     # Proyecto - Experimentos - get
     url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/$', ProyectoExperimentoView.as_view()),

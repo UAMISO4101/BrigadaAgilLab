@@ -16,6 +16,7 @@ export class ProtocoloBuscadorComponent {
     @Input() fuente:string;
 
     constructor(private _protocoloService:ProtocoloService) {
+        
     }
 
     listarProtocolos() {
