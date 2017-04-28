@@ -18,7 +18,8 @@ class ProtocoloView(ContenidoJsonBaseView):
         :param nombre:
         """
         print"buscar_en_experimento_por_nombre"
-        contenido_modelo = ExperimentoProtocolo.objects.filter(experimento__id=id_experimento).values(
+        contenido_modelo = ExperimentoProtocolo.objects.filter(experimento__id=id_experimento) \
+            .filter(protocolo__contenido__contains=nombre).values(
             "protocolo__contenido")
         lista = map(lambda x: json.loads(x["protocolo__contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")

@@ -93,6 +93,6 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_nombre(self, request, nombre=None):
-        contenido_modelo = self.model.objects.filter(contenido__contains='"nombre": "'+nombre)[:5].values('contenido')
+        contenido_modelo = self.model.objects.filter(contenido__contains=nombre)[:5].values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")

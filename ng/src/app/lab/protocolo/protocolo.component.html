@@ -1,6 +1,6 @@
 <div class="ibox-content">
     <div class="form-group">
-        <input placeholder="Filtrar" class="input-sm form-control" type="text"/>
+        <input (keyup)="keyup()" placeholder="Filtrar" class="input-sm form-control" type="text" [(ngModel)]="nombre"/>
     </div>
     <div class="table-responsive ">
         <table class="table table-striped">
