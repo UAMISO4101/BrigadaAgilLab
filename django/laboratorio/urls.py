@@ -39,6 +39,8 @@ urlpatterns = [
         ProtocolosExperimentosProyectoView.as_view()),
 
     url(r'^experimento/$', ExperimentoView.as_view()),
+    #Buscar protocolos que contengan en nombre
+    url(r'^experimento/filtro/(?P<nombre>.+)/$', ExperimentoView().get_por_nombre),
     url(r'^experimento/(?P<id>\d+)/$', ExperimentoView().get_por_id),
     # Experimento - protocolo - get
     url(r'^experimento/(?P<id_experimento>\d+)/protocolo/$', ExperimentoProtocoloView.as_view()),

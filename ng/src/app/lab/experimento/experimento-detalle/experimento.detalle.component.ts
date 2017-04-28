@@ -10,6 +10,7 @@ import {Usuario} from "../service/usuario";
 
 @Component({
   templateUrl: 'experimento.detalle.component.html',
+  selector: "experimento-detalles",
   providers: [ExperimentoService]
 })
 export class ExperimentoDetalleComponent implements OnInit {

@@ -9,8 +9,8 @@ import {OnInit} from "@angular/core";
     providers: [ProyectoService]
 })
 export class ProyectoListComponent implements OnInit {
-    public proyectos: Proyecto[] = [];
 
+    public proyectos: Proyecto[] = [];
     @Input() filtro:string = "";
 
     constructor(private _proyectoService: ProyectoService) {
