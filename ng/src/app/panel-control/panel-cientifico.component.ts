@@ -6,5 +6,5 @@ import {Component} from "@angular/core";
     templateUrl: 'panel-cientifico.component.html'
 })
 export class PanelCientificoComponent {
-    
+
 }

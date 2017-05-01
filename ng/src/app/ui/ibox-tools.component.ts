@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 
-declare var jQuery:any;
+declare var jQuery: any;
 
 @Component({
     selector: 'ui-ibox-tools',
@@ -13,10 +13,10 @@ export class iBoxToolsComponent implements OnInit {
     @Input() close: boolean;
 
     ngOnInit(): void {
-        
+
     }
 
-    clickCollapse(event:Event):void{
+    clickCollapse(event: Event): void {
         var elem = event.target;
         var ibox = jQuery(elem).closest('div.ibox');
         var button = jQuery(elem).find('i');

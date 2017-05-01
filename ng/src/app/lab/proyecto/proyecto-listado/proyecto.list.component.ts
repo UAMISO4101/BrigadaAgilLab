@@ -1,7 +1,6 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
-import {OnInit} from "@angular/core";
 
 @Component({
     selector: "proyecto-list",
@@ -11,7 +10,7 @@ import {OnInit} from "@angular/core";
 export class ProyectoListComponent implements OnInit {
 
     public proyectos: Proyecto[] = [];
-    @Input() filtro:string = "";
+    @Input() filtro: string = "";
 
     constructor(private _proyectoService: ProyectoService) {
 

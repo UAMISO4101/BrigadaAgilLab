@@ -6,7 +6,7 @@ declare var jQuery: any;
     selector: 'lab-navigation',
     templateUrl: 'navigation.component.html'
 })
-export class NavigationComponent implements OnInit, AfterViewInit  {
+export class NavigationComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
     }

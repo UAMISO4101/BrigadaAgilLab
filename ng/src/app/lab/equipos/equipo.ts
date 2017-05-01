@@ -2,6 +2,6 @@ export interface Equipo {
     id: number;
     nombre: string;
     proyecto: string;
-    selected:boolean;
+    selected: boolean;
     imagen: string;
 }

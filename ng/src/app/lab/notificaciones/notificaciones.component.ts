@@ -1,7 +1,6 @@
-
-import { Component, Input, OnInit } from "@angular/core";
-import { Notificacion } from './notificacion';
-import { NotificacionesService } from "./notificaciones.service";
+import {Component, Input, OnInit} from "@angular/core";
+import {Notificacion} from "./notificacion";
+import {NotificacionesService} from "./notificaciones.service";
 
 @Component({
     selector: 'lab-notificaciones',

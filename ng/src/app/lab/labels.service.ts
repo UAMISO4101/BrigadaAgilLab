@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 
 export const LABELS = {
     tit_inicio: 'Inicio',

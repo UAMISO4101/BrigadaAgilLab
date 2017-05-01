@@ -1,7 +1,6 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
-import {OnInit} from "@angular/core";
 import {Experimento} from "../../experimento/service/experimento";
 import {ExperimentoService} from "../../experimento/service/experimento.service";
 import {ActivatedRoute} from "@angular/router";

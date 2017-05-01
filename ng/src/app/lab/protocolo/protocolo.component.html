@@ -14,8 +14,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let protocolo of protocolos" >
-                <td><small>{{ protocolo.nombre }}</small></td>
+            <tr *ngFor="let protocolo of protocolos">
+                <td>
+                    <small>{{ protocolo.nombre }}</small>
+                </td>
                 <td>{{ protocolo.fecha }}</td>
                 <td>{{ protocolo.version }}</td>
 
