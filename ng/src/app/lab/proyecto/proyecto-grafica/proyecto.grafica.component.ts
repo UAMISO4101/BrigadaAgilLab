@@ -1,13 +1,13 @@
-import {Component, OnInit} from "@angular/core";
-import {ProyectoService} from "../service/proyecto.service";
-import {IMultiSelectOption, IMultiSelectSettings} from "angular-2-dropdown-multiselect";
-import {CompleterService, CompleterData} from "ng2-completer";
-import {environment} from "../../../../environments/environment";
+import {Component, OnInit} from '@angular/core';
+import {ProyectoService} from '../service/proyecto.service';
+import {IMultiSelectOption, IMultiSelectSettings} from 'angular-2-dropdown-multiselect';
+import {CompleterService, CompleterData} from 'ng2-completer';
+import {environment} from '../../../../environments/environment';
 declare var jQuery: any;
 
 
 @Component({
-    selector: "proyecto-grafica",
+    selector: 'proyecto-grafica',
     moduleId: module.id,
     templateUrl: 'proyecto.grafica.component.html',
 
@@ -15,7 +15,7 @@ declare var jQuery: any;
 export class ProyectoGraficaComponent implements OnInit {
     public pieChartLabels: string[] = ['Terminado', 'En curso', 'Sin Iniciar'];
     public pieChartData: number[] = [300, 500, 100];
-    public pieChartType: string = 'pie';
+    public pieChartType = 'pie';
     optionsModel: number[];
     public myOptions: IMultiSelectOption[] = [
         {id: 1, name: 'Option 1'},
@@ -36,7 +36,7 @@ export class ProyectoGraficaComponent implements OnInit {
 
 
     constructor(private _proyectoService: ProyectoService, private completerService: CompleterService) {
-        this.dataService = completerService.remote(environment.url_servicios + 'proyecto/autocomplete/', "nombre", "nombre");
+        this.dataService = completerService.remote(environment.url_servicios + 'proyecto/autocomplete/', 'nombre', 'nombre');
     }
 
     ngOnInit(): any {

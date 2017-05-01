@@ -1,22 +1,22 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {ExperimentoService} from "../service/experimento.service";
-import {Experimento} from "../service/experimento";
+import {Component, Input, OnInit} from '@angular/core';
+import {ExperimentoService} from '../service/experimento.service';
+import {Experimento} from '../service/experimento';
 
 @Component({
-    selector: "experimento-list",
+    selector: 'experimento-list',
     templateUrl: 'experimento.list.component.html',
     providers: [ExperimentoService]
 })
 export class ExperimentoListComponent implements OnInit {
 
     public experimentos: Experimento[] = [];
-    @Input() filtro: string = "";
+    @Input() filtro = '';
 
     constructor(private _experimentoService: ExperimentoService) {
     }
 
     filtrar() {
-        console.log("Controlador filtrando proyectos")
+        console.log('Controlador filtrando proyectos');
         this._experimentoService.listarExperimentosFiltrados(this.filtro).subscribe((experimentos: Experimento[]) => this.experimentos = experimentos);
     }
 

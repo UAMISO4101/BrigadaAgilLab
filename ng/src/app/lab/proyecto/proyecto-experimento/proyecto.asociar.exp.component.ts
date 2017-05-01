@@ -1,12 +1,12 @@
-import {Component, OnInit} from "@angular/core";
-import {ProyectoService} from "../service/proyecto.service";
-import {Proyecto} from "../service/proyecto";
-import {Experimento} from "../../experimento/service/experimento";
-import {ExperimentoService} from "../../experimento/service/experimento.service";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ProyectoService} from '../service/proyecto.service';
+import {Proyecto} from '../service/proyecto';
+import {Experimento} from '../../experimento/service/experimento';
+import {ExperimentoService} from '../../experimento/service/experimento.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: "proyecto-experimento",
+    selector: 'proyecto-experimento',
     templateUrl: 'proyecto.asociar.exp.component.html',
     providers: [ProyectoService, ExperimentoService]
 })
@@ -34,7 +34,7 @@ export class ProyectoAsociarExpComponent implements OnInit {
     onSelect(item: Experimento) {
         this.experimento = item;
         this.getProtocolos(item);
-        this.show = "true";
+        this.show = 'true';
     }
 
     asociar() {
@@ -46,7 +46,7 @@ export class ProyectoAsociarExpComponent implements OnInit {
 
     getProtocolos(item) {
 
-        this._experimentoService.getProtocolos(item).subscribe(res => this.experimento["protocolos"] = res,
+        this._experimentoService.getProtocolos(item).subscribe(res => this.experimento['protocolos'] = res,
             error => console.log(error),
             () => console.log(this.experimento));
     }

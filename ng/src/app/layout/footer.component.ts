@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'lab-footer',
@@ -6,5 +6,5 @@ import {Component} from "@angular/core";
     templateUrl: 'footer.component.html'
 })
 export class FooterComponent {
-    public pageTitle: string = 'Welcome';
+    public pageTitle = 'Welcome';
 }

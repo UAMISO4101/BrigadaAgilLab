@@ -1,7 +1,7 @@
 /**
  * Created by user on 22/03/2017.
  */
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
 
 @Component({

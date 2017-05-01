@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
-import {Insumo} from "./insumo";
-import {InsumosService} from "./insumos.service";
-import {LabelsService} from "../labels.service";
+import {Component, OnInit} from '@angular/core';
+import {Insumo} from './insumo';
+import {InsumosService} from './insumos.service';
+import {LabelsService} from '../labels.service';
 //declare var jQuery:any;
 
 @Component({
@@ -15,18 +15,18 @@ export class InsumosComponent implements OnInit {
     listP: Insumo[] = [];
     itemInsumoD: Insumo = {
         id: 0,
-        nombre: "---",
-        descripcion: "---",
-        precio: "$0.0",
-        unidad: "---",
-        provedor: "---",
+        nombre: '---',
+        descripcion: '---',
+        precio: '$0.0',
+        unidad: '---',
+        provedor: '---',
         estado: 0,
         imagen: '',
-    }
+    };
     itemInsumo: Insumo;
     itemInsumoP: Insumo;
-    search: string = '';
-    selectedOrder: string = "-nombre";
+    search = '';
+    selectedOrder = '-nombre';
 
     constructor(private _insumoService: InsumosService, private _labelsService: LabelsService) {
         this._ = _labelsService.getLabels();
