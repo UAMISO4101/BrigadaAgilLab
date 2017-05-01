@@ -3,8 +3,3 @@ install:
   - nvm install 7.7.3
 script:
   - cd ng && npm install && cd ..
-after_success:
-  - chmod +x ./ci/deploy-ng.sh
-  - chmod +x ./ci/deploy-django.sh 
-  - ./ci/deploy-ng.sh
-  - ./ci/deploy-django.sh 
