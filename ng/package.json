@@ -16,7 +16,7 @@
     "e2e": "ng e2e",
     "postinstall": "npm run _build-prod",
     "_build-prod": "ng build --aot -prod",
-    "heroku-prebuild": "npm run replace '##URL_SERVICIOS##' 'LITERAL' ./src/environments/environment.prod.ts"
+    "heroku-prebuild": "npm run replace '##URL_SERVICIOS##' 'LITERAL' $BUILD_DIR/src/environments/environment.prod.ts"
   },
   "private": true,
   "dependencies": {
