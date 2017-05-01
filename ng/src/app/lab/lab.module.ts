@@ -82,7 +82,6 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ExperimentoListComponent,
         ProyectoResumenComponent,
         NotificacionesComponent,
-        KeysPipe,
         EquiposComponent,
         InsumosComponent,
         InsumoNuevoComponent,
