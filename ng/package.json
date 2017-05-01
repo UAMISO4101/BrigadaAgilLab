@@ -15,7 +15,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "npm run _build-prod",
-    "_build-prod": "ng build --aot -prod"
+    "_build-prod": "ng build --aot -prod",
+    "heroku-prebuild": "replace '##URL_SERVICIOS##' '$NODE_LAB_URL_SERVICIOS' ./src/environments/environment.prod.ts --preview"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +50,7 @@
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4",
 
+    "replace": "0.3.0",
     "express": "^4.15.2",
     "animate.css": "3.5.2",
     "bootstrap": "^3.3.6",
