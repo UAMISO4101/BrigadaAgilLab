@@ -40,14 +40,13 @@ export class ProyectoGraficaComponent implements OnInit {
     }
 
     ngOnInit(): any {
-        //this.getProyectos();
+        // this.getProyectos();
         jQuery('#complete').find('input').addClass('form-control');
 
     }
 
     public chartClicked(e: any): void {
         console.log(e);
-        console.info(this.dataService);
     }
 
     public chartHovered(e: any): void {

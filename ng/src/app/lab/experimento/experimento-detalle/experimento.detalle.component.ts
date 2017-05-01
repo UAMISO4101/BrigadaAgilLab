@@ -23,7 +23,7 @@ export class ExperimentoDetalleComponent implements OnInit {
         this._experimentoService
             .getExperimentos()
             .subscribe((experimentos: Experimento[]) =>
-                    this.experimento = JSON.parse(JSON.stringify(experimentos.filter(p => p.id == this.idExperimento)
+                    this.experimento = JSON.parse(JSON.stringify(experimentos.filter(p => p.id === this.idExperimento)
                         .pop())),
                 error => console.log(error),
                 () => console.log(this.experimento));

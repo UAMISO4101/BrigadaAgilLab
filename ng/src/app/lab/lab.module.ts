@@ -18,7 +18,6 @@ import {ProtocoloDetalleComponent} from './protocolo/protocolo.detalle.component
 import {ProtocoloResumenComponent} from './protocolo/protocolo.resumen.component';
 import {NotificacionesComponent} from './notificaciones/notificaciones.component';
 import {NotificacionesService} from './notificaciones/notificaciones.service';
-import {KeysPipe} from './keys.pipe';
 import {EquiposComponent} from './equipos/equipos.component';
 import {EquiposService} from './equipos/equipos.service';
 import {InsumosComponent} from './insumos/insumos.component';

@@ -24,7 +24,7 @@ export class ProyectoService {
 
     listarProyectosFiltrados(filtro): Observable<Proyecto[]> {
         console.log('listarProyectosFiltrados');
-        if (filtro != '') {
+        if (filtro !== '') {
             return this._http.get(this.url_servicios_proyecto_filtro + filtro)
                 .map((response: Response) => <Proyecto[]>response.json());
         } else {

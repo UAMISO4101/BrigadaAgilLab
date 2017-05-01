@@ -17,7 +17,7 @@ export class ExperimentoService {
 
     listarExperimentosFiltrados(filtro): Observable<Experimento[]> {
         console.log('listarProtocolosFiltrados');
-        if (filtro != '') {
+        if (filtro !== '') {
             return this._http.get(this.url_servicios_experimento_filtro + filtro)
                 .map((response: Response) => <Experimento[]>response.json());
         } else {
@@ -36,7 +36,8 @@ export class ExperimentoService {
 
         const headers = new Headers({'Content-Type': 'application/json'});
         const options = new RequestOptions(headers);
-        return this._http.post(this.url_servicios_experimentos + item['id'] + '/protocolo/' + protocolo['id'], item, options).map(response => <Experimento[]>response.json());
+        return this._http.post(this.url_servicios_experimentos + item['id'] + '/protocolo/' + protocolo['id'], item, options)
+            .map(response => <Experimento[]>response.json());
 
     }
 

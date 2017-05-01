@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {ExperimentoService} from "../service/experimento.service";
-import {Experimento} from "../service/experimento";
-import {ProtocoloService} from "../../protocolo/service/protocolo.service";
-import {Protocolo} from "../../protocolo/service/protocolo";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ExperimentoService} from '../service/experimento.service';
+import {Experimento} from '../service/experimento';
+import {ProtocoloService} from '../../protocolo/service/protocolo.service';
+import {Protocolo} from '../../protocolo/service/protocolo';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'experimento-protocolo',
@@ -28,7 +28,7 @@ export class ExperimentoAsociarProtocoloComponent implements OnInit {
 
     onSelect(item) {
         this.protocolo = item;
-        this.show = "true";
+        this.show = 'true';
 
     }
 
@@ -38,19 +38,22 @@ export class ExperimentoAsociarProtocoloComponent implements OnInit {
 
     getExperimento() {
         this._experimentoService.getExperimentos().subscribe((experimento: Experimento[]) =>
-                this.experimento = experimento.filter(p => p.id == this.idExperimento).pop(),
+                this.experimento = experimento.filter(p => p.id === this.idExperimento).pop(),
             error => console.log(error),
-            () => this.asociarProtocolo(this.experimento, this.protocolo))
+            () => this.asociarProtocolo(this.experimento, this.protocolo));
     }
 
     asociarProtocolo(experimento, protocolo) {
 
-        if (!experimento["protocolos"])
-            experimento["protocolos"] = [];
-        experimento["protocolos"].push(protocolo);
+        if (!experimento['protocolos']) {
+            experimento['protocolos'] = [];
+        }
+        experimento['protocolos'].push(protocolo);
 
-        this._experimentoService.asociarProtocolo(experimento, protocolo).subscribe(res => console.log("success"), error => console.log(error),
-            () => window.history.back());
+        this._experimentoService.asociarProtocolo(experimento, protocolo)
+            .subscribe(res => console.log('success'),
+                        error => console.log(error),
+                        () => window.history.back());
 
     }
 

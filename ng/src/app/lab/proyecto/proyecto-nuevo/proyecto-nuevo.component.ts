@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {ProyectoService} from "../service/proyecto.service";
-import {LabelsService} from "../../labels.service";
-import {NgForm} from "@angular/forms";
-import {NotificationsService} from "angular2-notifications";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ProyectoService} from '../service/proyecto.service';
+import {LabelsService} from '../../labels.service';
+import {NgForm} from '@angular/forms';
+import {NotificationsService} from 'angular2-notifications';
+import {Router} from '@angular/router';
 
 @Component({
     templateUrl: 'proyecto-nuevo.component.html',

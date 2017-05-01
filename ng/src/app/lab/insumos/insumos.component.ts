@@ -54,7 +54,6 @@ export class InsumosComponent implements OnInit {
     }
 
     clickedP(item: Insumo) {
-        console.info(item);
         this.itemInsumoP = item;
     }
 

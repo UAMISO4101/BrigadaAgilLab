@@ -20,14 +20,17 @@ export class ProtocoloComponent implements OnInit {
     listarProtocolos() {
         console.log('Aqui se inicia la carga de protocolos');
         if (this.fuente != null) {
-            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre).subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre)
+                .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
             console.log('get listarProtocolosFiltradosEnExperimentoPorNombre');
         } else {
-            if (this.nombre != '') {
-                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+            if (this.nombre !== '') {
+                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre)
+                    .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
                 console.log('get listarProtocolosFiltradosNombre');
             } else {
-                this._protocoloService.listarProtocolos().subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+                this._protocoloService.listarProtocolos()
+                    .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
                 console.log('get listarProtocolos');
             }
         }

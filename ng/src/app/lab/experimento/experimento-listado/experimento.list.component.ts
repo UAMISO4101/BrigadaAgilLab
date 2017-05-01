@@ -17,7 +17,8 @@ export class ExperimentoListComponent implements OnInit {
 
     filtrar() {
         console.log('Controlador filtrando proyectos');
-        this._experimentoService.listarExperimentosFiltrados(this.filtro).subscribe((experimentos: Experimento[]) => this.experimentos = experimentos);
+        this._experimentoService.listarExperimentosFiltrados(this.filtro)
+            .subscribe((experimentos: Experimento[]) => this.experimentos = experimentos);
     }
 
     getExperimentos() {

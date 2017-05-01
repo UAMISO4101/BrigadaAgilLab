@@ -9,11 +9,11 @@ import {Http, Response, RequestOptions} from '@angular/http';
 @Injectable()
 export class InsumosService {
 
-    constructor(private _http: Http) {
-    }
-
     private url_servicios_insumo = environment.url_servicios + 'insumo/';
     private url_servicios_insumo_filtro = environment.url_servicios + 'insumo/filtro/';
+
+    constructor(private _http: Http) {
+    }
 
     listInsumos(number: number, search: string, order: string): Insumo[] {
 
@@ -22,7 +22,7 @@ export class InsumosService {
         for (let i = 1; i <= number; i++) {
             const nombre = 'Insumo ' + i;
 
-            if (nombre.indexOf(search) != -1 || search.trim().length == 0) {
+            if (nombre.indexOf(search) !== -1 || search.trim().length === 0) {
 
                 items.push({
                     id: i,

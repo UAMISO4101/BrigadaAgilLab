@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {Proyecto} from "../service/proyecto";
-import {LabelsService} from "../../labels.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Proyecto} from '../service/proyecto';
+import {LabelsService} from '../../labels.service';
 
 
 @Component({
-    selector: "proyecto-informacion-basica",
+    selector: 'proyecto-informacion-basica',
     templateUrl: 'proyecto.informacion.basica.component.html',
     providers: [LabelsService]
 })
@@ -13,7 +13,7 @@ export class ProyectoInformacionBasicaComponent implements OnInit {
     _: {};
 
     constructor(private _labelsService: LabelsService) {
-        console.log(_labelsService.getLabels())
+        console.log(_labelsService.getLabels());
         this._ = _labelsService.getLabels();
     }
 
