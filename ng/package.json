@@ -12,6 +12,7 @@
     "dev": "ng serve",
     "build": "ng build",
     "test": "ng test --browsers Firefox --single-run",
+    "test-dev": "ng test --browsers Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "npm run _build-prod",
