@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProtocoloService} from './service/protocolo.service';
 import {Protocolo} from './service/protocolo';
+import {LabelsService} from '../labels.service';
 
 @Component({
     moduleId: module.id,
@@ -9,12 +10,12 @@ import {Protocolo} from './service/protocolo';
 })
 export class ProtocoloComponent implements OnInit {
     public protocolos: Protocolo[] = [];
-
     @Input() nombre = '';
     @Input() fuente: string;
+    _: {};
 
-    constructor(private _protocoloService: ProtocoloService) {
-
+    constructor(private _protocoloService: ProtocoloService,private _labelsService: LabelsService) {
+        this._ = _labelsService.getLabels();
     }
 
     listarProtocolos() {

@@ -13,6 +13,7 @@ import {ProyectoListComponent} from './proyecto/proyecto-listado/proyecto.list.c
 import {ExperimentoListComponent} from './experimento/experimento-listado/experimento.list.component';
 import {RouterModule} from '@angular/router';
 import {ProtocoloComponent} from './protocolo/protocolo.component';
+import {ProtocoloNuevoComponent} from './protocolo/nuevo/protocolo-nuevo.component';
 import {ProtocoloBuscadorComponent} from './protocolo/protocolo.buscador.component';
 import {ProtocoloDetalleComponent} from './protocolo/protocolo.detalle.component';
 import {ProtocoloResumenComponent} from './protocolo/protocolo.resumen.component';
@@ -53,6 +54,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
             {path: 'insumo/nuevo', component: InsumoNuevoComponent},
             {path: 'proyecto/:id', component: ProyectoDetalleComponent},
             {path: 'protocolo', component: ProtocoloComponent},
+            {path: 'protocolo/nuevo', component: ProtocoloNuevoComponent},
             {path: 'proyecto/:id/experimento', component: ProyectoAsociarExpComponent},
             {path: 'experimento', component: ExperimentoControladorComponent},
             {path: 'experimento/:id', component: ExperimentoDetalleComponent},
@@ -73,6 +75,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProyectoAdjuntosComponent,
         ProyectoDetalleComponent,
         ProtocoloComponent,
+        ProtocoloNuevoComponent,
         ProtocoloBuscadorComponent,
         ProtocoloResumenComponent,
         ExperimentoDetalleComponent,
@@ -98,6 +101,7 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProtocoloBuscadorComponent,
         ExperimentoControladorComponent,
         ExperimentoDetalleComponent,
+        ProtocoloNuevoComponent,
         ProtocoloDetalleComponent,
         ProtocoloResumenComponent,
         ProyectoAdjuntosComponent,
