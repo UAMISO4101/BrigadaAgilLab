@@ -29,6 +29,8 @@ export const LABELS = {
     cmp_fecha_creacion: 'Fecha de Creación',
     cmp_fecha_inicio: 'Fecha de Inicio',
     cmp_integrantes: 'Integrantes',
+    cmp_precio: 'Precio',
+    cmp_unidad: 'Unidad',
     cmp_version: 'Versión',
     acc_guardar: 'Guardar',
     acc_cancelar: 'Cancelar',

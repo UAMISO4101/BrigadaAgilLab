@@ -5,7 +5,6 @@ export interface Insumo {
     precio: string;
     unidad: string;
     provedor: string;
-
     estado: number;
     imagen: string;
 }

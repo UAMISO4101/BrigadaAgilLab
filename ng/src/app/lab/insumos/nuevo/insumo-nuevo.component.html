@@ -16,17 +16,16 @@
 
                     <form #nuevoProyecto="ngForm" (ngSubmit)="guardar(nuevoProyecto)" class="form-horizontal">
                         <lab-form-field [label]="_['cmp_nombre']">
-                            <input required type="text" class="form-control panel-warning" name="nombre" ngModel>
-                        </lab-form-field>
-                        <lab-form-field [label]="_['cmp_identificador']">
-                            <input required type="text" class="form-control panel-warning" name="identificador" ngModel>
+                            <input required type="text" class="form-control" name="nombre" ngModel>
                         </lab-form-field>
                         <lab-form-field [label]="_['cmp_descripcion']">
                             <textarea class="form-control message-input" name="descripcion" ngModel></textarea>
                         </lab-form-field>
-                        <div class="hr-line-dashed"></div>
-                        <lab-form-field [label]="_['cmp_cientifico_leader']">
-                            <input type="text" class="form-control" name="cientifico_lider" ngModel>
+                        <lab-form-field [label]="_['cmp_precio']">
+                            <input type="text" class="form-control" name="precio" ngModel>
+                        </lab-form-field>
+                        <lab-form-field [label]="_['cmp_unidad']">
+                            <input type="text" class="form-control" name="unidad" ngModel>
                         </lab-form-field>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">

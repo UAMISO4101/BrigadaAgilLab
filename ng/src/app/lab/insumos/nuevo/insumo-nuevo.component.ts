@@ -21,10 +21,6 @@ export class InsumoNuevoComponent implements OnInit {
     }
 
     guardar(form: NgForm): void {
-        form.value['fecha_creacion'] = new Date();
-        form.value['estado'] = 'Nuevo';
-        form.value['fecha_inicio'] = '';
-        form.value['descripcion'] = btoa(form.value['descripcion'].trim());
         this._insumoService.nuevo(form.value).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
 
     }

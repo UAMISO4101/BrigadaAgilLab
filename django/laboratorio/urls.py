@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 
 from laboratorio.views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
-    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView
+    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView
 
 
 urlpatterns = [
@@ -56,6 +56,9 @@ urlpatterns = [
     #Buscar protocolos que contengan en nombre
     url(r'^protocolo/filtro/(?P<nombre>.+)/$', ProtocoloView().get_por_nombre),
     url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_por_name, name='proyecto_name'),
+
+    # Listar todos los protocolos
+    url(r'^insumo/$', InsumoView.as_view()),
 
     url(r'^usuario/$', UsuarioView().get),
 ]
