@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 
 from laboratorio.views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
-    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView
+    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView, HerramientaView
 
 
 urlpatterns = [
@@ -59,6 +59,8 @@ urlpatterns = [
 
     # Listar todos los protocolos
     url(r'^insumo/$', InsumoView.as_view()),
+
+    url(r'^herramienta/$', HerramientaView.as_view()),
 
     url(r'^usuario/$', UsuarioView().get),
 ]

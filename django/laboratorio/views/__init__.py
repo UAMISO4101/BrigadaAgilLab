@@ -4,3 +4,4 @@ from .protocolo_views import *
 from .proyecto_views import *
 from .usuario_views import *
 from .insumo_views import *
+from .herramienta_views import *

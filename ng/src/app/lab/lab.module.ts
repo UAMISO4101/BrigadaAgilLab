@@ -17,6 +17,9 @@ import {ProtocoloNuevoComponent} from './protocolo/nuevo/protocolo-nuevo.compone
 import {ProtocoloBuscadorComponent} from './protocolo/protocolo.buscador.component';
 import {ProtocoloDetalleComponent} from './protocolo/protocolo.detalle.component';
 import {ProtocoloResumenComponent} from './protocolo/protocolo.resumen.component';
+import {HerramientaComponent} from './herramientas/listar/herramienta.component';
+import {HerramientaNuevaComponent} from './herramientas/nueva/herramienta-nueva.component';
+import {HerramientaService} from './herramientas/service/herramienta.service';
 import {NotificacionesComponent} from './notificaciones/notificaciones.component';
 import {NotificacionesService} from './notificaciones/notificaciones.service';
 import {EquiposComponent} from './equipos/equipos.component';
@@ -60,7 +63,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
             {path: 'experimento/:id', component: ExperimentoDetalleComponent},
             {path: 'proyecto/:id/experimento/:id/protocolos', component: ExperimentoAsociarProtocoloComponent},
             {path: 'usuario', component: UsuarioListComponent},
-            {path: 'herramientas', component: EquiposComponent},
+            {path: 'herramienta', component: HerramientaComponent},
+            {path: 'herramienta/nueva', component: HerramientaNuevaComponent},
             {path: 'insumos', component: InsumosComponent}
         ]),
         UIModule,
@@ -78,6 +82,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProtocoloNuevoComponent,
         ProtocoloBuscadorComponent,
         ProtocoloResumenComponent,
+        HerramientaComponent,
+        HerramientaNuevaComponent,
         ExperimentoDetalleComponent,
         ProtocoloDetalleComponent,
         ProyectoListComponent,
@@ -104,6 +110,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProtocoloNuevoComponent,
         ProtocoloDetalleComponent,
         ProtocoloResumenComponent,
+        HerramientaComponent,
+        HerramientaNuevaComponent,
         ProyectoAdjuntosComponent,
         ProyectoDetalleComponent,
         ProyectoListComponent,
@@ -126,7 +134,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         EquiposService,
         InsumosService,
         LabelsService,
-        UsuarioService
+        UsuarioService,
+        HerramientaService
     ]
 
 

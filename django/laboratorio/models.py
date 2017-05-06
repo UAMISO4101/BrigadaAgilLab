@@ -46,6 +46,12 @@ class Contenedor(models.Model):
     def __unicode__(self):
         return self.nombre
 
+class Herramienta(models.Model):
+    contenido = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.nombre
+
 
 class Inventario(models.Model):
     insumo = models.ForeignKey(Insumo)
