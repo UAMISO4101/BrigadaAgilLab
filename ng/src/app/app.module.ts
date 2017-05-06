@@ -15,8 +15,10 @@ import {PanelControlComponentJefe} from './panel-control/panel-control-jefe.comp
 import {LabModule} from './lab/lab.module';
 import {UIModule} from './ui/ui.module';
 import {PanelAsistenteComponent} from './panel-control/panel-asistente.component';
-import {PanelCientificoComponent} from './panel-control/panel-cientifico.component';
+import {PanelCientificoComponent} from './panel-control/panel-cientifico/panel-cientifico.component';
 import {SimpleNotificationsModule} from 'angular2-notifications';
+import {DatePipe} from '@angular/common';
+import {LOCALE_ID} from '@angular/core';
 
 @NgModule({
     declarations: [AppComponent,
@@ -45,7 +47,9 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         UIModule,
         SimpleNotificationsModule.forRoot()
     ],
-    providers: [],
+    providers: [
+        {provide: LOCALE_ID, useValue: 'es-CO'},
+        DatePipe],
     bootstrap: [AppComponent]
 })
 export class AppModule {

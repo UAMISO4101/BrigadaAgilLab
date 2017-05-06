@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Progreso de Proyectos</h5>
+            <ui-ibox-tools [collapse]='true'></ui-ibox-tools>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-sm-4 m-b-xs">
+                    <div data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-sm btn-white active"> <input id="proy-lider" name="options" type="radio">
+                            Liderando </label>
+                        <label class="btn btn-sm btn-white"> <input id="proy-todos" name="options" type="radio"> Todos
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-5 m-b-xs">
+                    <div data-toggle="buttons" class="btn-group">
+                        <label (click)="rango('semana')" class="btn btn-sm btn-white active">
+                            <input id="per-semana" name="options" type="radio"/>Semana</label>
+                        <label (click)="rango('mes')" class="btn btn-sm btn-white">
+                            <input id="per-mes" name="options" type="radio"/>Mes</label>
+                        <label (click)="rango('trimestre')" class="btn btn-sm btn-white">
+                            <input id="per-trimestre" name="options" type="radio"/>Trimestre</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group"><input placeholder="Filtrar" class="input-sm form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <canvas baseChart height="75"
+                        [datasets]="lineChartData"
+                        [labels]="labels()"
+                        [options]="lineChartOptions"
+                        [chartType]="lineChartType"
+                        style="padding-left: 15px;padding-right: 15px;">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-lg-8 col-md-8">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Proyectos En ejecucion </h5>
+                <ui-ibox-tools [collapse]='true'></ui-ibox-tools>
+            </div>
+            <div class="ibox-content">
+                <proyecto-list></proyecto-list>
+            </div>
+        </div>
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Solicitudes de Insumos por Aprobar</h5>
+                <ui-ibox-tools [collapse]='true'></ui-ibox-tools>
+            </div>
+            <div class="ibox-content">
+                <lab-notificaciones></lab-notificaciones>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-4 col-md-4">
+
+        <proyecto-grafica></proyecto-grafica>
+
+
+    </div>
+</div>
+
