@@ -3,4 +3,8 @@ git config --global user.email "travis@travis-ci.org"
 git config --global user.name "Travis CI"
 
 git remote add origin-ci https://$GITHUB_PUSH_USER:$GITHUB_API_KEY@github.com/UAMISO4101/BrigadaAgilLab.git
-git subtree push --prefix ng origin-ci deploy-ng > /dev/null
+git checkout -b develop > /dev/null
+
+git subtree split --prefix ng -b release-ng > /dev/null
+
+git push -f origin-ci release-ng:release-ng > /dev/null

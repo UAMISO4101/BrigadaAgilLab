@@ -2,37 +2,66 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
-import {ExperimentoService} from "../../experimento/experimento.service";
+import {ExperimentoService} from "../../experimento/service/experimento.service";
+import {LabelsService} from "../../labels.service";
+import {Experimento} from "../../experimento/service/experimento";
+import {ExperimentoProyecto} from "../service/proyecto-experimento";
+import {Protocolo} from "../../protocolo/service/protocolo";
 
 
 @Component({
-  templateUrl: 'proyecto.detalle.component.html',
-  providers: [ProyectoService]
+    templateUrl: 'proyecto.detalle.component.html',
+    providers: [ProyectoService, LabelsService]
 })
 export class ProyectoDetalleComponent implements OnInit {
-  public idProyecto: string;
-  public proyecto: Proyecto[] = [];
-  public show:string;
+    idProyecto: string;
+    proyecto: Proyecto;
+    experimentos: ExperimentoProyecto[];
+    documentos: any[];
+    experimentoSeleccionado: ExperimentoProyecto;
+    protocolos: Protocolo[];
+    protocoloSeleccionado: Protocolo;
 
-  constructor(route: ActivatedRoute, private _proyectoService: ProyectoService, private _experimentoService: ExperimentoService) {
-    this.idProyecto = route.snapshot.params['id'];
+    _: {};
 
+    constructor(route: ActivatedRoute, private _proyectoService: ProyectoService, private _experimentoService: ExperimentoService,
+                private _labelsService: LabelsService) {
+        this.idProyecto = route.snapshot.params['id'];
+        this._ = _labelsService.getLabels();
+    }
 
-  }
+    private getProyecto() {
+        this._proyectoService
+            .getProyecto(this.idProyecto)
+            .subscribe(
+                product => this.proyecto = product,
+                error => console.log(<any>error));
+    }
 
-  getProyecto() {
-    this._proyectoService
-      .getProyectos()
-      .subscribe((proyectos: Proyecto[]) =>
-          this.proyecto = JSON.parse(JSON.stringify(proyectos.filter(p => p.id == parseInt(this.idProyecto))
-            .pop())),
-        error => console.log(error),
-        () => this.show="true");
-  }
+    ngOnInit(): any {
+        this.getProyecto();
+        this.getExperimentosProyecto();
+    }
 
+    private getExperimentosProyecto() {
+        this._proyectoService
+            .getExperimentosProyecto(this.idProyecto)
+            .subscribe(
+                product => this.experimentos = product,
+                error => console.log(<any>error));
+    }
 
-  ngOnInit(): any {
-this.getProyecto();
+    private hayExperimentos(): boolean {
+        return this.experimentos && this.experimentos.length > 0;
+    }
 
-  }
+    private hayDocumentos(): boolean {
+        return true;
+    }
+
+    private seleccionarExperimento(seleccion: ExperimentoProyecto) {
+        this.experimentoSeleccionado = seleccion;
+
+    }
+
 }

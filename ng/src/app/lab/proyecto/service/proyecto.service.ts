@@ -1,43 +1,69 @@
-import {Injectable} from "@angular/core";
-import {Http, Response, RequestOptions} from "@angular/http";
-import {environment} from "../../../../environments/environment";
-import {Observable} from "rxjs/Observable";
+import {Injectable} from '@angular/core';
+import {Http, Response, RequestOptions} from '@angular/http';
+import {environment} from '../../../../environments/environment';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {Proyecto} from "./proyecto";
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import {Proyecto} from './proyecto';
+import {Experimento} from '../../experimento/service/experimento';
+import {ExperimentoProyecto} from './proyecto-experimento';
 
 
 @Injectable()
 export class ProyectoService {
-  private url_servicios_proyectos = environment.url_servicios + "proyecto/";
+    private url_servicios_proyectos = environment.url_servicios + 'proyecto/';
+    private url_servicios_proyecto_filtro = environment.url_servicios + "proyecto/filtro/";
+    private url_servicios_proyecto_experimento = environment.url_servicios + 'proyecto/{0}/experimento/';
 
-  constructor(private _http: Http) {
-  }
+    constructor(private _http: Http) {
+    }
 
-  getProyectos(): Observable<Proyecto[]> {
-    return this._http.get(this.url_servicios_proyectos)
-      .map((response: Response) => <Proyecto[]>response.json());
+    getProyecto(idProyecto: string): Observable<Proyecto> {
+        return this._http.get(this.url_servicios_proyectos + idProyecto + '/')
+            .map((response: Response) => <Proyecto>response.json());
+    }
+    listarProyectosFiltrados(filtro): Observable<Proyecto[]> {
+        console.log("listarProyectosFiltrados")
+        if (filtro != "") {
+            return this._http.get(this.url_servicios_proyecto_filtro + filtro)
+            .map((response: Response) => <Proyecto[]>response.json());
+        }else{
+            return this._http.get(this.url_servicios_proyectos)
+            .map((response: Response) => <Proyecto[]>response.json());
+        }
 
-  }
+    }
 
-  nuevoProyecto(form):Observable<Proyecto[]> {
+    getExperimentosProyecto(idProyecto: string): Observable<ExperimentoProyecto[]> {
+        return this._http.get(this.url_servicios_proyecto_experimento.replace('{0}', idProyecto))
+            .map((response: Response) => <ExperimentoProyecto[]>response.json());
+    }
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions(headers);
-    return this._http.post(this.url_servicios_proyectos,form,options)
-      .map((response:Response) => <Proyecto[]>response.json());
-  }
+    getProyectos(): Observable<Proyecto[]> {
+        return this._http.get(this.url_servicios_proyectos)
+            .map((response: Response) => <Proyecto[]>response.json());
 
-  asociarProyecto(item):Observable<Proyecto[]>{
+    }
 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions(headers);
-    return this._http.put(this.url_servicios_proyectos,item,options)
-      .map((response:Response) => <Proyecto[]>response.json());
-  }
+    nuevoProyecto(form): Observable<Proyecto[]> {
+        return this._http.post(this.url_servicios_proyectos, form, this.buildHeaders())
+            .map((response: Response) => <Proyecto[]>response.json());
+    }
+
+    asociarExperimento(idProyecto: string, idExperimento: string): Observable<ExperimentoProyecto> {
+        return this._http.post(
+            this.url_servicios_proyecto_experimento.replace('{0}', idProyecto) + idExperimento + '/', {}, this.buildHeaders())
+            .map((response: Response) => <ExperimentoProyecto>response.json());
+    }
+
+    private buildHeaders() {
+        const headers = new Headers({'Content-Type': 'application/json'});
+        const options = new RequestOptions(headers);
+        return options;
+    }
 
 
-  eliminarProyecto() {
+    eliminarProyecto() {
 
-  }
+    }
 }

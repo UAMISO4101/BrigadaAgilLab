@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import {Component, OnChanges, SimpleChanges, Input} from "@angular/core";
 import {ProtocoloService} from "./service/protocolo.service";
 import {Protocolo} from "./service/protocolo";
 import {OnInit} from "@angular/core";
@@ -10,17 +10,36 @@ import {OnInit} from "@angular/core";
 })
 export class ProtocoloBuscadorComponent {
 
-    public protocolos: Protocolo[] = [];
-    public nombre: String = "nomb";
+    public protocolos:Protocolo[] = [];
 
-    constructor(private _protocoloService: ProtocoloService) {
+    @Input() nombre:string = "";
+    @Input() fuente:string;
+
+    constructor(private _protocoloService:ProtocoloService) {
+        
     }
 
     listarProtocolos() {
-        this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+        console.log("Aqui se inicia la carga de protocolos")
+        if (this.fuente != null) {
+            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+            console.log("get listarProtocolosFiltradosEnExperimentoPorNombre")
+        } else {
+            if (this.nombre != "") {
+                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+                console.log("get listarProtocolosFiltradosNombre")
+            } else {
+                this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+                console.log("get listarProtocolos")
+            }
+        }
     }
 
-    ngOnInit(): any {
+    keyup() {
+        this.listarProtocolos();
+    }
+
+    ngOnInit():any {
         this.listarProtocolos();
     }
 }

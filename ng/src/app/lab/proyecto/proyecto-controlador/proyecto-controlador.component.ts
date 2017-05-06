@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {LabelsService} from "../../labels.service";
 
 @Component({
     selector: 'proyecto-controlador',
@@ -9,7 +10,10 @@ import {Component, OnInit} from '@angular/core';
  */
 export class ProyectoControladorComponent implements OnInit {
 
-    constructor() {
+    _: {};
+
+    constructor(private _labelsService: LabelsService) {
+        this._ = _labelsService.getLabels();
     }
 
     ngOnInit() {

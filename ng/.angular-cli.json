@@ -31,7 +31,10 @@
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/pace-progress/pace.min.js",
         "../node_modules/metismenu/dist/metisMenu.min.js",
-        "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js"
+        "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js",
+        "./assets/js/fullcalendar/moment.min.js",
+        "./assets/js/fullcalendar/fullcalendar.min.js",
+        "./assets/js/chart.js/dist/Chart.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

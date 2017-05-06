@@ -1,42 +1,31 @@
-<div class="row">
-    <div class="col-sm-6">
+<div class="row" *ngIf="proyecto">
+    <div class="col-sm-12 col-md-6">
         <dl class="dl-horizontal">
-            <dt>Identificador:</dt>
-            <dd>I001</dd>
-            <dt>Títutlo:</dt>
-            <dd>SmartBrand</dd>
-            <dt>Estado:</dt>
-            <dd>Exitoso</dd>
+            <dt class="m-b-xs">{{_['cmp_identificador']}}</dt>
+            <dd class="m-b-xs">{{proyecto.identificador}}</dd>
+            <dt class="m-b-xs">{{_['cmp_nombre']}}:</dt>
+            <dd class="m-b-xs">{{proyecto.nombre}}</dd>
+            <dt class="m-b-xs">{{_['cmp_estado']}}:</dt>
+            <dd class="m-b-xs"><span class="label label-primary">{{proyecto.estado}}</span></dd>
+            <dt class="m-b-xs">{{_['cmp_fecha_creacion']}}:</dt>
+            <dd class="m-b-xs">{{proyecto.fecha_creacion}}</dd>
+            <dt class="m-b-xs">{{_['cmp_fecha_inicio']}}:</dt>
+            <dd class="m-b-xs">{{proyecto.fecha_inicio}}</dd>
+            <dt class="m-b-xs">{{_['cmp_descripcion']}}:</dt>
+            <dd class="m-b-xs"><span style="white-space: pre-wrap; text-align: justify;">{{proyecto.descripcion}}</span></dd>
         </dl>
     </div>
-    <div class="col-lg-6">
-        <dl class="dl-horizontal">
-            <dt>Integrantes:</dt>
-            <dd>Servio Pantoja, Camilo Forero, Jairo Solarte, Felipe , Alejandro Quintero</dd>
-        </dl>
-    </div>
-    <div class="col-sm-12">
-        <dl class="dl-horizontal">
-            <dt>Descripción:</dt>
-            <dd>Gran parte de los trabajos de investigación y desarrollo que están siendo llevados a
-                cabo en distintas instituciones [1 – 6] se concentran en los aspectos de almacenamiento
-                y búsqueda de información en las bibliotecas digitales y proponen la utilización de
-                navegadores de Internet como la aplicación utilizada por los lectores para acceder a los
-                libros. Si bien la estrategia de relegar la actividad de recuperación y visualización de
-                libros digitales a los navegadores de Internet tiene varias ventajas, también cuenta con
-                una cierta cantidad de factores negativos.
-
-                Dentro de las principales ventajas y desventajas, podemos citar las siguientes:
-
-                a. Ventajas
-
-                Los navegadores de Internet son actualmente un tipo de aplicación de uso masivo que
-                brinda a los usuarios una interfaz conocida y simple de utilizar.
-                El lenguaje HTML utilizado para el desarrollo de páginas web proporciona aspectos
-                adecuados para el desarrollo de libros como por ejemplo hipervínculos, imágenes, estilos
-                de texto y otros. Como agregado, este lenguaje cuenta con una gran cantidad de
-                aplicaciones orientadas al desarrollo de páginas HTML.
-            </dd>
-        </dl>
+    <div class="col-sm-12 col-md-6">
+        <div class="ibox">
+            <div class="ibox-content">
+                <h3>{{_['cmp_integrantes']}}</h3>
+                <ul class="list-unstyled file-list">
+                    <li><a href="#">Naomi Cazares Serrato</a></li>
+                    <li><a href="#">Jasón Bahena Madera</a></li>
+                    <li><a href="#">Arnold Narvaez Gil</a></li>
+                    <li><a href="#">Juan Ortega Paredes</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

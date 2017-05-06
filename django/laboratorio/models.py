@@ -86,18 +86,21 @@ class Experimento(models.Model):
     contenido = models.TextField()
 
 
+class ProyectoExperimento(models.Model):
+    # Relaciona los experimentos de un proyecto
+    proyecto = models.ForeignKey(Proyecto)
+    experimento = models.ForeignKey(Experimento)
+    # Almacena el avance del experimento en el proyecto
+    contenido = models.TextField()
+
+    class Meta:
+        unique_together = ('proyecto', 'experimento')
+
+
 class Protocolo(models.Model):
     # almacena contenido basico del protocolo,
     # informacion que no cambia entre versiones
     # sin relaciones a otros modelos
-    contenido = models.TextField()
-
-
-# Relaciona los experimentos de un proyecto
-class ProyectoExperimento(models.Model):
-    proyecto = models.ForeignKey(Proyecto)
-    experimento = models.ForeignKey(Experimento)
-    # Almacena el avance del experimento en el proyecto
     contenido = models.TextField()
 
 
@@ -107,15 +110,31 @@ class VersionProtocolo(models.Model):
     contenido = models.TextField()
 
 
-# Permite establecer la plantilla de los protocolos de un experimento
 class ExperimentoProtocolo(models.Model):
+    # Permite establecer la plantilla de los protocolos de un experimento
     experimento = models.ForeignKey(Experimento)
     protocolo = models.ForeignKey(Protocolo)
     # No usado
     contenido = models.TextField()
 
+    class Meta:
+        unique_together = ('experimento', 'protocolo')
+
 
 class AvanceProtocoloExperimentoProyecto(models.Model):
-    proy_experimento = models.ForeignKey(ProyectoExperimento)
+    proyecto = models.ForeignKey(Proyecto)
+    experimento = models.ForeignKey(Experimento)
+    protocolo = models.ForeignKey(Protocolo)
     # Almacena el avance del protocolo asociado a un experimento de un proyecto
     contenido = models.TextField()
+
+
+class ExperimentoAsistente(models.Model):
+    # Permite establecer la plantilla de los protocolos de un experimento
+    experimento = models.ForeignKey(Experimento)
+    asistente = models.ForeignKey(Usuario)
+    # No usado
+    contenido = models.TextField()
+
+    class Meta:
+        unique_together = ('experimento', 'asistente')

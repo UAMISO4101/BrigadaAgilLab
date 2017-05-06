@@ -3,7 +3,7 @@ import json
 
 from django.http import HttpResponse
 
-from ..views.comun_views import LaboratorioException
+from laboratorio.views import LaboratorioException
 from ..models import Proyecto, Experimento, ProyectoExperimento
 from ..views import ContenidoJsonBaseView, LaboratorioBaseView
 
@@ -11,6 +11,17 @@ from ..views import ContenidoJsonBaseView, LaboratorioBaseView
 class ProyectoView(ContenidoJsonBaseView):
     def __init__(self):
         self.model = Proyecto
+
+    def pre_validar_creacion(self, request, *args, **kwargs):
+        map = json.loads(request.body)
+        identificador_ = map['identificador']
+        count = Proyecto.objects.filter(contenido__contains='"identificador": "' + identificador_ + '"').count()
+        if count > 0:
+            raise LaboratorioException(
+                "El Proyecto con Identificador " + identificador_ + " ya existe en el Laboratorio")
+
+    def pre_validar_actualizacion(self, request, *args, **kwargs):
+        pass
 
 
 class ProyectoExperimentoView(LaboratorioBaseView):

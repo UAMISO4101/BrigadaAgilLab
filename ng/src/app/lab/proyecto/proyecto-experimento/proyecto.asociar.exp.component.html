@@ -1,107 +1,106 @@
-<head>
-  <meta charset="UTF-8">
-  <title>proyecto</title>
-</head>
-<body>
-
-<div class="ibox-content">
-
-  <h2> Asociar Experimento</h2>
-  <div class="row">
+<div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-12">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-group">
-            <input placeholder="Filtrar" class="input-sm form-control" type="text"/>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12" style="overflow-y: scroll; max-height:400px;">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>Experimento</th>
-              <th>Objetivo</th>
-              <th>Fecha</th>
-              <th>detalle</th>
-            </tr>
-            </thead>
-
-            <tr *ngFor="let item of experimentos" (click)="onSelect(item)">
-
-              <td >{{ item.experimento }}</td>
-              <td >{{ item.objetivo }}</td>
-              <td >{{ item.fecha }}</td>
-
-              <td><a><i class="fa fa-sign-out text-navy"></i></a></td>
-            </tr>
-
-          </table>
-        </div>
-
-      </div>
+        <h2>Asociar Experimento</h2>
     </div>
-  </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input placeholder="Filtrar" class="input-sm form-control" type="text"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" style="overflow-y: scroll; max-height:400px;">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Experimento</th>
+                                            <th>Objetivo</th>
+                                            <th>Fecha</th>
+                                            <th>Detalle</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tr *ngFor="let item of experimentos" (click)="onSelect(item)">
+
+                                            <td>{{ item.experimento }}</td>
+                                            <td>{{ item.objetivo }}</td>
+                                            <td>{{ item.fecha }}</td>
+
+                                            <td><a><i class="fa fa-sign-out text-navy"></i></a></td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox-content" *ngIf="show">
+                <h2>{{experimento.experimento}}</h2>
+
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div>
+                            <h4>Objetivo:</h4>
+                            {{experimento.objetivo}}
+                            <hr>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4>Descripción:</h4>
+                                {{experimento.descripcion}}
+                                <hr>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <h4>Insumos:</h4>
+                                {{experimento.insumos}}
+                                <hr>
+                            </div>
+                            <div class="col-sm-12">
+                                <h4>Asistentes:</h4>
+                                {{experimento.asistentes}}
+                                <hr>
+                            </div>
+                            <div class="col-sm-12" *ngIf="experimento.protocolos">
+                                <h4>Protocolos:</h4>
+                                <ul *ngFor="let protocolo of experimento.protocolos">
+                                    <li style="list-style: none">{{protocolo.protocolo.nombre}}</li>
+                                </ul>
+
+                                <hr>
+                            </div>
+                            <div class="col-md-4">
+                                <button [routerLink]="['/proyecto',idProyecto]" target="_self"
+                                        class="btn btn-primary btn-md"
+                                        (click)="asociar(experimento)">
+                                    Agregar
+                                </button>
+                                <button [routerLink]="[experimento.id,'protocolos']" target="_self"
+                                        class="btn btn-primary btn-md"
+                                        (click)="getProtocolos(experimento)">
+                                    Asociar protocolo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-<div class="ibox-content" *ngIf="show">
-  <h2>{{experimento.experimento}}</h2>
-
-  <hr>
-  <div class="row">
-    <div class="col-sm-12">
-      <div>
-      <h4>Objetivo:</h4>
-      {{experimento.objetivo}}
-        <hr>
-    </div>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <h4>Descripción:</h4>
-          {{experimento.descripcion}}
-          <hr>
-        </div>
-
-        <div class="col-sm-12">
-          <h4>Insumos:</h4>
-          {{experimento.insumos}}
-          <hr>
-        </div>
-        <div class="col-sm-12">
-          <h4>Asistentes:</h4>
-          {{experimento.asistentes}}
-          <hr>
-        </div>
-        <div class="col-sm-12" *ngIf="experimento.protocolos">
-          <h4>Protocolos:</h4>
-          <ul  *ngFor="let protocolo of experimento.protocolos">
-            <li style="list-style: none">{{protocolo.protocolo.nombre}}</li>
-          </ul>
-
-          <hr>
-        </div>
-        <div class="col-md-4">
-    <button [routerLink]="['/proyecto',idProyecto]" target="_self" class="btn btn-primary btn-md" (click)="getProyecto(experimento)">
-      agregar
-    </button>
-          <button [routerLink]="[experimento.id,'protocolos']" target="_self" class="btn btn-primary btn-md" (click)="getProyecto(experimento)">
-      asociar protocolo
-    </button>
-  </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12" style="overflow-y: scroll; max-height:400px;">
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-</body>
 

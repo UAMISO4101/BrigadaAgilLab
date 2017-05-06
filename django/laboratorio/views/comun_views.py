@@ -30,7 +30,6 @@ class LaboratorioBaseView(View):
         instancia_modelo.save()
         return HttpResponse(instancia_modelo.contenido, content_type="application/json")
 
-
     @staticmethod
     def contenido_json_a_mapa_con_id(contenido_json):
         mapa_body = json.loads(LaboratorioBaseView.contenido_json_valido(contenido_json))
@@ -72,6 +71,8 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         Permite inicializar un modelo con contenido JSON, lo crea en la bd
         y luego le asigna el atributo id de la pk generada
         """
+        LaboratorioBaseView.contenido_json_valido(request.body)
+        self.pre_validar_creacion(request, *args, **kwargs)
         modelo = self.model(contenido="{}")
         return LaboratorioBaseView.guardar_y_agregar_id_contenido_json(modelo, request)
 
@@ -87,11 +88,23 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_id(self, request, id=None):
+        print("get_por_id: " + id)
         modelo = self.model.objects.get(pk=id)
         return HttpResponse(modelo.contenido, content_type="application/json")
 
     def get_por_nombre(self, request, nombre=None):
-        print("Servicio consumido con el parametro: " + nombre)
         contenido_modelo = self.model.objects.filter(contenido__contains=nombre)[:5].values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
+
+    def get_por_name(self, request, nombre=None):
+        print("Servicio consumido con el parametro: " + nombre)
+        contenido_modelo = self.model.objects.values('contenido')
+        lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
+        return HttpResponse(json.dumps(lista), content_type="application/json")
+
+    def pre_validar_creacion(self, request, *args, **kwargs):
+        pass
+
+    def pre_validar_actualizacion(self, request, *args, **kwargs):
+        pass

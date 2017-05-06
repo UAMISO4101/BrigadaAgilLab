@@ -16,26 +16,46 @@ Including another URLconf
 from django.conf.urls import url
 
 from laboratorio.views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
-    ProyectoView, ExperimentoProtocoloView
+    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView
+
 
 urlpatterns = [
-    url(r'^proyecto/$', ProyectoView.as_view(), name='proyecto'),
-    url(r'^proyecto/(?P<id>\d+)/$', ProyectoView().get_por_id, name='proyecto_id'),
-    # Proyecto - Experimento
-    url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/$', ProyectoExperimentoView.as_view(),
-        name='proyecto_experimento_todos'),
-    url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/(?P<id_experimento>\d*)/$', ProyectoExperimentoView.as_view(),
-        name='proyecto_experimento'),
+    url(r'^proyecto/$', ProyectoView.as_view()),
+    #Buscar protocolos que contengan en nombre
+    url(r'^proyecto/filtro/(?P<nombre>.+)/$', ProyectoView().get_por_nombre),
+    url(r'^proyecto/(?P<id>\d+)/$', ProyectoView().get_por_id),
+    # Proyecto - Experimentos - get
+    url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/$', ProyectoExperimentoView.as_view()),
+    # Proyecto - Experimentos - post+put
+    url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/(?P<id_experimento>\d+)/$', ProyectoExperimentoView.as_view()),
+    # Proyecto - Experimento - Protocolos - get
+    url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/(?P<id_experimento>\d+)/protocolo/$',
+        ProtocolosExperimentosProyectoView.as_view()),
+    # Proyecto - Experimento - Protocolos - post+put
+    url(r'^proyecto/(?P<id_proyecto>\d+)/experimento/(?P<id_experimento>\d+)/protocolo/(?P<id_protocolo>\d+)/$',
+        ProtocolosExperimentosProyectoView.as_view()),
+    # Proyecto - Experimento - Protocolos - post+put
+    url(r'^proyecto/(?P<id_proyecto>\d+)/protocolos/filtro/(?P<nombre>.+)/$',
+        ProtocolosExperimentosProyectoView.as_view()),
 
-    url(r'^experimento/$', ExperimentoView.as_view(), name='experimento'),
-    url(r'^experimento/(?P<id>\d+)/$', ExperimentoView().get_por_id, name='experimento_id'),
-    # Experimento - protocolo
-    url(r'^experimento/(?P<id_experimento>\d+)/protocolo/$', ExperimentoProtocoloView.as_view(),
-        name='experimento_protocolo_todos'),
-    url(r'^experimento/(?P<id_experimento>\d+)/protocolo/(?P<id_protocolo>\d*)$', ExperimentoProtocoloView.as_view(),
-         name='experimento_protocolo'),
+    url(r'^experimento/$', ExperimentoView.as_view()),
+    #Buscar protocolos que contengan en nombre
+    url(r'^experimento/filtro/(?P<nombre>.+)/$', ExperimentoView().get_por_nombre),
+    url(r'^experimento/(?P<id>\d+)/$', ExperimentoView().get_por_id),
+    # Experimento - protocolo - get
+    url(r'^experimento/(?P<id_experimento>\d+)/protocolo/$', ExperimentoProtocoloView.as_view()),
+    # Experimento - protocolo - post+put
+    url(r'^experimento/(?P<id_experimento>\d+)/protocolo/(?P<id_protocolo>\d+)$', ExperimentoProtocoloView.as_view()),
 
-    url(r'^protocolo/$', ProtocoloView.as_view(), name='protocolo'),
-    url(r'^protocolo/(?P<id>\d+)/$', ProtocoloView().get_por_id, name='protocolo_id'),
-    url(r'^protocolo/filtro/(?P<nombre>.+)/$', ProtocoloView().get_por_nombre, name='protocolo_nombre'),
+    # Listar todos los protocolos
+    url(r'^protocolo/$', ProtocoloView.as_view()),
+    #Buscar protocolo que coincida por el id
+    url(r'^protocolo/(?P<id>\d+)/$', ProtocoloView().get_por_id),
+    #Buscar protocolos que contengan en el nombre en una determinado proyecto
+    url(r'^protocolo/filtro/(?P<id_experimento>\d+)/(?P<nombre>.+)/$', ProtocoloView().buscar_en_experimento_por_nombre),
+    #Buscar protocolos que contengan en nombre
+    url(r'^protocolo/filtro/(?P<nombre>.+)/$', ProtocoloView().get_por_nombre),
+    url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_por_name, name='proyecto_name'),
+
+    url(r'^usuario/$', UsuarioView().get),
 ]

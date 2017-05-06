@@ -5,14 +5,13 @@
 
                 <div class="profile-element" uib-dropdown>
                     <a uib-dropdown-toggle href>
-                            <span class="clear">
-                                <span class="block m-t-xs">
-                                    <strong class="font-bold">Example user</strong>
-                             </span>
-                                
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">Example user</strong>
                             </span>
+                        </span>
                     </a>
-                    
+
                 </div>
                 <div class="logo-element">
                     LAB
@@ -20,20 +19,25 @@
 
             </li>
 
-            <li class="active">
-                <a [routerLink]="['/panel-control']"><i class="fa fa-bar-chart fa-lg fa-inverse"></i> <span class="nav-label">Inicio</span> </a>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['/panel-control']"><i class="fa fa-bar-chart fa-lg fa-inverse"></i> <span
+                        class="nav-label">Inicio</span> </a>
             </li>
-            <li>
-                <a><i class="fa fa-cubes fa-lg fa-inverse"></i> <span class="nav-label">Inventario</span></a>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['/proyecto']"><i class="fa fa-tachometer fa-lg fa-inverse"></i> <span
+                        class="nav-label">Proyectos</span></a>
             </li>
-            <li>
-                <a [routerLink]="['/proyecto']"><i class="fa fa-tachometer fa-lg fa-inverse"></i> <span class="nav-label">Proyectos</span></a>
-            </li>
-            <li>
+            <li [routerLinkActive]="['active']">
                 <a [routerLink]="['/experimento']"><i class="fa fa-flask fa-lg fa-inverse"></i> <span class="nav-label">Experimentos</span></a>
             </li>
-            <li>
+            <li [routerLinkActive]="['active']">
                 <a [routerLink]="['/protocolo']"><i class="fa fa-book fa-lg fa-inverse"></i> <span class="nav-label">Protocolos</span></a>
+            </li>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['/herramientas']"><i class="fa fa-suitcase fa-lg fa-inverse"></i> <span class="nav-label">Herramientas</span></a>
+            </li>
+            <li [routerLinkActive]="['active']">
+                <a [routerLink]="['/insumo']"><i class="fa fa-gear fa-lg fa-inverse"></i> <span class="nav-label">Insumo</span></a>
             </li>
         </ul>
 

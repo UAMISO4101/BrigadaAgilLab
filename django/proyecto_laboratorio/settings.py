@@ -13,6 +13,9 @@ import os
 
 import dj_database_url
 
+from corsheaders.defaults import default_headers
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -138,6 +141,10 @@ STATICFILES_DIRS = [
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Origin',
+)
 # https://github.com/ottoyiu/django-cors-headers/
 CORS_ORIGIN_WHITELIST = (
     # Agregar la URL del despliegue en heroku de angular

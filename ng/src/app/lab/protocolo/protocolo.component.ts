@@ -1,21 +1,46 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnChanges, SimpleChanges, Input, OnInit} from "@angular/core";
 import {ProtocoloService} from "./service/protocolo.service";
 import {Protocolo} from "./service/protocolo";
 
 @Component({
     moduleId: module.id,
     templateUrl: 'protocolo.component.html',
-  providers: [ProtocoloService]
+    providers: [ProtocoloService]
 })
-export class ProtocoloComponent implements OnInit{
-  public protocolos:Protocolo[]=[];
-  constructor(private _protocoloService:ProtocoloService){
+export class ProtocoloComponent implements OnInit {
+    public protocolos:Protocolo[] = [];
 
-  }
-  getProtocolos(){
-    this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[])=>this.protocolos=protocolos);
-  }
- ngOnInit(){
-    this.getProtocolos();
- }
+    @Input() nombre:string = "";
+    @Input() fuente:string;
+
+    constructor(private _protocoloService:ProtocoloService) {
+
+    }
+
+    listarProtocolos() {
+        console.log("Aqui se inicia la carga de protocolos")
+        if (this.fuente != null) {
+            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+            console.log("get listarProtocolosFiltradosEnExperimentoPorNombre")
+        } else {
+            if (this.nombre != "") {
+                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+                console.log("get listarProtocolosFiltradosNombre")
+            } else {
+                this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
+                console.log("get listarProtocolos")
+            }
+        }
+    }
+
+    keyup() {
+        this.listarProtocolos();
+    }
+    getProtocolos() {
+        this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[])=>this.protocolos = protocolos);
+    }
+
+    ngOnInit() {
+        this.getProtocolos();
+    }
 }
