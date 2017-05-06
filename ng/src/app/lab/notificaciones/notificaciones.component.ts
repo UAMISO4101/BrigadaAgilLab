@@ -1,7 +1,6 @@
-
-import { Component, Input, OnInit } from "@angular/core";
-import { Notificacion } from './notificacion';
-import { NotificacionesService } from "./notificaciones.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Notificacion} from './notificacion';
+import {NotificacionesService} from './notificaciones.service';
 
 @Component({
     selector: 'lab-notificaciones',
@@ -11,8 +10,8 @@ import { NotificacionesService } from "./notificaciones.service";
 export class NotificacionesComponent implements OnInit {
     // solicitud-insumos, reservas-equipos
     @Input() tiposNotificaciones: string[];
-    //Con el usuario determinar que notificaciones corresponden a el
-    //tanto por perfil o nombre directo
+    // Con el usuario determinar que notificaciones corresponden a el
+    // tanto por perfil o nombre directo
     @Input() usuario: string;
 
     notificaciones: Notificacion[];

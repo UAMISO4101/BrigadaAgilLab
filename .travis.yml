@@ -1,10 +1,8 @@
 language: python
 install:
   - nvm install 7.7.3
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 script:
-  - cd ng && npm install && cd ..
-after_success:
-  - chmod +x ./ci/deploy-ng.sh
-  - chmod +x ./ci/deploy-django.sh 
-  - ./ci/deploy-ng.sh
-  - ./ci/deploy-django.sh 
+  - cd ng && npm install && npm test && cd ..

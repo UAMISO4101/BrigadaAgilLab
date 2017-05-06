@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from "@angular/core";
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 declare var jQuery: any;
 
@@ -13,12 +13,12 @@ export class TopNavBarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
+
     }
 
-    minimizeNavbar(event:Event){
+    minimizeNavbar(event: Event) {
         event.preventDefault();
-        jQuery("body").toggleClass("mini-navbar");
+        jQuery('body').toggleClass('mini-navbar');
         this.smoothlyMenu();
     }
 

@@ -1,12 +1,11 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {ProyectoService} from "../service/proyecto.service";
-import {Proyecto} from "../service/proyecto";
-import {ExperimentoService} from "../../experimento/service/experimento.service";
-import {LabelsService} from "../../labels.service";
-import {Experimento} from "../../experimento/service/experimento";
-import {ExperimentoProyecto} from "../service/proyecto-experimento";
-import {Protocolo} from "../../protocolo/service/protocolo";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProyectoService} from '../service/proyecto.service';
+import {Proyecto} from '../service/proyecto';
+import {ExperimentoService} from '../../experimento/service/experimento.service';
+import {LabelsService} from '../../labels.service';
+import {ExperimentoProyecto} from '../service/proyecto-experimento';
+import {Protocolo} from '../../protocolo/service/protocolo';
 
 
 @Component({

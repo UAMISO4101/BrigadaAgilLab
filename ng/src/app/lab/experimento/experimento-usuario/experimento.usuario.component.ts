@@ -1,10 +1,9 @@
-import {Component} from "@angular/core";
-import {UsuarioService} from "../service/usuario.service";
-import {Usuario} from "../service/usuario";
-import {OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
+import {UsuarioService} from '../service/usuario.service';
+import {Usuario} from '../service/usuario';
 
 @Component({
-    selector: "experimento-usuario",
+    selector: 'experimento-usuario',
     templateUrl: 'experimento.usuario.component.html',
     providers: [UsuarioService]
 })

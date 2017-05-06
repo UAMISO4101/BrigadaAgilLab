@@ -22,15 +22,16 @@
             <div class="panel-body">
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <strong>Lista de insumos Existentes </strong>
-                    <input (keyup)="getInsumos()" id="search" [(ngModel)]="search" type="text" value="" placeholder="Buscar por nombre del insumo" class="form-control">
+                    <input (keyup)="getInsumos()" id="search" [(ngModel)]="search" type="text" value=""
+                           placeholder="Buscar por nombre del insumo" class="form-control">
                     <br>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tbody>
-                                <tr *ngFor="let item of list" >
-                                    <td>{{item.nombre}}</td>
-                                    <td><i (click)="clicked(item)" class="fa fa-eye text-navy"></i></td>
-                                </tr>
+                            <tr *ngFor="let item of list">
+                                <td>{{item.nombre}}</td>
+                                <td><i (click)="clicked(item)" class="fa fa-eye text-navy"></i></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -38,11 +39,12 @@
 
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <div class="ibox-title">
-                        <h5 >Detalle ({{itemInsumo.nombre}})</h5>
+                        <h5>Detalle ({{itemInsumo.nombre}})</h5>
                     </div>
 
-                    <div  class="ibox-content no-padding border-left-right">
-                        <img style="margin: 0 auto; max-width:250px; "  alt="image" class="img-responsive" src="{{itemInsumo.imagen}}">
+                    <div class="ibox-content no-padding border-left-right">
+                        <img style="margin: 0 auto; max-width:250px; " alt="image" class="img-responsive"
+                             src="{{itemInsumo.imagen}}">
                     </div>
                     <div class="ibox-content profile-content">
                         <h4><strong>{{itemInsumo.nombre}}</strong></h4>
@@ -67,10 +69,14 @@
                         <div class="user-button">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-money"></i> Hacer Pedido</button>
+                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i
+                                            class="fa fa-money"></i> Hacer Pedido
+                                    </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-eye"></i> Ver Completo</button>
+                                    <button type="button" class="btn btn-default btn-sm btn-block"><i
+                                            class="fa fa-eye"></i> Ver Completo
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -83,13 +89,14 @@
         <div id="tab-4" class="tab-pane">
             <div class="panel-body">
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                <strong>Lista de insumos Pedidos </strong>
-                <input (keyup)="getInsumos()" id="search" [(ngModel)]="search" type="text" value="" placeholder="Buscar por nombre del insumo" class="form-control">
-                <br>
+                    <strong>Lista de insumos Pedidos </strong>
+                    <input (keyup)="getInsumos()" id="search" [(ngModel)]="search" type="text" value=""
+                           placeholder="Buscar por nombre del insumo" class="form-control">
+                    <br>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tbody>
-                            <tr *ngFor="let item of listP" >
+                            <tr *ngFor="let item of listP">
 
                                 <td>{{item.nombre}}</td>
 
@@ -103,11 +110,12 @@
                 </div>
                 <div class="col-md-6 col-xs-12 col-sm-12">
                     <div class="ibox-title">
-                        <h5 >Detalle ({{itemInsumoP.nombre}})</h5>
+                        <h5>Detalle ({{itemInsumoP.nombre}})</h5>
                     </div>
 
-                    <div  class="ibox-content no-padding border-left-right">
-                        <img style="margin: 0 auto max-width:250px;" alt="image" class="img-responsive" src="{{itemInsumoP.imagen}}">
+                    <div class="ibox-content no-padding border-left-right">
+                        <img style="margin: 0 auto max-width:250px;" alt="image" class="img-responsive"
+                             src="{{itemInsumoP.imagen}}">
                     </div>
                     <div class="ibox-content profile-content">
                         <h4><strong>{{itemInsumoP.nombre}}</strong></h4>
@@ -132,7 +140,9 @@
                         <div class="user-button">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-money"></i> Cancelar Pedido</button>
+                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i
+                                            class="fa fa-money"></i> Cancelar Pedido
+                                    </button>
                                 </div>
 
                             </div>

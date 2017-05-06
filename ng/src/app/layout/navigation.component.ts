@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, AfterViewInit} from "@angular/core";
+import {Component, OnInit, ElementRef, AfterViewInit} from '@angular/core';
 
 declare var jQuery: any;
 
@@ -6,7 +6,7 @@ declare var jQuery: any;
     selector: 'lab-navigation',
     templateUrl: 'navigation.component.html'
 })
-export class NavigationComponent implements OnInit, AfterViewInit  {
+export class NavigationComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
     }
@@ -15,7 +15,7 @@ export class NavigationComponent implements OnInit, AfterViewInit  {
     }
 
     ngOnInit(): void {
-        let elem = jQuery(this._el.nativeElement);
+        const elem = jQuery(this._el.nativeElement);
         elem.filter('#side-menu').metisMenu();
         elem.filter('.sidebar-collapse').slimScroll({
             height: '100%',

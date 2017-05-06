@@ -1,6 +1,6 @@
 export interface Notificacion {
     id: string;
-    //Insumo, Reserva Equipos
+    // Insumo, Reserva Equipos
     tipo: string;
     titulo: string;
     proyecto: string;

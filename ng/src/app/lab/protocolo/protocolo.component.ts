@@ -1,6 +1,7 @@
-import {Component, OnChanges, SimpleChanges, Input, OnInit} from "@angular/core";
-import {ProtocoloService} from "./service/protocolo.service";
-import {Protocolo} from "./service/protocolo";
+import {Component, Input, OnInit} from '@angular/core';
+import {ProtocoloService} from './service/protocolo.service';
+import {Protocolo} from './service/protocolo';
+import {LabelsService} from '../labels.service';
 
 @Component({
     moduleId: module.id,
@@ -8,27 +9,30 @@ import {Protocolo} from "./service/protocolo";
     providers: [ProtocoloService]
 })
 export class ProtocoloComponent implements OnInit {
-    public protocolos:Protocolo[] = [];
+    public protocolos: Protocolo[] = [];
+    @Input() nombre = '';
+    @Input() fuente: string;
+    _: {};
 
-    @Input() nombre:string = "";
-    @Input() fuente:string;
-
-    constructor(private _protocoloService:ProtocoloService) {
-
+    constructor(private _protocoloService: ProtocoloService,private _labelsService: LabelsService) {
+        this._ = _labelsService.getLabels();
     }
 
     listarProtocolos() {
-        console.log("Aqui se inicia la carga de protocolos")
+        console.log('Aqui se inicia la carga de protocolos');
         if (this.fuente != null) {
-            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
-            console.log("get listarProtocolosFiltradosEnExperimentoPorNombre")
+            this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre)
+                .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+            console.log('get listarProtocolosFiltradosEnExperimentoPorNombre');
         } else {
-            if (this.nombre != "") {
-                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre).subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
-                console.log("get listarProtocolosFiltradosNombre")
+            if (this.nombre !== '') {
+                this._protocoloService.listarProtocolosFiltradosNombre(this.nombre)
+                    .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+                console.log('get listarProtocolosFiltradosNombre');
             } else {
-                this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[]) => this.protocolos = protocolos);
-                console.log("get listarProtocolos")
+                this._protocoloService.listarProtocolos()
+                    .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
+                console.log('get listarProtocolos');
             }
         }
     }
@@ -36,8 +40,9 @@ export class ProtocoloComponent implements OnInit {
     keyup() {
         this.listarProtocolos();
     }
+
     getProtocolos() {
-        this._protocoloService.listarProtocolos().subscribe((protocolos:Protocolo[])=>this.protocolos = protocolos);
+        this._protocoloService.listarProtocolos().subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
     }
 
     ngOnInit() {

@@ -34,6 +34,7 @@ class Insumo(models.Model):
         ("Lt", "Litro"),
     )
     unidad = models.CharField(max_length=2, choices=Unidad_Medida)
+    contenido = models.TextField()
 
     def __unicode__(self):
         return self.nombre
@@ -41,6 +42,12 @@ class Insumo(models.Model):
 
 class Contenedor(models.Model):
     name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.nombre
+
+class Herramienta(models.Model):
+    contenido = models.CharField(max_length=50)
 
     def __unicode__(self):
         return self.nombre

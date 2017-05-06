@@ -1,0 +1,30 @@
+<div class="ibox-content">
+    <div class="ibox-title">
+        <h5>{{_["tit_herramientas"]}}</h5>
+        <div class="ibox-tools">
+            <a [routerLink]="['/herramienta/nueva']" class="btn btn-sm btn-primary pull-right m-t-n-xs">
+                {{_["tit_nueva_herramienta"]}}</a>
+        </div>
+    </div>
+    <div class="form-group">
+        <input (keyup)="keyup()" placeholder="Filtrar" class="input-sm form-control" type="text" [(ngModel)]="nombre"/>
+    </div>
+    <div class="table-responsive ">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>nombre</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let herramienta of herramientas">
+                    <td>
+                        <small>{{ herramienta.nombre }}</small>
+                    </td>
+                    <td><a><i class="fa fa-sign-in text-navy"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

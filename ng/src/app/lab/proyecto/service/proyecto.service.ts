@@ -5,14 +5,13 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {Proyecto} from './proyecto';
-import {Experimento} from '../../experimento/service/experimento';
 import {ExperimentoProyecto} from './proyecto-experimento';
 
 
 @Injectable()
 export class ProyectoService {
     private url_servicios_proyectos = environment.url_servicios + 'proyecto/';
-    private url_servicios_proyecto_filtro = environment.url_servicios + "proyecto/filtro/";
+    private url_servicios_proyecto_filtro = environment.url_servicios + 'proyecto/filtro/';
     private url_servicios_proyecto_experimento = environment.url_servicios + 'proyecto/{0}/experimento/';
 
     constructor(private _http: Http) {
@@ -22,14 +21,15 @@ export class ProyectoService {
         return this._http.get(this.url_servicios_proyectos + idProyecto + '/')
             .map((response: Response) => <Proyecto>response.json());
     }
+
     listarProyectosFiltrados(filtro): Observable<Proyecto[]> {
-        console.log("listarProyectosFiltrados")
-        if (filtro != "") {
+        console.log('listarProyectosFiltrados');
+        if (filtro !== '') {
             return this._http.get(this.url_servicios_proyecto_filtro + filtro)
-            .map((response: Response) => <Proyecto[]>response.json());
-        }else{
+                .map((response: Response) => <Proyecto[]>response.json());
+        } else {
             return this._http.get(this.url_servicios_proyectos)
-            .map((response: Response) => <Proyecto[]>response.json());
+                .map((response: Response) => <Proyecto[]>response.json());
         }
 
     }

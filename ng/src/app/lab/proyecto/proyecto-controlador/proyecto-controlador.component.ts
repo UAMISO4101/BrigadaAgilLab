@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LabelsService} from "../../labels.service";
+import {LabelsService} from '../../labels.service';
 
 @Component({
     selector: 'proyecto-controlador',

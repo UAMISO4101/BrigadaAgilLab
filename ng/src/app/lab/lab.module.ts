@@ -13,12 +13,15 @@ import {ProyectoListComponent} from './proyecto/proyecto-listado/proyecto.list.c
 import {ExperimentoListComponent} from './experimento/experimento-listado/experimento.list.component';
 import {RouterModule} from '@angular/router';
 import {ProtocoloComponent} from './protocolo/protocolo.component';
+import {ProtocoloNuevoComponent} from './protocolo/nuevo/protocolo-nuevo.component';
 import {ProtocoloBuscadorComponent} from './protocolo/protocolo.buscador.component';
 import {ProtocoloDetalleComponent} from './protocolo/protocolo.detalle.component';
 import {ProtocoloResumenComponent} from './protocolo/protocolo.resumen.component';
+import {HerramientaComponent} from './herramientas/listar/herramienta.component';
+import {HerramientaNuevaComponent} from './herramientas/nueva/herramienta-nueva.component';
+import {HerramientaService} from './herramientas/service/herramienta.service';
 import {NotificacionesComponent} from './notificaciones/notificaciones.component';
 import {NotificacionesService} from './notificaciones/notificaciones.service';
-import {KeysPipe} from './keys.pipe';
 import {EquiposComponent} from './equipos/equipos.component';
 import {EquiposService} from './equipos/equipos.service';
 import {InsumosComponent} from './insumos/insumos.component';
@@ -54,12 +57,14 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
             {path: 'insumo/nuevo', component: InsumoNuevoComponent},
             {path: 'proyecto/:id', component: ProyectoDetalleComponent},
             {path: 'protocolo', component: ProtocoloComponent},
+            {path: 'protocolo/nuevo', component: ProtocoloNuevoComponent},
             {path: 'proyecto/:id/experimento', component: ProyectoAsociarExpComponent},
             {path: 'experimento', component: ExperimentoControladorComponent},
             {path: 'experimento/:id', component: ExperimentoDetalleComponent},
             {path: 'proyecto/:id/experimento/:id/protocolos', component: ExperimentoAsociarProtocoloComponent},
             {path: 'usuario', component: UsuarioListComponent},
-            {path: 'herramientas', component: EquiposComponent},
+            {path: 'herramienta', component: HerramientaComponent},
+            {path: 'herramienta/nueva', component: HerramientaNuevaComponent},
             {path: 'insumos', component: InsumosComponent}
         ]),
         UIModule,
@@ -74,8 +79,11 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProyectoAdjuntosComponent,
         ProyectoDetalleComponent,
         ProtocoloComponent,
+        ProtocoloNuevoComponent,
         ProtocoloBuscadorComponent,
         ProtocoloResumenComponent,
+        HerramientaComponent,
+        HerramientaNuevaComponent,
         ExperimentoDetalleComponent,
         ProtocoloDetalleComponent,
         ProyectoListComponent,
@@ -83,7 +91,6 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ExperimentoListComponent,
         ProyectoResumenComponent,
         NotificacionesComponent,
-        KeysPipe,
         EquiposComponent,
         InsumosComponent,
         InsumoNuevoComponent,
@@ -100,8 +107,11 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         ProtocoloBuscadorComponent,
         ExperimentoControladorComponent,
         ExperimentoDetalleComponent,
+        ProtocoloNuevoComponent,
         ProtocoloDetalleComponent,
         ProtocoloResumenComponent,
+        HerramientaComponent,
+        HerramientaNuevaComponent,
         ProyectoAdjuntosComponent,
         ProyectoDetalleComponent,
         ProyectoListComponent,
@@ -124,7 +134,8 @@ import {SimpleNotificationsModule} from 'angular2-notifications';
         EquiposService,
         InsumosService,
         LabelsService,
-        UsuarioService
+        UsuarioService,
+        HerramientaService
     ]
 
 
