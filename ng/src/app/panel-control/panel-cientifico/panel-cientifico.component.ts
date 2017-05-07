@@ -1,15 +1,19 @@
-import {Component} from '@angular/core';
-import {DatePipe} from '@angular/common';
+import {Component, OnInit} from "@angular/core";
+import {DatePipe} from "@angular/common";
+import {Observable} from "rxjs/Observable";
 
 @Component({
-    selector: 'lab-panel-cientifico',
-    templateUrl: 'panel-cientifico.component.html'
+    selector: "lab-panel-cientifico",
+    templateUrl: "panel-cientifico.component.html"
 })
-export class PanelCientificoComponent {
+export class PanelCientificoComponent implements OnInit {
 
-    lineChartData: Array<any> = [
-        {data: [65, 59, 80, 81, 56, 55, 40, 10], label: 'Series A'},
-    ];
+
+    items: Observable<Array<any>>;
+
+    proyectosOriginales = [];
+
+    proyectosFiltrados = [];
 
     lineChartLabels: any = {
         semana: [],
@@ -17,19 +21,16 @@ export class PanelCientificoComponent {
         trimestre: []
     };
 
-    lineChartXsteps: any = {
-        semana: 1,
-        mes: 2,
-        trimestre: 10
-    };
-
     lineChartOptions: any = {
         responsive: true,
+        legend: {
+            position: "right"
+        },
         scales: {
             yAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: '% completado'
+                    labelString: "% completado"
                 },
                 ticks: {
                     suggestedMin: 0,   // minimum will be 0, unless there is a lower value.
@@ -45,18 +46,17 @@ export class PanelCientificoComponent {
         }
     };
 
-
-    lineChartType = 'line';
+    lineChartType = "line";
 
     /**
      * Define el valor inicial del rango a desplegar
      * @type {number}
      */
-    tipoRango = 'semana';
+    tipoRango = "semana";
 
     constructor(private datePipe: DatePipe) {
         const cur = new Date();
-        const pattern = 'dd-MMM';
+        const pattern = "dd-MMM";
         for (let day = 0; day < 90; day++) {
             const date = new Date();
             date.setDate(cur.getDate() - day);
@@ -72,14 +72,48 @@ export class PanelCientificoComponent {
         this.lineChartLabels.semana.reverse();
         this.lineChartLabels.mes.reverse();
         this.lineChartLabels.trimestre.reverse();
+        this.proyectosFiltrados = [];
+        this.proyectosOriginales = [];
+        this.items = Observable.of(this.proyectosOriginales);
+    }
+
+    ngOnInit(): void {
+        this.listProyectos();
+        this.onFiltrado(this.proyectosOriginales);
     }
 
     rango(tipoRango: string): void {
         this.tipoRango = tipoRango;
     }
 
-    labels(): Array<any> {
+    dias(): Array<any> {
         return this.lineChartLabels[this.tipoRango];
     }
 
+    hayProyectos() {
+        return this.proyectosFiltrados.length > 0;
+    }
+
+    onFiltrado(filtrado: Array<any>) {
+        this.proyectosFiltrados.length = 0;
+        this.proyectosFiltrados = filtrado.slice();
+    }
+
+    listProyectos() {
+        this.proyectosOriginales.length = 0;
+        const temp = [];
+        temp.length = 8;
+
+        temp.fill(this.randomIntFromInterval(1, 100));
+        this.proyectosOriginales.push({data: temp.slice(), label: "Proyecto " + temp[0]});
+        temp.fill(this.randomIntFromInterval(1, 100));
+        this.proyectosOriginales.push({data: temp.slice(), label: "Proyecto " + temp[0]});
+        temp.fill(this.randomIntFromInterval(1, 100));
+        this.proyectosOriginales.push({data: temp.slice(), label: "Proyecto " + temp[0]});
+        console.log("proyectos originales modificado");
+    }
+
+    randomIntFromInterval(min, max): number {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 }
