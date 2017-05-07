@@ -5,6 +5,7 @@ import {ProtocoloService} from "../../protocolo/service/protocolo.service";
 import {Protocolo} from "../../protocolo/service/protocolo";
 import {ActivatedRoute} from "@angular/router";
 
+//noinspection TsLint
 @Component({
     selector: "experimento-protocolo",
     moduleId: module.id,

@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 
+//noinspection TsLint
 @Component({
     selector: "experimento-controlador",
     templateUrl: "experimento-controlador.component.html"
