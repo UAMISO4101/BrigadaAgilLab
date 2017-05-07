@@ -25,6 +25,6 @@ describe("FiltroPipe", () => {
         const pipe = new FiltroPipe();
         const res = pipe.transform(items, "TTTT", ["key1"]);
 
-        expect(res.length).toBe(2);
+        expect(res.length).toBe(0);
     });
 });
