@@ -6,8 +6,6 @@ import {Pipe, PipeTransform} from "@angular/core";
 export class FiltroPipe implements PipeTransform {
 
     transform(items: Array<any>, valorFiltrar: string, attrs: Array<string>): Array<any> {
-        console.log("Objectos a filtrar");
-        console.log(items);
         if (valorFiltrar && Array.isArray(items)) {
             return items.filter(item => this.attrMatch(item, valorFiltrar.toLowerCase(), attrs));
         } else {

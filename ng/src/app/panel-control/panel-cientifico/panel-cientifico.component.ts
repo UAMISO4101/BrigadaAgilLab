@@ -110,7 +110,6 @@ export class PanelCientificoComponent implements OnInit {
         this.proyectosOriginales.push({data: temp.slice(), label: "Proyecto " + temp[0]});
         temp.fill(this.randomIntFromInterval(1, 100));
         this.proyectosOriginales.push({data: temp.slice(), label: "Proyecto " + temp[0]});
-        console.log("proyectos originales modificado");
     }
 
     randomIntFromInterval(min, max): number {
