@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ProtocoloService} from '../service/protocolo.service';
-import {LabelsService} from '../../labels.service';
-import {NgForm} from '@angular/forms';
-import {NotificationsService} from 'angular2-notifications';
-import {Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {ProtocoloService} from "../service/protocolo.service";
+import {LabelsService} from "../../labels.service";
+import {NgForm} from "@angular/forms";
+import {NotificationsService} from "angular2-notifications";
+import {Router} from "@angular/router";
 
 @Component({
-    templateUrl: 'protocolo-nuevo.component.html',
+    templateUrl: "protocolo-nuevo.component.html",
     providers: [ProtocoloService, LabelsService]
 })
 export class ProtocoloNuevoComponent implements OnInit {
@@ -21,19 +21,19 @@ export class ProtocoloNuevoComponent implements OnInit {
     }
 
     guardar(form: NgForm): void {
-        console.log(form.value['nombre']);
+        console.log(form.value["nombre"]);
         this._protocoloService.nuevo(form.value).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
 
     }
 
     okNuevo(): void {
-        this._notif.success('Ok', 'Protocolo Creado');
-        this.router.navigate(['/protocolo']);
+        this._notif.success("Ok", "Protocolo Creado");
+        this.router.navigate(["/protocolo"]);
 
     }
 
     errorNuevo(error): void {
         console.log(error);
-        this._notif.error('Error en la Creación', error._body);
+        this._notif.error("Error en la Creación", error._body);
     }
 }

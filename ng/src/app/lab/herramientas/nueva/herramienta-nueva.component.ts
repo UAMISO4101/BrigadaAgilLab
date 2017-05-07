@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {HerramientaService} from '../service/herramienta.service';
-import {LabelsService} from '../../labels.service';
-import {NgForm} from '@angular/forms';
-import {NotificationsService} from 'angular2-notifications';
-import {Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {HerramientaService} from "../service/herramienta.service";
+import {LabelsService} from "../../labels.service";
+import {NgForm} from "@angular/forms";
+import {NotificationsService} from "angular2-notifications";
+import {Router} from "@angular/router";
 
 @Component({
-    templateUrl: 'herramienta-nueva.component.html',
+    templateUrl: "herramienta-nueva.component.html",
     providers: [HerramientaService, LabelsService]
 })
 export class HerramientaNuevaComponent implements OnInit {
@@ -21,19 +21,19 @@ export class HerramientaNuevaComponent implements OnInit {
     }
 
     guardar(form: NgForm): void {
-        console.log(form.value['nombre']);
+        console.log(form.value["nombre"]);
         this._herramientaService.nuevo(form.value).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
 
     }
 
     okNuevo(): void {
-        this._notif.success('Ok', 'Herramienta Creada');
-        this.router.navigate(['/herramienta']);
+        this._notif.success("Ok", "Herramienta Creada");
+        this.router.navigate(["/herramienta"]);
 
     }
 
     errorNuevo(error): void {
         console.log(error);
-        this._notif.error('Error en la Creación', error._body);
+        this._notif.error("Error en la Creación", error._body);
     }
 }

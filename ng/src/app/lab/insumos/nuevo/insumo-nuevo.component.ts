@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {InsumosService} from '../insumos.service';
-import {LabelsService} from '../../labels.service';
-import {NgForm} from '@angular/forms';
-import {NotificationsService} from 'angular2-notifications';
-import {Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {InsumosService} from "../insumos.service";
+import {LabelsService} from "../../labels.service";
+import {NgForm} from "@angular/forms";
+import {NotificationsService} from "angular2-notifications";
+import {Router} from "@angular/router";
 
 @Component({
-    templateUrl: 'insumo-nuevo.component.html',
+    templateUrl: "insumo-nuevo.component.html",
     providers: [InsumosService, LabelsService]
 })
 export class InsumoNuevoComponent implements OnInit {
@@ -26,13 +26,13 @@ export class InsumoNuevoComponent implements OnInit {
     }
 
     okNuevo(): void {
-        this._notif.success('Ok', 'Proyecto Creado');
-        this.router.navigate(['/proyecto']);
+        this._notif.success("Ok", "Proyecto Creado");
+        this.router.navigate(["/proyecto"]);
 
     }
 
     errorNuevo(error): void {
         console.log(error);
-        this._notif.error('Error en la Creación', error._body);
+        this._notif.error("Error en la Creación", error._body);
     }
 }
