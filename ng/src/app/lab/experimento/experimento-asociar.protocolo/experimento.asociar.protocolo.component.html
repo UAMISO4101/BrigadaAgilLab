@@ -1,0 +1,53 @@
+<div class="ibox-content">
+    <div class="form-group">
+        <input placeholder="Filtrar" class="input-sm form-control" type="text"/>
+    </div>
+    <div class="table-responsive ">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Protocolo</th>
+                <th>Actualizado en</th>
+                <th>version</th>
+                <th>Acciones</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let protocolo of protocolos" (click)="onSelect(protocolo)">
+                <td>
+                    <small>{{ protocolo.nombre }}</small>
+                </td>
+                <td>{{ protocolo.fecha }}</td>
+                <td>{{ protocolo.version }}</td>
+
+                <td><a><i class="fa fa-sign-in text-navy"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <div class="ibox-content" *ngIf="show">
+            <h2>{{protocolo.nombre}}</h2>
+
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div>
+                        <h4>Fecha:</h4>
+                        {{protocolo.fecha}}
+                        <hr>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Version:</h4>
+                            {{protocolo.version}}
+                            <hr>
+                        </div>
+
+                        <div class="col-md-4">
+                            <button class="btn btn-primary btn-md" (click)="getExperimento()">
+                                agregar
+                            </button>
+                        </div>
+                    </div>
