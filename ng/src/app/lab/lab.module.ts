@@ -29,6 +29,7 @@ import {InsumosService} from "./insumos/insumos.service";
 import {ExperimentoDetalleComponent} from "./experimento/experimento-detalle/experimento.detalle.component";
 import {ProyectoNuevoComponent} from "./proyecto/proyecto-nuevo/proyecto-nuevo.component";
 import {InsumoNuevoComponent} from "./insumos/nuevo/insumo-nuevo.component";
+import {ExperimentoNuevoComponent} from "./experimento/nuevo/experimento-nuevo.component";
 import {ProyectoControladorComponent} from "./proyecto/proyecto-controlador/proyecto-controlador.component";
 import {UIModule} from "../ui/ui.module";
 import {LabelsService} from "./labels.service";
@@ -58,6 +59,7 @@ import {SimpleNotificationsModule} from "angular2-notifications";
             {path: "proyecto/:id", component: ProyectoDetalleComponent},
             {path: "protocolo", component: ProtocoloComponent},
             {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
+            {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "proyecto/:id/experimento", component: ProyectoAsociarExpComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
@@ -95,6 +97,7 @@ import {SimpleNotificationsModule} from "angular2-notifications";
         InsumosComponent,
         InsumoNuevoComponent,
         ProyectoNuevoComponent,
+        ExperimentoNuevoComponent,
         ProyectoControladorComponent,
         ProyectoAsociarExpComponent,
         ExperimentoAsociarProtocoloComponent,
@@ -121,6 +124,7 @@ import {SimpleNotificationsModule} from "angular2-notifications";
         EquiposComponent,
         InsumosComponent,
         InsumoNuevoComponent,
+        ExperimentoNuevoComponent,
         ProyectoGraficaComponent
 
     ],

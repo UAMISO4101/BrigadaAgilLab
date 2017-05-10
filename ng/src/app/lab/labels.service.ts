@@ -17,6 +17,7 @@ export const LABELS = {
     tit_nuevo_proyecto: "Nuevo Proyecto",
     tit_nuevo_protocolo: "Nuevo Protocolo",
     tit_nuevo_insumo: "Nuevo Insumo",
+    tit_nuevo_experimento: "Nuevo Experimento",
     tit_todos_proyectos: "Todos los Proyectos",
     tit_info_basica: "Información Básica",
     tit_docs_adjuntos: "Documentos Adjuntos",
@@ -30,12 +31,15 @@ export const LABELS = {
     cmp_fecha: "Fecha",
     cmp_fecha_creacion: "Fecha de Creación",
     cmp_fecha_inicio: "Fecha de Inicio",
+    cmp_description: "Descripción",
     cmp_integrantes: "Integrantes",
     cmp_precio: "Precio",
     cmp_unidad: "Unidad",
     cmp_version: "Versión",
+    cmp_experimento: "Experimento",
     acc_guardar: "Guardar",
     acc_cancelar: "Cancelar",
+
 
     msg_no_exp_proyecto: "No existen experimentos asociados al proyecto.",
     msg_no_docs_proyecto: "No existen documentos asociados al proyecto.",

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {ExperimentoService} from "../service/experimento.service";
 import {Experimento} from "../service/experimento";
+import {LabelsService} from "../../labels.service";
 
 @Component({
     selector: "experimento-list",
@@ -11,8 +12,10 @@ export class ExperimentoListComponent implements OnInit {
 
     public experimentos: Experimento[] = [];
     @Input() filtro = "";
+    _: {};
 
-    constructor(private _experimentoService: ExperimentoService) {
+    constructor(private _experimentoService: ExperimentoService, private _labelsService: LabelsService) {
+        this._ = _labelsService.getLabels();
     }
 
     filtrar() {

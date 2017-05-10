@@ -15,6 +15,11 @@ export class ExperimentoService {
     constructor(private _http: Http) {
     }
 
+    nuevo(form): Observable<Experimento[]> {
+        return this._http.post(this.url_servicios_experimentos, form, this.buildHeaders())
+            .map((response: Response) => <Experimento[]>response.json());
+    }
+
     listarExperimentosFiltrados(filtro): Observable<Experimento[]> {
         console.log("listarProtocolosFiltrados");
         if (filtro !== "") {
@@ -46,5 +51,11 @@ export class ExperimentoService {
         const options = new RequestOptions(headers);
         return this._http.get(this.url_servicios_experimentos + item["id"] + "/protocolo/", options)
             .map(response => response.json());
+    }
+
+    private buildHeaders() {
+        const headers = new Headers({"Content-Type": "application/json"});
+        const options = new RequestOptions(headers);
+        return options;
     }
 }
