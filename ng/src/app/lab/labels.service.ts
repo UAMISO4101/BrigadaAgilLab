@@ -19,6 +19,7 @@ export const LABELS = {
     tit_nuevo_insumo: "Nuevo Insumo",
     tit_nuevo_experimento: "Nuevo Experimento",
     tit_todos_proyectos: "Todos los Proyectos",
+    tit_todos_protocolos: "Todos los Protocolos",
     tit_info_basica: "Información Básica",
     tit_docs_adjuntos: "Documentos Adjuntos",
 

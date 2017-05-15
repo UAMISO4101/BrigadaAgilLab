@@ -1,11 +1,4 @@
 <div class="ibox-content">
-    <div class="ibox-title">
-        <h5>{{_["tit_protocolos"]}}</h5>
-        <div class="ibox-tools">
-            <a [routerLink]="['/protocolo/nuevo']" class="btn btn-sm btn-primary pull-right m-t-n-xs">
-                {{_["tit_nuevo_protocolo"]}}</a>
-        </div>
-    </div>
     <div class="form-group">
         <input (keyup)="keyup()" placeholder="Filtrar" class="input-sm form-control" type="text" [(ngModel)]="nombre"/>
     </div>

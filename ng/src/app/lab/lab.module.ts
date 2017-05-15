@@ -12,7 +12,6 @@ import {ProyectoResumenComponent} from "./proyecto/proyecto-resumen/proyecto.res
 import {ProyectoListComponent} from "./proyecto/proyecto-listado/proyecto.list.component";
 import {ExperimentoListComponent} from "./experimento/experimento-listado/experimento.list.component";
 import {RouterModule} from "@angular/router";
-import {ProtocoloComponent} from "./protocolo/protocolo.component";
 import {ProtocoloNuevoComponent} from "./protocolo/nuevo/protocolo-nuevo.component";
 import {ProtocoloBuscadorComponent} from "./protocolo/protocolo.buscador.component";
 import {ProtocoloDetalleComponent} from "./protocolo/protocolo.detalle.component";
@@ -45,6 +44,9 @@ import {ChartsModule} from "ng2-charts";
 import {MultiselectDropdownModule} from "angular-2-dropdown-multiselect";
 import {Ng2CompleterModule} from "ng2-completer";
 import {SimpleNotificationsModule} from "angular2-notifications";
+import { ProtocoloComparaVersionComponent } from "./protocolo/protocolo-compara-version/protocolo-compara-version.component";
+import { ProtocoloControladorComponent } from "./protocolo/protocolo-controlador/protocolo-controlador.component";
+import { ProtocoloListaComponent } from "./protocolo/protocolo-lista/protocolo-lista.component";
 
 @NgModule({
     imports: [
@@ -55,15 +57,16 @@ import {SimpleNotificationsModule} from "angular2-notifications";
             {path: "insumo", component: InsumosComponent},
             {path: "proyecto", component: ProyectoControladorComponent},
             {path: "proyecto/nuevo", component: ProyectoNuevoComponent},
-            {path: "insumo/nuevo", component: InsumoNuevoComponent},
             {path: "proyecto/:id", component: ProyectoDetalleComponent},
-            {path: "protocolo", component: ProtocoloComponent},
-            {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
-            {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "proyecto/:id/experimento", component: ProyectoAsociarExpComponent},
+            {path: "proyecto/:id/experimento/:id/protocolos", component: ExperimentoAsociarProtocoloComponent},
+            {path: "insumo/nuevo", component: InsumoNuevoComponent},
+            {path: "protocolo", component: ProtocoloControladorComponent},
+            {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
+            {path: "protocolo/:id", component: ProtocoloNuevoComponent},
+            {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
-            {path: "proyecto/:id/experimento/:id/protocolos", component: ExperimentoAsociarProtocoloComponent},
             {path: "usuario", component: UsuarioListComponent},
             {path: "herramienta", component: HerramientaComponent},
             {path: "herramienta/nueva", component: HerramientaNuevaComponent},
@@ -80,7 +83,6 @@ import {SimpleNotificationsModule} from "angular2-notifications";
         ProyectoInformacionBasicaComponent,
         ProyectoAdjuntosComponent,
         ProyectoDetalleComponent,
-        ProtocoloComponent,
         ProtocoloNuevoComponent,
         ProtocoloBuscadorComponent,
         ProtocoloResumenComponent,
@@ -102,7 +104,10 @@ import {SimpleNotificationsModule} from "angular2-notifications";
         ProyectoAsociarExpComponent,
         ExperimentoAsociarProtocoloComponent,
         ExperimentoControladorComponent,
-        ProyectoGraficaComponent
+        ProyectoGraficaComponent,
+        ProtocoloComparaVersionComponent,
+        ProtocoloControladorComponent,
+        ProtocoloListaComponent
     ],
     exports: [
         NotificacionesComponent,
@@ -149,5 +154,8 @@ export class LabModule {
         breadcrumbService.addFriendlyNameForRoute("/proyecto", "Proyectos");
         breadcrumbService.addFriendlyNameForRoute("/proyecto/nuevo", "Nuevo Proyecto");
         breadcrumbService.addFriendlyNameForRouteRegex("/proyecto/[0-9]", "Detalle de Proyecto");
+        breadcrumbService.addFriendlyNameForRoute("/protocolo", "Protocolos");
+        breadcrumbService.addFriendlyNameForRoute("/protocolo/nuevo", "Nuevo Protocolo");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]", "Detalle de Protocolo");
     }
 }

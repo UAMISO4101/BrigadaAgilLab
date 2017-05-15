@@ -1,14 +1,16 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {ProtocoloService} from "./service/protocolo.service";
-import {Protocolo} from "./service/protocolo";
-import {LabelsService} from "../labels.service";
+import {Protocolo} from "../service/protocolo";
+import {ProtocoloService} from "../service/protocolo.service";
+import {LabelsService} from "../../labels.service";
+
 
 @Component({
-    moduleId: module.id,
-    templateUrl: "protocolo.component.html",
-    providers: [ProtocoloService]
+    selector: "protocolo-lista",
+    templateUrl: "./protocolo-lista.component.html",
+    providers: [LabelsService, ProtocoloService]
 })
-export class ProtocoloComponent implements OnInit {
+export class ProtocoloListaComponent implements OnInit {
+
     public protocolos: Protocolo[] = [];
     @Input() nombre = "";
     @Input() fuente: string;
