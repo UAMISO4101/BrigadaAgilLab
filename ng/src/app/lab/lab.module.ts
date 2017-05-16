@@ -63,7 +63,7 @@ import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo
             {path: "insumo/nuevo", component: InsumoNuevoComponent},
             {path: "protocolo", component: ProtocoloControladorComponent},
             {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
-            {path: "protocolo/:id", component: ProtocoloNuevoComponent},
+            {path: "protocolo/:id", component: ProtocoloDetalleComponent},
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
