@@ -14,7 +14,6 @@ import {ExperimentoListComponent} from "./experimento/experimento-listado/experi
 import {RouterModule} from "@angular/router";
 import {ProtocoloNuevoComponent} from "./protocolo/nuevo/protocolo-nuevo.component";
 import {ProtocoloBuscadorComponent} from "./protocolo/protocolo.buscador.component";
-import {ProtocoloDetalleComponent} from "./protocolo/protocolo.detalle.component";
 import {ProtocoloResumenComponent} from "./protocolo/protocolo.resumen.component";
 import {HerramientaComponent} from "./herramientas/listar/herramienta.component";
 import {HerramientaNuevaComponent} from "./herramientas/nueva/herramienta-nueva.component";
@@ -47,6 +46,7 @@ import {SimpleNotificationsModule} from "angular2-notifications";
 import { ProtocoloComparaVersionComponent } from "./protocolo/protocolo-compara-version/protocolo-compara-version.component";
 import { ProtocoloControladorComponent } from "./protocolo/protocolo-controlador/protocolo-controlador.component";
 import { ProtocoloListaComponent } from "./protocolo/protocolo-lista/protocolo-lista.component";
+import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo-detalle.component";
 
 @NgModule({
     imports: [
@@ -86,10 +86,11 @@ import { ProtocoloListaComponent } from "./protocolo/protocolo-lista/protocolo-l
         ProtocoloNuevoComponent,
         ProtocoloBuscadorComponent,
         ProtocoloResumenComponent,
+        ProtocoloDetalleComponent,
         HerramientaComponent,
         HerramientaNuevaComponent,
         ExperimentoDetalleComponent,
-        ProtocoloDetalleComponent,
+        ProtocoloResumenComponent,
         ProyectoListComponent,
         UsuarioListComponent,
         ExperimentoListComponent,
@@ -116,7 +117,7 @@ import { ProtocoloListaComponent } from "./protocolo/protocolo-lista/protocolo-l
         ExperimentoControladorComponent,
         ExperimentoDetalleComponent,
         ProtocoloNuevoComponent,
-        ProtocoloDetalleComponent,
+        ProtocoloResumenComponent,
         ProtocoloResumenComponent,
         HerramientaComponent,
         HerramientaNuevaComponent,

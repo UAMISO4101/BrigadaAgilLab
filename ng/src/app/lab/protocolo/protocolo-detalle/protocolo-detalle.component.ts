@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-protocolo-detalle',
+  selector: 'protocolo-detalle',
   templateUrl: './protocolo-detalle.component.html',
-  styleUrls: ['./protocolo-detalle.component.css']
 })
 export class ProtocoloDetalleComponent implements OnInit {
 
