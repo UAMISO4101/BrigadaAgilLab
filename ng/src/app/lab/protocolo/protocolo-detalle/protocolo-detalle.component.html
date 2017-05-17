@@ -1,3 +1,25 @@
-<p>
-  protocolo-detalle works!
-</p>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2 *ngIf="protocolo">{{_['tit_protocolo']}}: {{protocolo.nombre}}</h2>
+        <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
+    </div>
+</div>
+
+<div class="row" *ngIf="protocolo">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{_['tit_info_basica']}}</h5>
+                    <ui-ibox-tools [collapse]='true'>
+                        <a [routerLink]="['/protocolo',idProtocolo,'version']" class="btn btn-sm btn-primary m-t-n-xs">
+                            {{_["tit_versiones"]}}</a>
+                    </ui-ibox-tools>
+                </div>
+                <div class="ibox-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

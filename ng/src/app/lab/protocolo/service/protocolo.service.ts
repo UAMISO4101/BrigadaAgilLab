@@ -15,6 +15,11 @@ export class ProtocoloService {
     constructor(private _http: Http) {
     }
 
+    getProtocolo(idProtocolo: string): Observable<Protocolo> {
+        return this._http.get(this.url_servicios_protocolo + idProtocolo + "/")
+            .map((response: Response) => <Protocolo>response.json());
+    }
+
     nuevo(form): Observable<Protocolo[]> {
         return this._http.post(this.url_servicios_protocolo, form, this.buildHeaders())
             .map((response: Response) => <Protocolo[]>response.json());

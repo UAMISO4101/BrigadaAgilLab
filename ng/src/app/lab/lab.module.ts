@@ -64,6 +64,7 @@ import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo
             {path: "protocolo", component: ProtocoloControladorComponent},
             {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
             {path: "protocolo/:id", component: ProtocoloDetalleComponent},
+            {path: "protocolo/:id/version", component: ProtocoloComparaVersionComponent},
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
@@ -158,5 +159,6 @@ export class LabModule {
         breadcrumbService.addFriendlyNameForRoute("/protocolo", "Protocolos");
         breadcrumbService.addFriendlyNameForRoute("/protocolo/nuevo", "Nuevo Protocolo");
         breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]", "Detalle de Protocolo");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]/version", "Versiones");
     }
 }

@@ -13,6 +13,7 @@ export const LABELS = {
     tit_res_experimento: "Resumen Experimento",
     tit_protocolo: "Protocolo",
     tit_protocolos: "Protocolos",
+    tit_versiones: "Versiones",
     tit_nueva_herramienta: "Nueva Herramienta",
     tit_nuevo_proyecto: "Nuevo Proyecto",
     tit_nuevo_protocolo: "Nuevo Protocolo",
