@@ -1,0 +1,16 @@
+<div class="row" *ngFor="let etapa of protocolo.proceso">
+  <div class="col-sm-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        {{etapa.nombre}}
+      </div>
+      <div class="panel-body" style="padding-bottom: 0px">
+        <ol class="list-group" dnd-sortable-container [sortableData]="etapa.pasos">
+          <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item"
+              dnd-sortable [sortableIndex]="i">{{i+1+". "+paso}}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

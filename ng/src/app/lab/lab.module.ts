@@ -47,6 +47,7 @@ import {ProtocoloControladorComponent} from "./protocolo/protocolo-controlador/p
 import {ProtocoloListaComponent} from "./protocolo/protocolo-lista/protocolo-lista.component";
 import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo-detalle.component";
 import {DiffMatchPatchModule, DiffDirective} from "ng-diff-match-patch";
+import { ProtocoloEditorProcesoComponent } from './protocolo/protocolo-editor-proceso/protocolo-editor-proceso.component';
 
 @NgModule({
     imports: [
@@ -109,7 +110,8 @@ import {DiffMatchPatchModule, DiffDirective} from "ng-diff-match-patch";
         ProyectoGraficaComponent,
         ProtocoloComparaVersionComponent,
         ProtocoloControladorComponent,
-        ProtocoloListaComponent
+        ProtocoloListaComponent,
+        ProtocoloEditorProcesoComponent
     ],
     exports: [
         NotificacionesComponent,

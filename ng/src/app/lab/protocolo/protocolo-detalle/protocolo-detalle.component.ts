@@ -10,7 +10,6 @@ import {NotificationsService} from "angular2-notifications/dist";
     providers: [ProtocoloService, LabelsService]
 })
 export class ProtocoloDetalleComponent implements OnInit {
-    listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
     idProtocolo: string;
     protocolo: Protocolo;
 
