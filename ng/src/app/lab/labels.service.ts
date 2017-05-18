@@ -23,6 +23,7 @@ export const LABELS = {
     tit_todos_protocolos: "Todos los Protocolos",
     tit_info_basica: "Información Básica",
     tit_docs_adjuntos: "Documentos Adjuntos",
+    tit_proceso: "Proceso",
 
     cmp_nombre: "Nombre",
     cmp_objetivo: "Objetivo",

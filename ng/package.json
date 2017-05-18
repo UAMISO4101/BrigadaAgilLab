@@ -68,7 +68,8 @@
     "angular2-notifications": "^0.5.7",
     "@angular/animations": "^4.0.0",
     "ng-diff-match-patch": "1.0.3",
-    "awesome-bootstrap-checkbox": "1.0.0-alpha.5"
+    "awesome-bootstrap-checkbox": "1.0.0-alpha.5",
+    "ng2-dnd":"4.0.2"
   },
   "devDependencies": {}
 }
