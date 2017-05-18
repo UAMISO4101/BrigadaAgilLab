@@ -41,6 +41,7 @@ export const LABELS = {
     cmp_experimento: "Experimento",
     acc_guardar: "Guardar",
     acc_cancelar: "Cancelar",
+    acc_ver_cambios: "Ver Cambios",
 
 
     msg_no_exp_proyecto: "No existen experimentos asociados al proyecto.",

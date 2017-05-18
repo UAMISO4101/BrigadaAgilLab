@@ -22,10 +22,9 @@
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/animate.css/animate.min.css",
+        "../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css",
         "./assets/css/inspina.css",
         "./assets/css/fullcalendar/fullcalendar.css",
-        "./assets/mergerly/codemirror.css",
-        "./assets/mergerly/mergely.css",
         "styles.css"
       ],
       "scripts": [
@@ -36,8 +35,6 @@
         "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js",
         "./assets/js/fullcalendar/moment.min.js",
         "./assets/js/fullcalendar/fullcalendar.min.js",
-        "./assets/mergerly/codemirror.min.js",
-        "./assets/mergerly/mergely.min.js",
         "./assets/js/chart.js/dist/Chart.js"
       ],
       "environmentSource": "environments/environment.ts",

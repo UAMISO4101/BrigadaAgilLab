@@ -1,6 +1,51 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-  <div class="col-sm-12">
-    <h2 *ngIf="protocolo">{{_['tit_protocolo']}}: {{protocolo.nombre}}</h2>
-    <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
-  </div>
+    <div class="col-sm-12">
+        <h2 *ngIf="protocolo">{{_['tit_protocolo']}}: {{protocolo.nombre}}</h2>
+        <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
+    </div>
+</div>
+
+<div class="row" *ngIf="protocolo">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{_['tit_info_basica']}}</h5>
+                    <ui-ibox-tools [collapse]='true'>
+                        <div class="abc-checkbox m-r-xs inline" >
+                            <input id="check-info-basica" type="checkbox" (change)="verDiffs.info_basica = !verDiffs.info_basica">
+                            <label for="check-info-basica">
+                                {{_['acc_ver_cambios']}}
+                            </label>
+                        </div>
+                    </ui-ibox-tools>
+                </div>
+                <div class="ibox-content">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+            <div class="ibox float-e-margins" *ngIf="verDiffs">
+                <div class="ibox-title">
+                    <h5>Proceso</h5>
+                    <ui-ibox-tools [collapse]='true'>
+                        <div class="abc-checkbox m-r-xs inline" >
+                            <input id="check-proceso" type="checkbox" (change)="verDiffs.proceso = !verDiffs.proceso">
+                            <label for="check-proceso">
+                                {{_['acc_ver_cambios']}}
+                            </label>
+                        </div>
+                    </ui-ibox-tools>
+                </div>
+                <div class="ibox-content">
+                    <div class="row diff-wrapper">
+                        <div class="col-md-6">{{left}}</div>
+                        <div *ngIf="!verDiffs.proceso" class="col-md-6 format-text">{{right}}</div>
+                        <div *ngIf="verDiffs.proceso" class="col-md-6 format-text"
+                             semanticDiff [left]="left" [right]="right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

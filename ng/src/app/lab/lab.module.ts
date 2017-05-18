@@ -43,11 +43,11 @@ import {ChartsModule} from "ng2-charts";
 import {MultiselectDropdownModule} from "angular-2-dropdown-multiselect";
 import {Ng2CompleterModule} from "ng2-completer";
 import {SimpleNotificationsModule} from "angular2-notifications";
-import { ProtocoloComparaVersionComponent } from "./protocolo/protocolo-compara-version/protocolo-compara-version.component";
-import { ProtocoloControladorComponent } from "./protocolo/protocolo-controlador/protocolo-controlador.component";
-import { ProtocoloListaComponent } from "./protocolo/protocolo-lista/protocolo-lista.component";
+import {ProtocoloComparaVersionComponent} from "./protocolo/protocolo-compara-version/protocolo-compara-version.component";
+import {ProtocoloControladorComponent} from "./protocolo/protocolo-controlador/protocolo-controlador.component";
+import {ProtocoloListaComponent} from "./protocolo/protocolo-lista/protocolo-lista.component";
 import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo-detalle.component";
-
+import {DiffMatchPatchModule, DiffDirective} from "ng-diff-match-patch";
 @NgModule({
     imports: [
         CommonModule,
@@ -75,6 +75,7 @@ import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo
         ]),
         UIModule,
         HttpModule,
+        DiffMatchPatchModule,
         ChartsModule,
         MultiselectDropdownModule,
         Ng2CompleterModule,
