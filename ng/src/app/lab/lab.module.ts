@@ -47,7 +47,8 @@ import {ProtocoloControladorComponent} from "./protocolo/protocolo-controlador/p
 import {ProtocoloListaComponent} from "./protocolo/protocolo-lista/protocolo-lista.component";
 import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo-detalle.component";
 import {DiffMatchPatchModule, DiffDirective} from "ng-diff-match-patch";
-import { ProtocoloEditorProcesoComponent } from './protocolo/protocolo-editor-proceso/protocolo-editor-proceso.component';
+import {ProtocoloEditorProcesoComponent} from "./protocolo/protocolo-editor-proceso/protocolo-editor-proceso.component";
+
 
 @NgModule({
     imports: [
@@ -74,8 +75,8 @@ import { ProtocoloEditorProcesoComponent } from './protocolo/protocolo-editor-pr
             {path: "herramienta/nueva", component: HerramientaNuevaComponent},
             {path: "insumos", component: InsumosComponent}
         ]),
-        UIModule,
         HttpModule,
+        UIModule,
         DiffMatchPatchModule,
         ChartsModule,
         MultiselectDropdownModule,
@@ -135,7 +136,6 @@ import { ProtocoloEditorProcesoComponent } from './protocolo/protocolo-editor-pr
         InsumoNuevoComponent,
         ExperimentoNuevoComponent,
         ProyectoGraficaComponent
-
     ],
     providers: [
         BreadcrumbService,

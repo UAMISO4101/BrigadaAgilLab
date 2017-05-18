@@ -20,21 +20,11 @@ import {DatePipe} from "@angular/common";
 import {LOCALE_ID} from "@angular/core";
 
 @NgModule({
-    declarations: [AppComponent,
-        FooterComponent,
-        NavigationComponent,
-        TopNavBarComponent,
-        PanelControlComponent,
-        PanelControlComponentJefe,
-        PanelCientificoComponent,
-        PanelAsistenteComponent,
 
-    ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        UIModule,
         ChartsModule,
         MultiselectDropdownModule,
         Ng2CompleterModule,
@@ -43,7 +33,17 @@ import {LOCALE_ID} from "@angular/core";
             {path: "", redirectTo: "panel-control", pathMatch: "full"},
             {path: "**", redirectTo: "panel-control", pathMatch: "full"},
         ]),
+        UIModule,
         LabModule,
+    ],
+    declarations: [AppComponent,
+        FooterComponent,
+        NavigationComponent,
+        TopNavBarComponent,
+        PanelControlComponent,
+        PanelControlComponentJefe,
+        PanelCientificoComponent,
+        PanelAsistenteComponent,
     ],
     providers: [
         {provide: LOCALE_ID, useValue: "es-CO"},

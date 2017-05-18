@@ -6,15 +6,17 @@ import {FormFieldComponent} from "./form-field/form-field.component";
 import {FiltroComponent} from "./filtro/filtro.component";
 import {FiltroPipe} from "./filtro.pipe";
 import {DndModule} from "ng2-dnd";
-import {SimpleNotificationsModule} from "angular2-notifications/dist";
+import {SimpleNotificationsModule} from "angular2-notifications";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
     imports: [
+        BrowserModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        SimpleNotificationsModule.forRoot(),
         DndModule.forRoot(),
+        SimpleNotificationsModule.forRoot(),
     ],
     declarations: [
         iBoxToolsComponent,
@@ -23,11 +25,11 @@ import {SimpleNotificationsModule} from "angular2-notifications/dist";
         FiltroPipe,
     ],
     exports: [
+        DndModule,
+        SimpleNotificationsModule,
         iBoxToolsComponent,
         FormFieldComponent,
         FiltroComponent,
-        DndModule,
-        SimpleNotificationsModule,
     ],
     providers: [FiltroPipe]
 

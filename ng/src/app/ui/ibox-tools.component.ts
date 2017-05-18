@@ -4,7 +4,6 @@ declare var jQuery: any;
 
 @Component({
     selector: "ui-ibox-tools",
-    moduleId: module.id,
     templateUrl: "./ibox-tools.component.html"
 })
 export class iBoxToolsComponent implements OnInit {
