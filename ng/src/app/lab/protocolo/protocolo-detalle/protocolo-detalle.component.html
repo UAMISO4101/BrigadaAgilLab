@@ -27,30 +27,22 @@
                     <ui-ibox-tools [collapse]='true'></ui-ibox-tools>
                 </div>
                 <div class="ibox-content">
-<div class="row">
-    <div class="col-sm-3">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                Favorite drinks
-            </div>
-            <div class="panel-body">
-                <ul class="list-group" dnd-sortable-container [sortableData]="listOne">
-                    <li *ngFor="let item of listOne; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                My prefences:<br/>
-                <span *ngFor="let item of listOne; let i = index">{{i + 1}}) {{item}}<br/></span>
-            </div>
-        </div>
-    </div>
-
-</div>
-
+                    <div class="row" *ngFor="let etapa of protocolo.proceso">
+                        <div class="col-sm-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    {{etapa.nombre}}
+                                </div>
+                                <div class="panel-body">
+                                    <ol class="list-group" dnd-sortable-container [sortableData]="etapa.pasos">
+                                        <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item"
+                                            dnd-sortable [sortableIndex]="i">{{i+1+". "+paso}}
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

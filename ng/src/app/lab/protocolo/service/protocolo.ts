@@ -6,4 +6,10 @@ export interface Protocolo {
     nombre: string;
     fecha: string;
     version: string;
+    proceso: Array<Etapa>;
+}
+
+export interface Etapa {
+    nombre: string;
+    pasos: Array<string>;
 }
