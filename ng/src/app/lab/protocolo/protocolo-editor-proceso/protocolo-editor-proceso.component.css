@@ -1,3 +1,7 @@
-.panel-body{
+.panel-body {
     padding-bottom: 0px;
+}
+
+.editor-proceso {
+    min-height: 250px;
 }
