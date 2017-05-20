@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Insumo} from "./insumo";
 import {InsumosService} from "./insumos.service";
 import {LabelsService} from "../labels.service";
+import {ActivatedRoute} from "@angular/router";
 // declare var jQuery:any;
 
 @Component({
@@ -27,8 +28,10 @@ export class InsumosComponent implements OnInit {
     itemInsumoP: Insumo;
     search = "";
     selectedOrder = "-nombre";
+    protocolo_id:number;
 
-    constructor(private _insumoService: InsumosService, private _labelsService: LabelsService) {
+    constructor(private _insumoService: InsumosService, private _labelsService: LabelsService, route: ActivatedRoute) {
+        this.protocolo_id = route.snapshot.params["id"];
         this._ = _labelsService.getLabels();
 
     }

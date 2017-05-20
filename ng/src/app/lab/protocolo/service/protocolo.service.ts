@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import {Protocolo} from "./protocolo";
 import {Insumo} from "../../insumos/insumo";
+import {Herramienta} from "../../herramientas/service/herramienta";
 
 
 @Injectable()
@@ -46,16 +47,23 @@ export class ProtocoloService {
             .map((response: Response) => <Protocolo[]>response.json());
     }
 
-    asociarInsumoProtocolo(id_protocolo,id_insumo):Observable<Response>{
+    asociarInsumoProtocolo(id_protocolo,id_insumo):Observable<Insumo[]>{
 
-        return this._http.post(this.url_servicios_protocolo + id_protocolo + "/insumo/" + id_insumo, this.buildHeaders())
-            .map((response: Response)=>response.json());
+        return this._http.post(this.url_servicios_protocolo + id_protocolo + "/insumo/" + id_insumo + "/", this.buildHeaders())
+            .map((response: Response)=><Insumo[]>response.json());
     }
 
-      listarProtocoloInsumos(id_protocolo):Observable<Insumo[]>{
+    listarProtocoloInsumos(id_protocolo):Observable<Insumo[]>{
 
         return this._http.get(this.url_servicios_protocolo + id_protocolo + "/insumo/", this.buildHeaders())
             .map((response: Response)=><Insumo[]>response.json());
+
+    }
+
+    listarProtocoloHerramientas(id_protocolo):Observable<Herramienta[]>{
+
+        return this._http.get(this.url_servicios_protocolo + id_protocolo + "/herramienta/", this.buildHeaders())
+            .map((response: Response)=><Herramienta[]>response.json());
 
     }
 

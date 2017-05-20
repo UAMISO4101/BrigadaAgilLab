@@ -49,6 +49,8 @@ import {ProtocoloDetalleComponent} from "./protocolo/protocolo-detalle/protocolo
 import {DiffMatchPatchModule, DiffDirective} from "ng-diff-match-patch";
 import {ProtocoloEditorProcesoComponent} from "./protocolo/protocolo-editor-proceso/protocolo-editor-proceso.component";
 import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.insumo.component";
+import {ProtocoloHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.herramienta.component";
+import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.asociar.insumo.component";
 
 
 @NgModule({
@@ -68,8 +70,9 @@ import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.i
             {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
             {path: "protocolo/:id", component: ProtocoloDetalleComponent},
             {path: "protocolo/:id/version", component: ProtocoloComparaVersionComponent},
-            {path: "protocolo/:id/insumo", component: ProtocoloInsumoComponent},
-            {path: "protocolo/:id/insumo/:id", component: ProtocoloInsumoComponent},
+            {path: "protocolo/:id/insumo", component: ProtocoloAsociarInsumoComponent},
+            {path: "protocolo/:id/herramienta", component: ProtocoloHerramientaComponent},
+            {path: "protocolo/:id_protocolo/insumo/:id_insumo", component: ProtocoloAsociarInsumoComponent},
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
@@ -117,7 +120,9 @@ import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.i
         ProtocoloControladorComponent,
         ProtocoloListaComponent,
         ProtocoloEditorProcesoComponent,
-        ProtocoloInsumoComponent
+        ProtocoloInsumoComponent,
+        ProtocoloHerramientaComponent,
+        ProtocoloAsociarInsumoComponent
     ],
     exports: [
         NotificacionesComponent,
@@ -141,7 +146,9 @@ import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.i
         InsumoNuevoComponent,
         ExperimentoNuevoComponent,
         ProyectoGraficaComponent,
-        ProtocoloInsumoComponent
+        ProtocoloInsumoComponent,
+        ProtocoloHerramientaComponent,
+        ProtocoloAsociarInsumoComponent
     ],
     providers: [
         BreadcrumbService,

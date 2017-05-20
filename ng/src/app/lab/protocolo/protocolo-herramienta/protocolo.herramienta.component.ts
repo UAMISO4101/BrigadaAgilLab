@@ -5,18 +5,19 @@ import {ActivatedRoute} from "@angular/router";
 import {InsumosService} from "../../insumos/insumos.service";
 import {Insumo} from "../../insumos/insumo";
 import {LabelsService} from "../../labels.service";
+import {Herramienta} from "../../herramientas/service/herramienta";
 
 //noinspection TsLint
 @Component({
-    selector: "protocolo-insumo",
+    selector: "protocolo-herramienta",
     moduleId: module.id,
-    templateUrl: "protocolo.insumo.component.html",
+    templateUrl: "protocolo.herramienta.component.html",
     providers: [ProtocoloService, LabelsService]
 })
-export class ProtocoloInsumoComponent implements OnInit {
+export class ProtocoloHerramientaComponent implements OnInit {
 
     public id:number;
-    public insumos:Insumo[];
+    public herramientas:Herramienta[];
 
 
     constructor(private _protocoloService: ProtocoloService,
@@ -25,13 +26,13 @@ export class ProtocoloInsumoComponent implements OnInit {
 
     }
 
-      getProtocoloInsumos() {
-        this._protocoloService.listarProtocoloInsumos(this.id).subscribe((insumos:Insumo[])=>this.insumos=insumos);
+      getProtocoloHerramientas() {
+        this._protocoloService.listarProtocoloHerramientas(this.id).subscribe((herramientas:Herramienta[])=>this.herramientas=herramientas);
 
     }
 
 
     ngOnInit() {
-        this.getProtocoloInsumos();
+        this.getProtocoloHerramientas();
     }
 }

@@ -1,8 +1,8 @@
 <div class="ibox float-e-margins">
     <div class="ibox-title">
-        <h5>Insumos</h5>
+        <h5>Herramientas</h5>
         <ui-ibox-tools [collapse]='true' [help]="true">
-            <a [routerLink]="['insumo']"  class="btn btn-sm btn-primary m-t-n-xs">
+            <a   class="btn btn-sm btn-primary m-t-n-xs">
                             Agregar</a>
         </ui-ibox-tools>
     </div>
@@ -10,7 +10,7 @@
 
             <div class="row" >
                 <div class="col-sm-12">
-                <table class="table table-bordered"  *ngIf="insumos">
+                <table class="table table-bordered"  *ngIf="herramientas">
                     <thead class="panel panel-primary">
                     <th class="panel-heading">nombre</th>
                     <th class="panel-heading">nombre</th>
@@ -18,19 +18,19 @@
                     <th class="panel-heading">nombre</th>
                     </thead>
                     <tbody  >
-                    <tr *ngFor="let item of insumos">
+                    <tr *ngFor="let item of herramientas">
                         <td>
-                            {{item.insumo.nombre}}
+                            {{item.herramienta.nombre}}
 
                         </td>
                         <td>
-                            {{item.insumo.fecha}}
+                            {{item.herramienta.fecha}}
                         </td>
                         <td>
-                            {{item.insumo.fecha}}
+                            {{item.herramienta.fecha}}
                         </td>
                         <td>
-                            {{item.insumo.fecha}}
+                            {{item.herramienta.fecha}}
                         </td>
                     </tr>
                     </tbody>
