@@ -36,6 +36,7 @@ export class InsumosComponent implements OnInit {
 
     }
 
+
     ngOnInit(): void {
         this.getInsumos();
         this.getInsumosP();

@@ -12,10 +12,10 @@
                 <div class="col-sm-12">
                 <table class="table table-bordered"  *ngIf="insumos">
                     <thead class="panel panel-primary">
-                    <th class="panel-heading">nombre</th>
-                    <th class="panel-heading">nombre</th>
-                    <th class="panel-heading">nombre</th>
-                    <th class="panel-heading">nombre</th>
+                    <th class="panel-heading">Nombre</th>
+                    <th class="panel-heading">Descripción</th>
+                    <th class="panel-heading">Unidad</th>
+                    <th class="panel-heading">Precio</th>
                     </thead>
                     <tbody  >
                     <tr *ngFor="let item of insumos">
@@ -24,13 +24,13 @@
 
                         </td>
                         <td>
-                            {{item.insumo.fecha}}
+                            {{item.insumo.descripcion}}
                         </td>
                         <td>
-                            {{item.insumo.fecha}}
+                            {{item.insumo.unidad}}
                         </td>
                         <td>
-                            {{item.insumo.fecha}}
+                            {{item.insumo.precio}}
                         </td>
                     </tr>
                     </tbody>

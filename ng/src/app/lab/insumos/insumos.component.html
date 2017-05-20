@@ -57,6 +57,9 @@
                     <button *ngIf="protocolo_id" [routerLink]="[itemInsumo.id]" type="button" class="btn btn-default btn-md btn-block"><i
                             class="fa fa-plus"></i>  <strong>Agregar a protocolo</strong>
                                     </button>
+                    <button *ngIf="protocolo_id" [routerLink]="['/protocolo',protocolo_id]" type="button" class="btn btn-default btn-md btn-block"><i
+                            class="fa fa-arrow-circle-left"></i>  <strong>Regresar a protocolo</strong>
+                                    </button>
                     <div class="ibox-content profile-content">
                         <h4><strong>{{itemInsumo.nombre}}</strong></h4>
                         <p><i class="fa fa-map-marker"></i> {{itemInsumo.provedor}}</p>
