@@ -53,6 +53,12 @@ export class ProtocoloService {
             .map((response: Response)=><Insumo[]>response.json());
     }
 
+    asociarHerramientaProtocolo(id_protocolo,id_herramienta):Observable<Herramienta[]>{
+
+        return this._http.post(this.url_servicios_protocolo + id_protocolo + "/herramienta/" + id_herramienta + "/", this.buildHeaders())
+            .map((response: Response)=><Herramienta[]>response.json());
+    }
+
     listarProtocoloInsumos(id_protocolo):Observable<Insumo[]>{
 
         return this._http.get(this.url_servicios_protocolo + id_protocolo + "/insumo/", this.buildHeaders())

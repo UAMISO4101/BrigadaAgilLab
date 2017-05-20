@@ -27,10 +27,10 @@ export class ProtocoloHerramientaComponent implements OnInit {
     }
 
       getProtocoloHerramientas() {
-        this._protocoloService.listarProtocoloHerramientas(this.id).subscribe((herramientas:Herramienta[])=>this.herramientas=herramientas);
+        this._protocoloService.listarProtocoloHerramientas(this.id)
+            .subscribe((herramientas:Herramienta[])=>this.herramientas=herramientas);
 
     }
-
 
     ngOnInit() {
         this.getProtocoloHerramientas();

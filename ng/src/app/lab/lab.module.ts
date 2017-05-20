@@ -51,6 +51,7 @@ import {ProtocoloEditorProcesoComponent} from "./protocolo/protocolo-editor-proc
 import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.insumo.component";
 import {ProtocoloHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.herramienta.component";
 import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.asociar.insumo.component";
+import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.asociar.herramienta.component";
 
 
 @NgModule({
@@ -71,8 +72,9 @@ import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/prot
             {path: "protocolo/:id", component: ProtocoloDetalleComponent},
             {path: "protocolo/:id/version", component: ProtocoloComparaVersionComponent},
             {path: "protocolo/:id/insumo", component: ProtocoloAsociarInsumoComponent},
-            {path: "protocolo/:id/herramienta", component: ProtocoloHerramientaComponent},
+            {path: "protocolo/:id_protocolo/herramienta", component: ProtocoloAsociarHerramientaComponent},
             {path: "protocolo/:id_protocolo/insumo/:id_insumo", component: ProtocoloAsociarInsumoComponent},
+            {path: "protocolo/:id_protocolo/herramienta/:id_herramienta", component: ProtocoloAsociarHerramientaComponent},
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
@@ -122,7 +124,8 @@ import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/prot
         ProtocoloEditorProcesoComponent,
         ProtocoloInsumoComponent,
         ProtocoloHerramientaComponent,
-        ProtocoloAsociarInsumoComponent
+        ProtocoloAsociarInsumoComponent,
+        ProtocoloAsociarHerramientaComponent
     ],
     exports: [
         NotificacionesComponent,
@@ -148,7 +151,8 @@ import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/prot
         ProyectoGraficaComponent,
         ProtocoloInsumoComponent,
         ProtocoloHerramientaComponent,
-        ProtocoloAsociarInsumoComponent
+        ProtocoloAsociarInsumoComponent,
+        ProtocoloAsociarHerramientaComponent
     ],
     providers: [
         BreadcrumbService,
