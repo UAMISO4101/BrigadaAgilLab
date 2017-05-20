@@ -10,7 +10,7 @@ import {LabelsService} from "../../labels.service";
 })
 export class ProtocoloEditorProcesoComponent implements OnInit {
 
-    @Input() protocolo: Protocolo;
+    @Input() proceso: Array<Etapa>;
     @Input() editor: boolean;
 
     textoProceso: string;
@@ -24,8 +24,8 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.textoProceso = this.aTextoProceso(this.protocolo.proceso);
-        this.pasosProceso = this.protocolo.proceso;
+        this.textoProceso = this.aTextoProceso(this.proceso);
+        this.pasosProceso = this.proceso.slice();
     }
 
     aPasosProceso(textoEtapa: string) {
@@ -54,7 +54,7 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
 
     updateTexto() {
         console.log("Drag realizado");
-        const nuevoTexto = this.aTextoProceso(this.protocolo.proceso);
+        const nuevoTexto = this.aTextoProceso(this.pasosProceso);
         if (nuevoTexto !== this.textoProceso) {
             this.textoProceso = nuevoTexto;
             console.log("actualizando texto");
