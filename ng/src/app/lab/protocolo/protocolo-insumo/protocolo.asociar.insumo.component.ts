@@ -25,10 +25,16 @@ export class ProtocoloAsociarInsumoComponent implements OnInit{
        this.id_insumo=route.snapshot.params["id_insumo"];
     }
 
+    clearVars(){
+        this.id_protocolo=0;
+        this.id_insumo=0;
+        window.history.back();
+    }
       asociarInsumo() {
           if(this.id_protocolo>0 && this.id_insumo>0) {
               this._protocoloService.asociarInsumoProtocolo(this.id_protocolo, this.id_insumo)
-                  .subscribe((insumo:Insumo[])=>this.insumo=insumo);
+                  .subscribe((insumo:Insumo[])=>this.insumo=insumo,err=>console.log(err),
+                      ()=>this.clearVars());
           }
 
     }
