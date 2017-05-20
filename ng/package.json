@@ -62,11 +62,14 @@
     "pace-progress": "1.0.2",
     "metismenu": "2.7.0",
     "ng2-breadcrumb": "0.5.14",
-    "ng2-charts": "^1.5.0",
+    "ng2-charts": "1.4.4",
     "ng2-completer": "^1.4.0",
     "angular-2-dropdown-multiselect": "^1.1.0",
-    "angular2-notifications": "^0.5.7",
-    "@angular/animations": "^4.0.0"
+    "angular2-notifications": "0.7.4",
+    "@angular/animations": "^4.0.0",
+    "ng-diff-match-patch": "1.0.3",
+    "awesome-bootstrap-checkbox": "1.0.0-alpha.5",
+    "ng2-dnd":"4.0.2"
   },
   "devDependencies": {}
 }

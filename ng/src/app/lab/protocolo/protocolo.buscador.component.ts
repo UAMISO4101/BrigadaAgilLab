@@ -1,17 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ProtocoloService} from './service/protocolo.service';
-import {Protocolo} from './service/protocolo';
+import {Component, Input, OnInit} from "@angular/core";
+import {ProtocoloService} from "./service/protocolo.service";
+import {Protocolo} from "./service/protocolo";
 
 @Component({
-    selector: 'protocolo-buscador',
+    selector: "protocolo-buscador",
     moduleId: module.id,
-    templateUrl: 'protocolo.buscador.component.html'
+    templateUrl: "protocolo.buscador.component.html"
 })
-export class ProtocoloBuscadorComponent implements OnInit{
+export class ProtocoloBuscadorComponent implements OnInit {
 
     public protocolos: Protocolo[] = [];
 
-    @Input() nombre = '';
+    @Input() nombre = "";
     @Input() fuente: string;
 
     constructor(private _protocoloService: ProtocoloService) {
@@ -19,20 +19,20 @@ export class ProtocoloBuscadorComponent implements OnInit{
     }
 
     listarProtocolos() {
-        console.log('Aqui se inicia la carga de protocolos');
+        console.log("Aqui se inicia la carga de protocolos");
         if (this.fuente != null) {
             this._protocoloService.listarProtocolosFiltradosEnExperimentoPorNombre(this.fuente, this.nombre)
                 .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
-            console.log('get listarProtocolosFiltradosEnExperimentoPorNombre');
+            console.log("get listarProtocolosFiltradosEnExperimentoPorNombre");
         } else {
-            if (this.nombre !== '') {
+            if (this.nombre !== "") {
                 this._protocoloService.listarProtocolosFiltradosNombre(this.nombre)
                     .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
-                console.log('get listarProtocolosFiltradosNombre');
+                console.log("get listarProtocolosFiltradosNombre");
             } else {
                 this._protocoloService.listarProtocolos()
                     .subscribe((protocolos: Protocolo[]) => this.protocolos = protocolos);
-                console.log('get listarProtocolos');
+                console.log("get listarProtocolos");
             }
         }
     }

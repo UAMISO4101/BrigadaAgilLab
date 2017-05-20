@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from laboratorio.views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
+from laboratorio.views import ProyectoExperimentoView,ProtocoloHerramientaView,ProtocoloInsumoView, ExperimentoView, ProtocoloView, \
     ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView, HerramientaView
 
 
@@ -56,11 +56,18 @@ urlpatterns = [
     #Buscar protocolos que contengan en nombre
     url(r'^protocolo/filtro/(?P<nombre>.+)/$', ProtocoloView().get_por_nombre),
     url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_por_name, name='proyecto_name'),
+    #listar insumos por protocolo
+    url(r'^protocolo/(?P<protocolo_id>\d+)/insumo/$', ProtocoloInsumoView.as_view()),
+    url(r'^protocolo/(?P<protocolo_id>\d+)/insumo/(?P<insumo_id>\d+)/$', ProtocoloInsumoView.as_view()),
+    url(r'^protocolo/(?P<protocolo_id>\d+)/herramienta/$', ProtocoloHerramientaView.as_view()),
+    url(r'^protocolo/(?P<protocolo_id>\d+)/herramienta/(?P<herramienta_id>\d+)/$', ProtocoloHerramientaView.as_view()),
+
 
     # Listar todos los protocolos
     url(r'^insumo/$', InsumoView.as_view()),
 
     url(r'^herramienta/$', HerramientaView.as_view()),
+    url(r'^herramienta/(?P<id>\d+)/$', HerramientaView().get_por_id),
 
     url(r'^usuario/$', UsuarioView().get),
 ]

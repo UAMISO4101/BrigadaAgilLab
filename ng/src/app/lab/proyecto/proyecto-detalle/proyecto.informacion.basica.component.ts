@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Proyecto} from '../service/proyecto';
-import {LabelsService} from '../../labels.service';
+import {Component, Input, OnInit} from "@angular/core";
+import {Proyecto} from "../service/proyecto";
+import {LabelsService} from "../../labels.service";
 
 
 @Component({
-    selector: 'proyecto-informacion-basica',
-    templateUrl: 'proyecto.informacion.basica.component.html',
+    selector: "proyecto-informacion-basica",
+    templateUrl: "proyecto.informacion.basica.component.html",
     providers: [LabelsService]
 })
 export class ProyectoInformacionBasicaComponent implements OnInit {

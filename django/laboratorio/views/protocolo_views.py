@@ -3,7 +3,7 @@ import json
 
 from django.core.exceptions import ObjectDoesNotExist
 
-from laboratorio.models import Protocolo, AvanceProtocoloExperimentoProyecto, ProyectoExperimento, ExperimentoProtocolo
+from laboratorio.models import Protocolo,Herramienta,ProtocoloInsumo,ProtocoloHerramienta, Insumo, AvanceProtocoloExperimentoProyecto, ProyectoExperimento, ExperimentoProtocolo
 from laboratorio.views import ContenidoJsonBaseView, LaboratorioBaseView, HttpResponse, LaboratorioException
 
 
@@ -98,3 +98,41 @@ class ProtocolosExperimentosProyectoView(LaboratorioBaseView):
         except ObjectDoesNotExist:
             raise LaboratorioException(
                 "La relacion experimento: {} - protocolo: {} no existe".format(id_proyecto, id_experimento))
+
+
+class ProtocoloInsumoView(LaboratorioBaseView):
+
+    def get(self,request,protocolo_id=None,*args, **kwargs):
+        modelo = ProtocoloInsumo.objects.filter(protocolo__id=protocolo_id).values("insumo__contenido","contenido")
+
+        lista = map(
+            lambda elem:
+            {
+                'insumo': json.loads(elem["insumo__contenido"])},
+            modelo)
+
+        return HttpResponse(json.dumps(lista), content_type="application/json")
+
+    def post(self, request, protocolo_id=None, insumo_id=None,*args,**kwargs):
+        modelo = ProtocoloInsumo(protocolo=Protocolo.objects.get(pk=protocolo_id),insumo=Insumo.objects.get(pk=insumo_id),contenido="{}")
+        return LaboratorioBaseView.guardar_y_agregar_id_contenido_json(modelo, request)
+
+
+class ProtocoloHerramientaView(LaboratorioBaseView):
+
+    def get(self,request,protocolo_id=None,*args, **kwargs):
+        modelo = ProtocoloHerramienta.objects.filter(protocolo__id=protocolo_id).values("herramienta__contenido","contenido")
+
+        lista = map(
+            lambda elem:
+            {
+                'herramienta': json.loads(elem["herramienta__contenido"])},
+            modelo)
+
+        return HttpResponse(json.dumps(lista), content_type="application/json")
+
+    def post(self, request, protocolo_id=None, herramienta_id=None, *args, **kwargs):
+        modelo = ProtocoloHerramienta(protocolo=Protocolo.objects.get(pk=protocolo_id),herramienta=Herramienta.objects.get(pk=herramienta_id),contenido="{}")
+        return LaboratorioBaseView.guardar_y_agregar_id_contenido_json(modelo, request)
+
+

@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {Equipo} from './equipo';
-import {EquiposService} from './equipos.service';
+import {Component, OnInit} from "@angular/core";
+import {Equipo} from "./equipo";
+import {EquiposService} from "./equipos.service";
 declare var jQuery: any;
 
 @Component({
-    selector: 'lab-equipos',
+    selector: "lab-equipos",
     moduleId: module.id,
-    templateUrl: 'equipos.component.html'
+    templateUrl: "equipos.component.html"
 })
 export class EquiposComponent implements OnInit {
     list: Equipo[] = [];
-    search = '';
+    search = "";
     checkEquipos: Object[] = [];
-    selectedOrder = '-nombre';
+    selectedOrder = "-nombre";
     dateEquipos: Array<Object> = [];
 
 
@@ -36,15 +36,15 @@ export class EquiposComponent implements OnInit {
 
     getDateCalendar(id: number) {
 
-        const index = this.checkEquipos.findIndex(eq => eq['id'] === id);
-        const equipos = this.list.filter(eq => eq['id'] === id);
+        const index = this.checkEquipos.findIndex(eq => eq["id"] === id);
+        const equipos = this.list.filter(eq => eq["id"] === id);
         const equipo = equipos[0];
         if (index !== -1 && !equipo.selected) {
-            const p = this.checkEquipos.filter(eq => eq['id'] === id);
+            const p = this.checkEquipos.filter(eq => eq["id"] === id);
             this.checkEquipos.splice(index, p.length);
         } else {
-            if (!equipo['color']) {
-                equipo['color'] = this.getRandomColor();
+            if (!equipo["color"]) {
+                equipo["color"] = this.getRandomColor();
             }
             for (const d of this._equipoService.getDateEquipos(equipo)) {
                 this.checkEquipos.push(d);
@@ -54,29 +54,29 @@ export class EquiposComponent implements OnInit {
 
         // this.dateEquipos = this._equipoService.getDateEquipos(this.checkEquipos)
 
-        const myCalendar = jQuery('#calendar');
-        myCalendar.fullCalendar('removeEvents');
+        const myCalendar = jQuery("#calendar");
+        myCalendar.fullCalendar("removeEvents");
 
-        myCalendar.fullCalendar('addEventSource', this.checkEquipos);
+        myCalendar.fullCalendar("addEventSource", this.checkEquipos);
 
     }
 
     createCalendar() {
-        jQuery('#calendar').fullCalendar('destroy');
-        jQuery('#calendar').fullCalendar({
+        jQuery("#calendar").fullCalendar("destroy");
+        jQuery("#calendar").fullCalendar({
             header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                left: "prev,next today",
+                center: "title",
+                right: "month,agendaWeek,agendaDay"
             },
             // columnFormat:'ddd M',
             allDaySlot: false,
             selectable: true,
-            lang: 'es',
-            minTime: '08:00:00',
-            maxTime: '18:00:00',
+            lang: "es",
+            minTime: "08:00:00",
+            maxTime: "18:00:00",
             hiddenDays: [6, 0],
-            defaultView: 'agendaWeek',
+            defaultView: "agendaWeek",
             firstDay: 1,
             editable: true,
             droppable: true,
@@ -85,8 +85,8 @@ export class EquiposComponent implements OnInit {
     }
 
     getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
+        const letters = "0123456789ABCDEF";
+        let color = "#";
         for (let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }

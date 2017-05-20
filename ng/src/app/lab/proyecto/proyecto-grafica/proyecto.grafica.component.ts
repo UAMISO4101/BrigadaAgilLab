@@ -1,30 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {ProyectoService} from '../service/proyecto.service';
-import {IMultiSelectOption, IMultiSelectSettings} from 'angular-2-dropdown-multiselect';
-import {CompleterService, CompleterData} from 'ng2-completer';
-import {environment} from '../../../../environments/environment';
+import {Component, OnInit} from "@angular/core";
+import {ProyectoService} from "../service/proyecto.service";
+import {IMultiSelectOption, IMultiSelectSettings} from "angular-2-dropdown-multiselect";
+import {CompleterService, CompleterData} from "ng2-completer";
+import {environment} from "../../../../environments/environment";
 declare var jQuery: any;
 
 
 @Component({
-    selector: 'proyecto-grafica',
+    selector: "proyecto-grafica",
     moduleId: module.id,
-    templateUrl: 'proyecto.grafica.component.html',
+    templateUrl: "proyecto.grafica.component.html",
 
 })
 export class ProyectoGraficaComponent implements OnInit {
-    public pieChartLabels: string[] = ['Terminado', 'En curso', 'Sin Iniciar'];
+    public pieChartLabels: string[] = ["Terminado", "En curso", "Sin Iniciar"];
     public pieChartData: number[] = [300, 500, 100];
-    public pieChartType = 'pie';
+    public pieChartType = "pie";
     optionsModel: number[];
     public myOptions: IMultiSelectOption[] = [
-        {id: 1, name: 'Option 1'},
-        {id: 2, name: 'Option 2'},
+        {id: 1, name: "Option 1"},
+        {id: 2, name: "Option 2"},
     ];
     mySettings: IMultiSelectSettings = {
         enableSearch: true,
-        checkedStyle: 'fontawesome',
-        buttonClasses: 'btn btn-default btn-block',
+        checkedStyle: "fontawesome",
+        buttonClasses: "btn btn-default btn-block",
         dynamicTitleMaxItems: 1,
         displayAllSelectedText: true
     };
@@ -36,12 +36,12 @@ export class ProyectoGraficaComponent implements OnInit {
 
 
     constructor(private _proyectoService: ProyectoService, private completerService: CompleterService) {
-        this.dataService = completerService.remote(environment.url_servicios + 'proyecto/autocomplete/', 'nombre', 'nombre');
+        this.dataService = completerService.remote(environment.url_servicios + "proyecto/autocomplete/", "nombre", "nombre");
     }
 
     ngOnInit(): any {
         // this.getProyectos();
-        jQuery('#complete').find('input').addClass('form-control');
+        jQuery("#complete").find("input").addClass("form-control");
 
     }
 

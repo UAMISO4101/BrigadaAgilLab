@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ExperimentoService} from '../service/experimento.service';
-import {Experimento} from '../service/experimento';
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
+import {ExperimentoService} from "../service/experimento.service";
+import {Experimento} from "../service/experimento";
 
 
 @Component({
-    templateUrl: 'experimento.detalle.component.html',
-    selector: 'experimento-detalles',
+    templateUrl: "experimento.detalle.component.html",
+    selector: "experimento-detalles",
     providers: [ExperimentoService]
 })
 export class ExperimentoDetalleComponent implements OnInit {
@@ -15,7 +15,7 @@ export class ExperimentoDetalleComponent implements OnInit {
 
 
     constructor(route: ActivatedRoute, private _experimentoService: ExperimentoService) {
-        this.idExperimento = route.snapshot.params['id'];
+        this.idExperimento = route.snapshot.params["id"];
 
     }
 

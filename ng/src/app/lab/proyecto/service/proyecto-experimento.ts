@@ -1,4 +1,4 @@
-import {Experimento} from '../../experimento/service/experimento';
+import {Experimento} from "../../experimento/service/experimento";
 /**
  * Created by Felipe on 25/04/2017.
  */
