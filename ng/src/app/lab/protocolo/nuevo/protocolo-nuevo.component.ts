@@ -4,6 +4,7 @@ import {LabelsService} from "../../labels.service";
 import {NgForm} from "@angular/forms";
 import {NotificationsService} from "angular2-notifications";
 import {Router} from "@angular/router";
+import {Etapa, Protocolo} from "../service/protocolo";
 
 @Component({
     templateUrl: "protocolo-nuevo.component.html",
@@ -11,6 +12,8 @@ import {Router} from "@angular/router";
 })
 export class ProtocoloNuevoComponent implements OnInit {
     _: {};
+
+    pasosProceso: Array<Etapa> = [];
 
     constructor(private _labelsService: LabelsService, private _protocoloService: ProtocoloService,
                 private router: Router, private _notif: NotificationsService) {
