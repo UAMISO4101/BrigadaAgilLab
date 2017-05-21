@@ -55,7 +55,7 @@ urlpatterns = [
     url(r'^protocolo/filtro/(?P<id_experimento>\d+)/(?P<nombre>.+)/$', ProtocoloView().buscar_en_experimento_por_nombre),
     #Buscar protocolos que contengan en nombre
     url(r'^protocolo/filtro/(?P<nombre>.+)/$', ProtocoloView().get_por_nombre),
-    url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_por_name, name='proyecto_name'),
+    url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_autocomplete, name='proyecto_name'),
     #listar insumos por protocolo
     url(r'^protocolo/(?P<protocolo_id>\d+)/insumo/$', ProtocoloInsumoView.as_view()),
     url(r'^protocolo/(?P<protocolo_id>\d+)/insumo/(?P<insumo_id>\d+)/$', ProtocoloInsumoView.as_view()),

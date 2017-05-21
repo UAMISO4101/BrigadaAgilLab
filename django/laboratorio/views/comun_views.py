@@ -96,7 +96,7 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
 
-    def get_por_name(self, request, nombre=None):
+    def get_autocomplete(self, request, nombre=None):
         contenido_modelo = self.model.objects.values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
