@@ -20,9 +20,6 @@ class ProyectoView(ContenidoJsonBaseView):
             raise LaboratorioException(
                 "El Proyecto con Identificador " + identificador_ + " ya existe en el Laboratorio")
 
-    def pre_validar_actualizacion(self, request, *args, **kwargs):
-        pass
-
 
 class ProyectoExperimentoView(LaboratorioBaseView):
     def get(self, request, id_proyecto=None, *args, **kwargs):
