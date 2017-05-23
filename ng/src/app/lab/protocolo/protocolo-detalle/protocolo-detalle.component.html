@@ -17,11 +17,28 @@
                     </ui-ibox-tools>
                 </div>
                 <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <dl class="dl-horizontal">
+                                <dt class="m-b-xs">{{_['cmp_identificador']}}</dt>
+                                <dd class="m-b-xs">{{protocolo.identificador}}</dd>
+                                <dt class="m-b-xs">{{_['cmp_nombre']}}:</dt>
+                                <dd class="m-b-xs">{{protocolo.nombre}}</dd>
 
+                                <dt class="m-b-xs">{{_['cmp_fecha_creacion']}}:</dt>
+                                <dd class="m-b-xs">{{protocolo.fecha_creacion | date: 'dd/MM/yyyy'}}</dd>
+
+                                <dt class="m-b-xs">{{_['cmp_descripcion']}}:</dt>
+                                <dd class="m-b-xs"><span class="format-text" style="text-align: justify;">{{protocolo.descripcion}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
-            <protocolo-editor-proceso [proceso]="protocolo.proceso"></protocolo-editor-proceso>
+            <protocolo-editor-proceso [proceso]="protocolo.proceso" [editable]="true"></protocolo-editor-proceso>
             <protocolo-insumo></protocolo-insumo>
             <protocolo-herramienta></protocolo-herramienta>
 

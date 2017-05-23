@@ -1,7 +1,11 @@
 <div class="ibox float-e-margins">
     <div class="ibox-title">
         <h5>{{_['tit_proceso']}}</h5>
-        <ui-ibox-tools [collapse]='true' [help]="true"></ui-ibox-tools>
+        <ui-ibox-tools [collapse]='true' [help]="true">
+            <a *ngIf='editable' (click)="toogleEditor()">
+                <i class="fa fa-pencil"></i>
+            </a>
+        </ui-ibox-tools>
     </div>
     <div class="ibox-content">
         <div class="row" *ngIf="editor">

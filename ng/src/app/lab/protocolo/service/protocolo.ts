@@ -3,8 +3,10 @@
  */
 export interface Protocolo {
     id: number;
+    identificador: string;
     nombre: string;
-    fecha: string;
+    descripcion: string;
+    fecha_creacion: string;
     version: string;
     proceso: Array<Etapa>;
 }

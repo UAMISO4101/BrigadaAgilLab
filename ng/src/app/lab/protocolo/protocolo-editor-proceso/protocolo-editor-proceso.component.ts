@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {Etapa, Protocolo} from "../service/protocolo";
 import {LabelsService} from "../../labels.service";
+import {Subject} from "rxjs/Subject";
 
 @Component({
     selector: "protocolo-editor-proceso",
@@ -11,7 +12,10 @@ import {LabelsService} from "../../labels.service";
 export class ProtocoloEditorProcesoComponent implements OnInit {
 
     @Input() proceso: Array<Etapa>;
-    @Input() editor: boolean;
+    @Input() editable = false;
+    editor: boolean;
+    @Output() updated: EventEmitter<Array<Etapa>> = new EventEmitter();
+    debouncer: Subject<Array<Etapa>> = new Subject<Array<Etapa>>();
 
     textoProceso: string;
     pasosProceso: Array<Etapa> = [];
@@ -20,7 +24,10 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
 
     constructor(private _labelsService: LabelsService) {
         this._ = _labelsService.getLabels();
-        this.editor = true;
+        this.editor = false;
+        this.debouncer
+            .debounceTime(500)
+            .subscribe((val) => this.updated.emit(val));
     }
 
     ngOnInit() {
@@ -49,16 +56,18 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
     updatePasos() {
         this.pasosProceso.length = 0;
         this.textoProceso.split(/^\s*[\r\n]/gm).forEach(etapa => this.aPasosProceso(etapa));
-        console.log("actualizando pasos");
+        this.debouncer.next(this.pasosProceso);
     }
 
     updateTexto() {
-        console.log("Drag realizado");
         const nuevoTexto = this.aTextoProceso(this.pasosProceso);
         if (nuevoTexto !== this.textoProceso) {
             this.textoProceso = nuevoTexto;
-            console.log("actualizando texto");
+            this.debouncer.next(this.pasosProceso);
         }
+    }
 
+    toogleEditor() {
+        this.editor = !this.editor;
     }
 }
