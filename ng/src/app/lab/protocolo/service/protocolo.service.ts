@@ -23,6 +23,7 @@ export class ProtocoloService {
     }
 
     nuevo(form): Observable<Protocolo[]> {
+        console.log("llamada post")
         return this._http.post(this.url_servicios_protocolo, form, this.buildHeaders())
             .map((response: Response) => <Protocolo[]>response.json());
     }

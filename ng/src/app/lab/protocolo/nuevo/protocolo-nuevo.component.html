@@ -14,6 +14,9 @@
                 </div>
                 <div class="ibox-content">
                     <form #nuevoProtocolo="ngForm" (ngSubmit)="guardar(nuevoProtocolo)" class="form-horizontal">
+                        <lab-form-field [label]="_['cmp_identificador']">
+                            <input required type="text" class="form-control panel-warning" name="identificador" ngModel>
+                        </lab-form-field>
                         <lab-form-field [label]="_['cmp_nombre']">
                             <input required type="text" class="form-control panel-warning" name="nombre" ngModel>
                         </lab-form-field>

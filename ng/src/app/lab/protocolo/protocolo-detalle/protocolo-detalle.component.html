@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <protocolo-editor-proceso [proceso]="protocolo.proceso" [editable]="true"></protocolo-editor-proceso>
+            <protocolo-editor-proceso [proceso]="protocolo.proceso" [editable]="true" (updated)="syncProceso($event)"></protocolo-editor-proceso>
             <protocolo-insumo></protocolo-insumo>
             <protocolo-herramienta></protocolo-herramienta>
 

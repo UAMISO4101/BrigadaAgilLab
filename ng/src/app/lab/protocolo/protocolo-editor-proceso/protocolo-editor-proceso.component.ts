@@ -24,7 +24,7 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
 
     constructor(private _labelsService: LabelsService) {
         this._ = _labelsService.getLabels();
-        this.editor = false;
+        this.editor = this.editable ? false : true;
         this.debouncer
             .debounceTime(500)
             .subscribe((val) => this.updated.emit(val));
