@@ -14,7 +14,7 @@ declare var jQuery: any;
 })
 export class ProtocoloComparaVersionComponent implements OnInit {
 
-    private protocolo: Protocolo;
+    protocolo: Protocolo;
 
     idProtocolo: string;
     versionLeft: string;
