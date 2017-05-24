@@ -38,8 +38,8 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
     aPasosProceso(textoEtapa: string) {
         const pasos = textoEtapa.split(/^\s*-\s/gm);
         this.pasosProceso.push({
-            nombre: pasos[0],
-            pasos: pasos.slice(1)
+            nombre: pasos[0].replace(/[\r\n]*$/gm, ""),
+            pasos: pasos.slice(1).map(paso => paso.replace(/[\r\n]*$/gm, ""))
         });
     }
 
@@ -48,11 +48,14 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
         const s = "\n- ";
         pasosProceso.forEach(function (etapa) {
             buffer += "\n\n" + etapa.nombre;
-            buffer += etapa.pasos ? s + etapa.pasos.join(s) : "";
+            buffer += etapa.pasos ? s + etapa.pasos.map(paso => paso.replace(/[\r\n]*$/gm, "")).join(s) : "";
         });
         return buffer.substring(2);
     }
 
+    /**
+     * Llamado cuando cambia el contenido del text area
+     */
     updatePasos() {
         this.pasosProceso.length = 0;
         this.textoProceso.split(/^\s*[\r\n]/gm).forEach(etapa => this.aPasosProceso(etapa));
