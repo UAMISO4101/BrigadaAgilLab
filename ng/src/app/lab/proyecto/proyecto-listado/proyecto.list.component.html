@@ -11,6 +11,7 @@
                 <th>Actualizado en</th>
                 <th>Completado</th>
                 <th>Acciones</th>
+                <th>Editar</th>
 
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                     </svg>
                 </td>
                 <td><a [routerLink]="['/proyecto', proyecto.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
+                <td><a [routerLink]="['/proyecto',proyecto.id,'editar']"><i class="fa fa-sign-in text-navy"></i></a></td>
             </tr>
 
             </tbody>

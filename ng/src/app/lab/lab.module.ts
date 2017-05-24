@@ -26,6 +26,7 @@ import {InsumosComponent} from "./insumos/insumos.component";
 import {InsumosService} from "./insumos/insumos.service";
 import {ExperimentoDetalleComponent} from "./experimento/experimento-detalle/experimento.detalle.component";
 import {ProyectoNuevoComponent} from "./proyecto/proyecto-nuevo/proyecto-nuevo.component";
+import {ProyectoEditarComponent} from "./proyecto/proyecto-editar/proyecto-editar.component";
 import {InsumoNuevoComponent} from "./insumos/nuevo/insumo-nuevo.component";
 import {ExperimentoNuevoComponent} from "./experimento/nuevo/experimento-nuevo.component";
 import {ProyectoControladorComponent} from "./proyecto/proyecto-controlador/proyecto-controlador.component";
@@ -63,6 +64,7 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
             {path: "insumo", component: InsumosComponent},
             {path: "proyecto", component: ProyectoControladorComponent},
             {path: "proyecto/nuevo", component: ProyectoNuevoComponent},
+            {path: "proyecto/:id/editar", component: ProyectoEditarComponent},
             {path: "proyecto/:id", component: ProyectoDetalleComponent},
             {path: "proyecto/:id/experimento", component: ProyectoAsociarExpComponent},
             {path: "proyecto/:id/experimento/:id/protocolos", component: ExperimentoAsociarProtocoloComponent},
@@ -112,6 +114,7 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
         InsumosComponent,
         InsumoNuevoComponent,
         ProyectoNuevoComponent,
+        ProyectoEditarComponent,
         ExperimentoNuevoComponent,
         ProyectoControladorComponent,
         ProyectoAsociarExpComponent,
