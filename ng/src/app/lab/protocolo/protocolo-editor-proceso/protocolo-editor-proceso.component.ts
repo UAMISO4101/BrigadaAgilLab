@@ -15,6 +15,7 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
     @Input() editable = false;
     editor: boolean;
     @Output() updated: EventEmitter<Array<Etapa>> = new EventEmitter();
+    @Output() whenEditor: EventEmitter<boolean> = new EventEmitter();
     debouncer: Subject<Array<Etapa>> = new Subject<Array<Etapa>>();
 
     textoProceso: string;
@@ -33,6 +34,7 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
     ngOnInit() {
         this.textoProceso = this.aTextoProceso(this.proceso);
         this.pasosProceso = this.proceso.slice();
+        this.editor = this.editable ? false : true;
     }
 
     aPasosProceso(textoEtapa: string) {
@@ -72,5 +74,6 @@ export class ProtocoloEditorProcesoComponent implements OnInit {
 
     toogleEditor() {
         this.editor = !this.editor;
+        this.whenEditor.emit(this.editor);
     }
 }

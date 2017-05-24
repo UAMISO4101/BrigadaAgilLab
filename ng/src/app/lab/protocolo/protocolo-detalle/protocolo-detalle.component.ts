@@ -6,6 +6,8 @@ import {Etapa, Protocolo} from "../service/protocolo";
 import {NotificationsService} from "angular2-notifications/dist";
 import Utils from "../../Utils";
 
+declare var jQuery: any;
+
 @Component({
     templateUrl: "protocolo-detalle.component.html",
     providers: [ProtocoloService, LabelsService]
@@ -13,7 +15,8 @@ import Utils from "../../Utils";
 export class ProtocoloDetalleComponent implements OnInit {
     idProtocolo: string;
     protocolo: Protocolo;
-
+    editor = false;
+    procesoInicial: string;
     _: {};
 
     pasosProceso: Array<Etapa> = [];
@@ -38,13 +41,23 @@ export class ProtocoloDetalleComponent implements OnInit {
     }
 
     private initProtocolo(protocolo: Protocolo) {
+        this.procesoInicial = "" + protocolo.proceso;
+        console.log(this.procesoInicial);
         protocolo.proceso = Utils.json2Obj(Utils.deserializar("" + protocolo.proceso));
         this.protocolo = protocolo;
-        console.log("Protocolo");
-        console.log(this.protocolo);
     }
 
     syncProceso(event) {
         this.pasosProceso = event;
+    }
+
+    toogleEditor() {
+        this.editor = !this.editor;
+        console.log("click editar");
+        jQuery(".editar-proceso-protocolo").click();
+    }
+
+    editorExterno(editorProceso: boolean) {
+        this.editor = editorProceso;
     }
 }
