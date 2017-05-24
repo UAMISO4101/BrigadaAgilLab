@@ -23,7 +23,7 @@
                         </div>
                         <div class="panel-body">
                             <ol class="list-group" dnd-sortable-container [sortableData]="etapa.pasos">
-                                <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item"
+                                <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item format-text"
                                     dnd-sortable [sortableIndex]="i" (onDragSuccess)="updateTexto()">{{i+1+". "+paso}}
                                 </li>
                             </ol>

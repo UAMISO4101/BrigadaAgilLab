@@ -64,8 +64,6 @@ export class ProtocoloComparaVersionComponent implements OnInit {
     }
 
     private cargarVersiones(versiones: Protocolo[]) {
-        console.log("versiones cargadas");
-
         if (versiones[0].id) {
             this.protocoloLeft = versiones[0];
             this.protocoloLeft.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[0].proceso));
@@ -82,7 +80,6 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             this.protocoloRight = undefined;
         }
         this.initVersiones = true;
-        console.log([this.protocoloLeft, this.protocoloRight]);
     }
 
     aTextoProceso(pasosProceso: Array<Etapa>): string {
