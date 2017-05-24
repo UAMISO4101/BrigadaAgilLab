@@ -175,9 +175,9 @@ export class LabModule {
         breadcrumbService.addFriendlyNameForRoute("/proyecto", "Proyectos");
         breadcrumbService.addFriendlyNameForRoute("/proyecto/nuevo", "Nuevo Proyecto");
         breadcrumbService.addFriendlyNameForRouteRegex("/proyecto/[0-9]", "Detalle de Proyecto");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]/version", "Versiones");
         breadcrumbService.addFriendlyNameForRoute("/protocolo", "Protocolos");
         breadcrumbService.addFriendlyNameForRoute("/protocolo/nuevo", "Nuevo Protocolo");
         breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]", "Detalle de Protocolo");
-        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]/version", "Versiones");
     }
 }

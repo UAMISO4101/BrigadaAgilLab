@@ -8,6 +8,7 @@ import {FiltroPipe} from "./filtro.pipe";
 import {DndModule} from "ng2-dnd";
 import {SimpleNotificationsModule} from "angular2-notifications";
 import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {BrowserModule} from "@angular/platform-browser";
         FormsModule,
         ReactiveFormsModule,
         DndModule.forRoot(),
+        BrowserAnimationsModule,
         SimpleNotificationsModule.forRoot(),
     ],
     declarations: [
@@ -26,6 +28,7 @@ import {BrowserModule} from "@angular/platform-browser";
     ],
     exports: [
         DndModule,
+        BrowserAnimationsModule,
         SimpleNotificationsModule,
         iBoxToolsComponent,
         FormFieldComponent,

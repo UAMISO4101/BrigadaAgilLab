@@ -27,7 +27,9 @@ export class ProtocoloNuevoComponent implements OnInit {
     guardar(form: NgForm): void {
         let ref: Protocolo;
         console.log(form.value["nombre"]);
-        form.value["fecha_creacion"] = new Date();
+        const date = new Date();
+        form.value["fecha_creacion"] = date;
+        form.value["fecha_modificacion"] = date;
         form.value["version"] = "1";
         form.value["proceso"] = Utils.serializar(Utils.obj2String(this.pasosProceso));
         this._protocoloService.nuevo(form.value).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));

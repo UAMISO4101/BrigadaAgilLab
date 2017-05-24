@@ -16,8 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 
 from laboratorio.views import ProyectoExperimentoView,ProtocoloHerramientaView,ProtocoloInsumoView, ExperimentoView, ProtocoloView, \
-    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView, HerramientaView
-
+    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView, HerramientaView, \
+    ProtocoloVersionView
 
 urlpatterns = [
     url(r'^proyecto/$', ProyectoView.as_view()),
@@ -48,9 +48,11 @@ urlpatterns = [
     url(r'^experimento/(?P<id_experimento>\d+)/protocolo/(?P<id_protocolo>\d+)$', ExperimentoProtocoloView.as_view()),
 
     # Listar todos los protocolos
-    url(r'^protocolo/$', ProtocoloView.as_view()),
+    url(r'^protocolo/$', ProtocoloVersionView.as_view()),
     #Buscar protocolo que coincida por el id
     url(r'^protocolo/(?P<id>\d+)/$', ProtocoloView().get_por_id),
+    url(r'^protocolo/(?P<id>\d+)/version/$', ProtocoloVersionView().ultimas_dos_versiones),
+    url(r'^protocolo/(?P<id>\d+)/version/(?P<v1>\d+)/(?P<v2>\d+)$', ProtocoloVersionView().versiones),
     #Buscar protocolos que contengan en el nombre en una determinado proyecto
     url(r'^protocolo/filtro/(?P<id_experimento>\d+)/(?P<nombre>.+)/$', ProtocoloView().buscar_en_experimento_por_nombre),
     #Buscar protocolos que contengan en nombre

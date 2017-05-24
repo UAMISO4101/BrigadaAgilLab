@@ -48,32 +48,41 @@ export class ProtocoloService {
             .map((response: Response) => <Protocolo[]>response.json());
     }
 
-    asociarInsumoProtocolo(id_protocolo,id_insumo):Observable<Insumo[]>{
+    asociarInsumoProtocolo(id_protocolo, id_insumo): Observable<Insumo[]> {
 
         return this._http.post(this.url_servicios_protocolo + id_protocolo + "/insumo/" + id_insumo + "/", this.buildHeaders())
-            .map((response: Response)=><Insumo[]>response.json());
+            .map((response: Response) => <Insumo[]>response.json());
     }
 
-    asociarHerramientaProtocolo(id_protocolo,id_herramienta):Observable<Herramienta[]>{
+    asociarHerramientaProtocolo(id_protocolo, id_herramienta): Observable<Herramienta[]> {
 
         return this._http.post(this.url_servicios_protocolo + id_protocolo + "/herramienta/" + id_herramienta + "/", this.buildHeaders())
-            .map((response: Response)=><Herramienta[]>response.json());
+            .map((response: Response) => <Herramienta[]>response.json());
     }
 
-    listarProtocoloInsumos(id_protocolo):Observable<Insumo[]>{
+    listarProtocoloInsumos(id_protocolo): Observable<Insumo[]> {
 
         return this._http.get(this.url_servicios_protocolo + id_protocolo + "/insumo/", this.buildHeaders())
-            .map((response: Response)=><Insumo[]>response.json());
+            .map((response: Response) => <Insumo[]>response.json());
 
     }
 
-    listarProtocoloHerramientas(id_protocolo):Observable<Herramienta[]>{
+    listarProtocoloHerramientas(id_protocolo): Observable<Herramienta[]> {
 
         return this._http.get(this.url_servicios_protocolo + id_protocolo + "/herramienta/", this.buildHeaders())
-            .map((response: Response)=><Herramienta[]>response.json());
+            .map((response: Response) => <Herramienta[]>response.json());
 
     }
 
+    ultimasVersiones(idProtocolo: string): Observable<Protocolo[]> {
+        return this._http.get(this.url_servicios_protocolo + idProtocolo + "/version/")
+            .map((response: Response) => <Protocolo[]>response.json());
+    }
+
+    versiones(idProtocolo: string, version_a: string, version_b: string): Observable<Protocolo[]> {
+        return this._http.get(this.url_servicios_protocolo + idProtocolo + "/version/" + version_a + "/" + version_b + "/")
+            .map((response: Response) => <Protocolo[]>response.json());
+    }
 
 
     private buildHeaders() {

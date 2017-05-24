@@ -34,6 +34,7 @@ export const LABELS = {
     cmp_estado: "Estado",
     cmp_fecha: "Fecha",
     cmp_fecha_creacion: "Fecha de Creación",
+    cmp_ult_mod: "Ultima Modificación",
     cmp_fecha_inicio: "Fecha de Inicio",
     cmp_description: "Descripción",
     cmp_integrantes: "Integrantes",
