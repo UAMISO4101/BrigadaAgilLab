@@ -43,6 +43,7 @@ export const LABELS = {
     cmp_unidad: "Unidad",
     cmp_version: "Versión",
     cmp_experimento: "Experimento",
+    cmp_ubicacion: "Ubicación",
     acc_guardar: "Guardar",
     acc_cancelar: "Cancelar",
     acc_ver_cambios: "Ver Cambios",

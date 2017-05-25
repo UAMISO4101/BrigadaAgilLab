@@ -4,4 +4,6 @@
 export interface Herramienta {
     id: number;
     nombre: string;
+    ubicacion: string;
+    descripcion: string;
 }
