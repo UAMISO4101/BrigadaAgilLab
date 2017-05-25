@@ -62,8 +62,4 @@ export class ProyectoService {
         return options;
     }
 
-
-    eliminarProyecto() {
-
-    }
 }

@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-12">
-        <h2>{{_["tit_protocolos"]}}</h2>
+        <h2>{{_["tit_proyectos"]}}</h2>
         <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
     </div>
 </div>
@@ -10,24 +10,28 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>{{_["tit_nuevo_protocolo"]}}</h5>
+                    <h5>Editar Proyecto</h5>
                 </div>
                 <div class="ibox-content">
-                    <form #nuevoProtocolo="ngForm" (ngSubmit)="guardar(nuevoProtocolo)" class="form-horizontal">
-                        <lab-form-field [label]="_['cmp_identificador']">
-                            <input required type="text" class="form-control panel-warning" name="identificador" ngModel>
-                        </lab-form-field>
+
+                    <form #nuevoProyecto="ngForm" (ngSubmit)="guardar(nuevoProyecto)" class="form-horizontal">
                         <lab-form-field [label]="_['cmp_nombre']">
                             <input required type="text" class="form-control panel-warning" name="nombre" ngModel>
+                        </lab-form-field>
+                        <lab-form-field [label]="_['cmp_identificador']">
+                            <input required type="text" class="form-control panel-warning" name="identificador" ngModel>
                         </lab-form-field>
                         <lab-form-field [label]="_['cmp_descripcion']">
                             <textarea class="form-control message-input" name="descripcion" ngModel></textarea>
                         </lab-form-field>
-                        <protocolo-editor-proceso [proceso]="pasosProceso" [editable]="false" (updated)="syncProceso($event)"></protocolo-editor-proceso>
+                        <div class="hr-line-dashed"></div>
+                        <lab-form-field [label]="_['cmp_cientifico_leader']">
+                            <input type="text" class="form-control" name="cientifico_lider" ngModel>
+                        </lab-form-field>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <a [routerLink]="['/protocolo']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>
-                                <button class="btn btn-primary" type="submit" [disabled]="!nuevoProtocolo.form.valid">
+                                <a [routerLink]="['/proyecto']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>
+                                <button class="btn btn-primary" type="submit" [disabled]="!nuevoProyecto.form.valid">
                                     {{_['acc_guardar']}}
                                 </button>
                             </div>
@@ -35,7 +39,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
