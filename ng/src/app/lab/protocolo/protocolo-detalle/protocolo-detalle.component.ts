@@ -42,7 +42,6 @@ export class ProtocoloDetalleComponent implements OnInit {
 
     private initProtocolo(protocolo: Protocolo) {
         this.procesoInicial = "" + protocolo.proceso;
-        protocolo.descripcion = Utils.deserializar(protocolo.descripcion);
         protocolo.proceso = Utils.json2Obj(Utils.deserializar("" + protocolo.proceso));
         this.protocolo = protocolo;
     }
