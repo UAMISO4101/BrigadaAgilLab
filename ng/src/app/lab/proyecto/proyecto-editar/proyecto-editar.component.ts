@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ProyectoService} from "../service/proyecto.service";
 import {LabelsService} from "../../labels.service";
 import {NgForm} from "@angular/forms";
+import {Proyecto} from "../service/proyecto";
 import {NotificationsService} from "angular2-notifications";
 import {Router} from "@angular/router";
 import {ActivatedRoute} from "@angular/router";
@@ -13,6 +14,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ProyectoEditarComponent implements OnInit {
     _: {};
     idProyecto: string;
+    proyecto: Proyecto;
 
     constructor(private _labelsService: LabelsService, private _proyectoService: ProyectoService,
                 private router: Router,private route: ActivatedRoute, private _notif: NotificationsService) {
@@ -20,26 +22,29 @@ export class ProyectoEditarComponent implements OnInit {
         this.idProyecto = route.snapshot.params["id"];
 
     }
-    private getProyectoForId(id : string){
+    private getProyectoForId(idProyecto : string){
+        this._proyectoService
+            .getProyecto(this.idProyecto)
+            .subscribe(
+                product => this.proyecto = product,
+                error => console.log(<any>error));
 
+        console.info(this.proyecto)
     }
     ngOnInit() : any {
+        this.proyecto = <Proyecto>{'id':Number(this.idProyecto)};
         this.getProyectoForId(this.idProyecto);
     }
 
     guardar(form: NgForm): void {
-        form.value["fecha_creacion"] = new Date();
-        form.value["estado"] = "Nuevo";
-        form.value["fecha_inicio"] = "";
-        form.value["descripcion"] = btoa(form.value["descripcion"].trim());
-        this._proyectoService.nuevoProyecto(form.value).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
+        this.proyecto.descripcion =  this.proyecto.descripcion.trim();
 
+        this._proyectoService.setProyecto(this.proyecto).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
     }
 
     okNuevo(): void {
         this._notif.success("Ok", "Proyecto Creado");
         this.router.navigate(["/proyecto"]);
-
     }
 
     errorNuevo(error): void {

@@ -56,6 +56,11 @@ export class ProyectoService {
             .map((response: Response) => <ExperimentoProyecto>response.json());
     }
 
+    setProyecto(proyecto: Proyecto){
+        return this._http.put(this.url_servicios_proyectos, proyecto,this.buildHeaders())
+            .map((response: Response) => <Proyecto>response.json())
+    }
+
     private buildHeaders() {
         const headers = new Headers({"Content-Type": "application/json"});
         const options = new RequestOptions(headers);
