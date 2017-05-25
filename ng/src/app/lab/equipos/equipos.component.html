@@ -27,21 +27,13 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label class="control-label" for="search">Nombre del equipo</label>
-                            <input (keyup)="getEquipos()" id="search" [(ngModel)]="search" type="text" value=""
+                            <input (keyup)="getHerramientas()" id="search" [(ngModel)]="search" type="text" value=""
                                    placeholder="Buscar por nombre del equipo" class="form-control">
                         </div>
                     </div>
 
 
-                    <!--div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label" for="order">Status</label>
-                                    <select (ngModelChange)="getEquipos()" [(ngModel)]="selectedOrder" name="order" id="order" class="form-control">
-                                        <option value="nombre" selected="">nombre asc</option>
-                                        <option value="-nombre">nombre des</option>
-                                    </select>
-                                </div>
-                            </div-->
+
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
@@ -50,15 +42,13 @@
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <tbody>
-                                <tr *ngFor="let item of list">
-
-                                    <td>{{item.nombre}}</td>
-                                    <td><a href="#"><i class="fa fa-eye text-navy"></i></a></td>
+                                <tr *ngFor="let herramienta of herramientas">
                                     <td>
-
-                                        <input checked="checked" (ngModelChange)="getDateCalendar(item.id)"
-                                               type="checkbox" [(ngModel)]="item.selected"/>
+                                        <small >{{ herramienta.nombre }}</small>
                                     </td>
+                                    <td></td>
+
+                                    <td><i class="fa fa fa-calendar"></i></td>
                                 </tr>
 
                                 </tbody>
