@@ -27,7 +27,8 @@
                             <dl class="dl-horizontal" *ngIf="protocoloLeft">
                                 <dt class="m-b-xs">{{_['cmp_version']}}</dt>
                                 <dd class="m-b-xs">
-                                    <select name="select-ver-left" [(ngModel)]="versionLeft">
+                                    <select name="select-ver-left" [(ngModel)]="versionLeft"
+                                            (change)="changeVersion()">
                                         <option *ngFor="let version of versiones" [value]="version">
                                             {{version}}
                                         </option>
@@ -36,7 +37,8 @@
                                 <dt class="m-b-xs">{{_['cmp_identificador']}}</dt>
                                 <dd class="m-b-xs">{{protocoloLeft.identificador}}</dd>
                                 <dt class="m-b-xs">{{_['cmp_ult_mod']}}</dt>
-                                <dd class="m-b-xs">{{protocoloLeft.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}</dd>
+                                <dd class="m-b-xs">{{protocoloLeft.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+                                </dd>
                                 <dt class="m-b-xs">{{_['cmp_nombre']}}:</dt>
                                 <dd class="m-b-xs">{{protocoloLeft.nombre}}</dd>
 
@@ -46,7 +48,8 @@
                             <dl class="dl-horizontal" *ngIf="protocoloRight">
                                 <dt class="m-b-xs">{{_['cmp_version']}}</dt>
                                 <dd class="m-b-xs">
-                                    <select name="select-ver-right" [(ngModel)]="versionRight">
+                                    <select name="select-ver-right" [(ngModel)]="versionRight"
+                                            (change)="changeVersion()">
                                         <option *ngFor="let version of versiones" [value]="version">
                                             {{version}}
                                         </option>
@@ -55,7 +58,8 @@
                                 <dt class="m-b-xs">{{_['cmp_identificador']}}</dt>
                                 <dd class="m-b-xs">{{protocoloRight.identificador}}</dd>
                                 <dt class="m-b-xs">{{_['cmp_ult_mod']}}</dt>
-                                <dd class="m-b-xs">{{protocoloRight.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}</dd>
+                                <dd class="m-b-xs">{{protocoloRight.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+                                </dd>
 
                                 <dt class="m-b-xs">{{_['cmp_nombre']}}:</dt>
                                 <dd *ngIf="!verDiffs.info_basica" class="m-b-xs">{{protocoloRight.nombre}}</dd>

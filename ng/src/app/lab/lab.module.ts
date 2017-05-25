@@ -77,7 +77,10 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
             {path: "protocolo/:id/insumo", component: ProtocoloAsociarInsumoComponent},
             {path: "protocolo/:id_protocolo/herramienta", component: ProtocoloAsociarHerramientaComponent},
             {path: "protocolo/:id_protocolo/insumo/:id_insumo", component: ProtocoloAsociarInsumoComponent},
-            {path: "protocolo/:id_protocolo/herramienta/:id_herramienta", component: ProtocoloAsociarHerramientaComponent},
+            {
+                path: "protocolo/:id_protocolo/herramienta/:id_herramienta",
+                component: ProtocoloAsociarHerramientaComponent
+            },
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
@@ -178,10 +181,13 @@ export class LabModule {
     constructor(private breadcrumbService: BreadcrumbService) {
         breadcrumbService.addFriendlyNameForRoute("/proyecto", "Proyectos");
         breadcrumbService.addFriendlyNameForRoute("/proyecto/nuevo", "Nuevo Proyecto");
-        breadcrumbService.addFriendlyNameForRouteRegex("/proyecto/[0-9]", "Detalle de Proyecto");
+        breadcrumbService.addFriendlyNameForRouteRegex("/proyecto/[0-9]+", "Detalle de Proyecto");
         breadcrumbService.addFriendlyNameForRoute("/protocolo", "Protocolos");
         breadcrumbService.addFriendlyNameForRoute("/protocolo/nuevo", "Nuevo Protocolo");
-        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]*$", "Detalle de Protocolo");
-        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]*/version$", "Versiones");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]+$", "Detalle de Protocolo");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]+/version$", "Versiones");
+        breadcrumbService.hideRouteRegex("^/protocolo/[0-9]+/version/[0-9]+/[0-9]+$");
+        breadcrumbService.hideRouteRegex("^/protocolo/[0-9]+/version/[0-9]+$");
+
     }
 }

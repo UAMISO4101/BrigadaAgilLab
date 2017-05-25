@@ -14,6 +14,7 @@ declare var jQuery: any;
 })
 export class ProtocoloComparaVersionComponent implements OnInit {
 
+
     protocolo: Protocolo;
 
     versiones: Array<number> = [];
@@ -33,15 +34,19 @@ export class ProtocoloComparaVersionComponent implements OnInit {
     };
 
 
-    constructor(private _el: ElementRef, route: ActivatedRoute, _labelsService: LabelsService,
-                private _protocoloService: ProtocoloService, private _notif: NotificationsService) {
+    constructor(private _el: ElementRef, private route: ActivatedRoute, _labelsService: LabelsService,
+                private router: Router, private _protocoloService: ProtocoloService,
+                private _notif: NotificationsService) {
         this._ = _labelsService.getLabels();
-        this.idProtocolo = route.snapshot.params["id"];
-        this.versionLeft = route.snapshot.params["left"];
-        this.versionRight = route.snapshot.params["right"];
+        route.params.subscribe(val => this.ngOnInit());
+
     }
 
     ngOnInit() {
+        console.log("calling init");
+        this.idProtocolo = this.route.snapshot.params["id"];
+        this.versionLeft = this.route.snapshot.params["left"];
+        this.versionRight = this.route.snapshot.params["right"];
         this._protocoloService
             .numerosVersiones(this.idProtocolo)
             .subscribe(
@@ -104,5 +109,9 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             buffer += etapa.pasos ? s + etapa.pasos.join(s) : "";
         });
         return buffer.substring(2);
+    }
+
+    changeVersion() {
+        this.router.navigate(["/protocolo", this.idProtocolo, "version", this.versionLeft, this.versionRight]);
     }
 }
