@@ -26,8 +26,8 @@ export class InsumoNuevoComponent implements OnInit {
     }
 
     okNuevo(): void {
-        this._notif.success("Ok", "Proyecto Creado");
-        this.router.navigate(["/proyecto"]);
+        this._notif.success("Ok", "Insumo Creado");
+        this.router.navigate(["/insumo"]);
 
     }
 
