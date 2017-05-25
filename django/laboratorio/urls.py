@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 
-from laboratorio.views import ProyectoExperimentoView, ExperimentoView, ProtocoloView, \
-    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView
-
+from laboratorio.views import ProyectoExperimentoView,ProtocoloHerramientaView,ProtocoloInsumoView, ExperimentoView, ProtocoloView, \
+    ProyectoView, ExperimentoProtocoloView, ProtocolosExperimentosProyectoView, UsuarioView, InsumoView, HerramientaView, \
+    ProtocoloVersionView
 
 urlpatterns = [
     url(r'^proyecto/$', ProyectoView.as_view()),
@@ -48,14 +48,29 @@ urlpatterns = [
     url(r'^experimento/(?P<id_experimento>\d+)/protocolo/(?P<id_protocolo>\d+)$', ExperimentoProtocoloView.as_view()),
 
     # Listar todos los protocolos
-    url(r'^protocolo/$', ProtocoloView.as_view()),
+    url(r'^protocolo/$', ProtocoloVersionView.as_view()),
     #Buscar protocolo que coincida por el id
     url(r'^protocolo/(?P<id>\d+)/$', ProtocoloView().get_por_id),
+    url(r'^protocolo/(?P<id>\d+)/version/$', ProtocoloVersionView().ultimas_dos_versiones),
+    url(r'^protocolo/(?P<id>\d+)/versiones/$', ProtocoloVersionView().listar_versiones),
+    url(r'^protocolo/(?P<id>\d+)/version/(?P<v1>\d+)/(?P<v2>\d+)/$', ProtocoloVersionView().pareja_versiones),
     #Buscar protocolos que contengan en el nombre en una determinado proyecto
     url(r'^protocolo/filtro/(?P<id_experimento>\d+)/(?P<nombre>.+)/$', ProtocoloView().buscar_en_experimento_por_nombre),
     #Buscar protocolos que contengan en nombre
     url(r'^protocolo/filtro/(?P<nombre>.+)/$', ProtocoloView().get_por_nombre),
-    url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_por_name, name='proyecto_name'),
+    url(r'^proyecto/autocomplete/(?P<nombre>.+)/$', ProyectoView().get_autocomplete, name='proyecto_name'),
+    #listar insumos por protocolo
+    url(r'^protocolo/(?P<protocolo_id>\d+)/insumo/$', ProtocoloInsumoView.as_view()),
+    url(r'^protocolo/(?P<protocolo_id>\d+)/insumo/(?P<insumo_id>\d+)/$', ProtocoloInsumoView.as_view()),
+    url(r'^protocolo/(?P<protocolo_id>\d+)/herramienta/$', ProtocoloHerramientaView.as_view()),
+    url(r'^protocolo/(?P<protocolo_id>\d+)/herramienta/(?P<herramienta_id>\d+)/$', ProtocoloHerramientaView.as_view()),
+
+
+    # Listar todos los protocolos
+    url(r'^insumo/$', InsumoView.as_view()),
+
+    url(r'^herramienta/$', HerramientaView.as_view()),
+    url(r'^herramienta/(?P<id>\d+)/$', HerramientaView().get_por_id),
 
     url(r'^usuario/$', UsuarioView().get),
 ]

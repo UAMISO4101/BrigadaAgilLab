@@ -1,6 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import { Notificacion } from "./notificacion";
+import {Injectable} from "@angular/core";
+import {Notificacion} from "./notificacion";
 
 @Injectable()
 export class NotificacionesService {
@@ -31,6 +30,6 @@ export class NotificacionesService {
                 },
                 timestamp: Date.now()
             }
-        ]
+        ];
     }
 }

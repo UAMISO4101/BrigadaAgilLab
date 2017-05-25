@@ -5,18 +5,18 @@
     <div class="col-sm-12">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>Nombre </th>
-                    <th>Objetivo </th>
-                    <th>Fecha</th>
-                </tr>
+            <tr>
+                <th>Nombre</th>
+                <th>Objetivo</th>
+                <th>Fecha</th>
+            </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>{{ experimento[0].experimento }}</td>
-                    <td>{{ experimento[0].objetivo }}</td>
-                    <td>{{ experimento[0].fecha }}</td>
-                </tr>
+            <tbody *ngIf="experimento">
+            <tr>
+                <td>{{ experimento.experimento }}</td>
+                <td>{{ experimento.objetivo }}</td>
+                <td>{{ experimento.fecha }}</td>
+            </tr>
             </tbody>
         </table>
     </div>

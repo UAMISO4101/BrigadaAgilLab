@@ -1,0 +1,31 @@
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>Herramientas</h5>
+        <ui-ibox-tools [collapse]='true' [help]="true">
+            <a  [routerLink]="['herramienta']" class="btn btn-sm btn-primary m-t-n-xs">
+                            Agregar</a>
+        </ui-ibox-tools>
+    </div>
+    <div class="ibox-content">
+
+            <div class="row" >
+                <div class="col-sm-12">
+                <table class="table table-condensed" *ngIf="herramientas">
+                    <thead >
+                    <th>nombre</th>
+                    </thead>
+                    <tbody  >
+                    <tr *ngFor="let item of herramientas">
+                        <td>
+                            {{item.herramienta.nombre}}
+
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                </div>
+            </div>
+
+    </div>
+</div>

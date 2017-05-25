@@ -1,11 +1,10 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UsuarioService} from "../service/usuario.service";
 import {Usuario} from "../service/usuario";
-import {OnInit} from "@angular/core";
 
 @Component({
     selector: "experimento-usuario",
-    templateUrl: 'experimento.usuario.component.html',
+    templateUrl: "experimento.usuario.component.html",
     providers: [UsuarioService]
 })
 export class UsuarioListComponent implements OnInit {

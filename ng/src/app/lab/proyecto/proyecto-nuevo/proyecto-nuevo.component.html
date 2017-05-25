@@ -31,7 +31,9 @@
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a [routerLink]="['/proyecto']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>
-                                <button class="btn btn-primary" type="submit" [disabled]="!nuevoProyecto.form.valid">{{_['acc_guardar']}}</button>
+                                <button class="btn btn-primary" type="submit" [disabled]="!nuevoProyecto.form.valid">
+                                    {{_['acc_guardar']}}
+                                </button>
                             </div>
                         </div>
                     </form>

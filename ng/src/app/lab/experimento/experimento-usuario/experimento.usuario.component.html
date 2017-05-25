@@ -6,11 +6,14 @@
 
 <table class="table table-striped">
     <tbody>
-        <tr *ngFor="let usuario of usuarios">
-            <td><li>{{ usuario.fields.nombre }}</li></td>
-            <button [routerLink]="['/proyecto',idProyecto]" target="_self" class="btn btn-primary btn-md" (click)="getProyecto(experimento)">
+    <tr *ngFor="let usuario of usuarios">
+        <td>
+            <li>{{ usuario.fields.nombre }}</li>
+        </td>
+        <button [routerLink]="['/proyecto',idProyecto]" target="_self" class="btn btn-primary btn-md"
+                (click)="getProyecto(experimento)">
             Agregar
-            </button>
-        </tr>
+        </button>
+    </tr>
     </tbody>
 </table>

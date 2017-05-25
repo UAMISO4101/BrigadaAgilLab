@@ -1,0 +1,99 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2 *ngIf="protocolo">{{_['tit_protocolo']}}: {{protocolo.nombre}}</h2>
+        <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{_['tit_info_basica']}}</h5>
+                    <ui-ibox-tools [collapse]='true'>
+                        <div class="abc-checkbox abc-checkbox-success m-r-xs inline">
+                            <input id="check-info-basica" type="checkbox"
+                                   (change)="verDiffs.info_basica = !verDiffs.info_basica">
+                            <label for="check-info-basica">
+                                {{_['acc_ver_cambios']}}
+                            </label>
+                        </div>
+                    </ui-ibox-tools>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal" *ngIf="protocoloLeft">
+                                <dt class="m-b-xs">{{_['cmp_version']}}</dt>
+                                <dd class="m-b-xs">
+                                    <select name="select-ver-left" [(ngModel)]="versionLeft"
+                                            (change)="changeVersion()">
+                                        <option *ngFor="let version of versiones" [value]="version">
+                                            {{version}}
+                                        </option>
+                                    </select>
+                                </dd>
+                                <dt class="m-b-xs">{{_['cmp_identificador']}}</dt>
+                                <dd class="m-b-xs">{{protocoloLeft.identificador}}</dd>
+                                <dt class="m-b-xs">{{_['cmp_ult_mod']}}</dt>
+                                <dd class="m-b-xs">{{protocoloLeft.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+                                </dd>
+                                <dt class="m-b-xs">{{_['cmp_nombre']}}:</dt>
+                                <dd class="m-b-xs">{{protocoloLeft.nombre}}</dd>
+
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="dl-horizontal" *ngIf="protocoloRight">
+                                <dt class="m-b-xs">{{_['cmp_version']}}</dt>
+                                <dd class="m-b-xs">
+                                    <select name="select-ver-right" [(ngModel)]="versionRight"
+                                            (change)="changeVersion()">
+                                        <option *ngFor="let version of versiones" [value]="version">
+                                            {{version}}
+                                        </option>
+                                    </select>
+                                </dd>
+                                <dt class="m-b-xs">{{_['cmp_identificador']}}</dt>
+                                <dd class="m-b-xs">{{protocoloRight.identificador}}</dd>
+                                <dt class="m-b-xs">{{_['cmp_ult_mod']}}</dt>
+                                <dd class="m-b-xs">{{protocoloRight.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}
+                                </dd>
+
+                                <dt class="m-b-xs">{{_['cmp_nombre']}}:</dt>
+                                <dd *ngIf="!verDiffs.info_basica" class="m-b-xs">{{protocoloRight.nombre}}</dd>
+                                <dd *ngIf="verDiffs.info_basica" class="m-b-xs"
+                                    semanticDiff [left]="protocoloLeft.nombre" [right]="protocoloRight.nombre"></dd>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox float-e-margins" *ngIf="verDiffs">
+                <div class="ibox-title">
+                    <h5>Proceso</h5>
+                    <ui-ibox-tools [collapse]='true'>
+                        <div class="abc-checkbox abc-checkbox-success m-r-xs inline">
+                            <input id="check-proceso" type="checkbox" (change)="verDiffs.proceso = !verDiffs.proceso">
+                            <label for="check-proceso">
+                                {{_['acc_ver_cambios']}}
+                            </label>
+                        </div>
+                    </ui-ibox-tools>
+                </div>
+                <div class="ibox-content">
+                    <div class="row diff-wrapper" *ngIf="initVersiones">
+                        <div class="col-md-6 format-text">{{protocoloLeft.textoProceso}}</div>
+                        <div *ngIf="!verDiffs.proceso" class="col-md-6 format-text">{{protocoloRight.textoProceso}}
+                        </div>
+                        <div *ngIf="verDiffs.proceso" class="col-md-6 format-text"
+                             semanticDiff [left]="protocoloLeft.textoProceso"
+                             [right]="protocoloRight.textoProceso"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

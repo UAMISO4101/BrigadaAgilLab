@@ -1,0 +1,27 @@
+<div class="ibox-content">
+    <div class="form-group">
+        <input (keyup)="keyup()" placeholder="Filtrar" class="input-sm form-control" type="text" [(ngModel)]="nombre"/>
+    </div>
+    <div class="table-responsive ">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{_['cmp_nombre']}}</th>
+                <th>{{_['cmp_ult_mod']}}</th>
+                <th>{{_['cmp_version']}}</th>
+                <th>{{_['tit_acciones']}}</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let protocolo of protocolos">
+                <td>{{ protocolo.nombre }}</td>
+                <td>{{ protocolo.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                <td>{{ protocolo.version }}</td>
+                <td><a [routerLink]="['/protocolo', protocolo.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

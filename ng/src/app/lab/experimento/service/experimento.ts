@@ -1,5 +1,3 @@
-import {Usuario} from "./usuario"
-
 export interface Experimento {
     id: string;
     experimento: string;
@@ -8,4 +6,5 @@ export interface Experimento {
     descripcion: string;
     insumos: string;
     asistentes: string;
+    version: string;
 }

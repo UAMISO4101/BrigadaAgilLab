@@ -4,13 +4,12 @@ import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
 import {ExperimentoService} from "../../experimento/service/experimento.service";
 import {LabelsService} from "../../labels.service";
-import {Experimento} from "../../experimento/service/experimento";
 import {ExperimentoProyecto} from "../service/proyecto-experimento";
 import {Protocolo} from "../../protocolo/service/protocolo";
 
 
 @Component({
-    templateUrl: 'proyecto.detalle.component.html',
+    templateUrl: "proyecto.detalle.component.html",
     providers: [ProyectoService, LabelsService]
 })
 export class ProyectoDetalleComponent implements OnInit {
@@ -26,7 +25,7 @@ export class ProyectoDetalleComponent implements OnInit {
 
     constructor(route: ActivatedRoute, private _proyectoService: ProyectoService, private _experimentoService: ExperimentoService,
                 private _labelsService: LabelsService) {
-        this.idProyecto = route.snapshot.params['id'];
+        this.idProyecto = route.snapshot.params["id"];
         this._ = _labelsService.getLabels();
     }
 

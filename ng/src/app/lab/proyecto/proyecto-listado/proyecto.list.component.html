@@ -1,6 +1,7 @@
 <div class="ibox-content">
     <div class="form-group">
-        <input (keyup)="filtrar()" [(ngModel)]="filtro" placeholder="Filtrar" class="input-sm form-control" type="text"/>
+        <input (keyup)="filtrar()" [(ngModel)]="filtro" placeholder="Filtrar" class="input-sm form-control"
+               type="text"/>
     </div>
     <div class="table-responsive ">
         <table class="table table-striped">
@@ -10,21 +11,26 @@
                 <th>Actualizado en</th>
                 <th>Completado</th>
                 <th>Acciones</th>
+                <th>Editar</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let proyecto of proyectos" >
-                <td><small>{{ proyecto.nombre }}</small></td>
+            <tr *ngFor="let proyecto of proyectos">
+                <td>
+                    <small>{{ proyecto.nombre }}</small>
+                </td>
                 <td>{{ proyecto.fecha_creacion | date: 'dd/MM/yyyy'}}</td>
 
                 <td><span class="pie" style="display: none;">0.52/1.561</span>
                     <svg class="peity" height="16" width="16">
                         <path d="M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z" fill="#1ab394"></path>
-                        <path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path>
+                        <path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z"
+                              fill="#d7d7d7"></path>
                     </svg>
                 </td>
                 <td><a [routerLink]="['/proyecto', proyecto.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
+                <td><a [routerLink]="['/proyecto',proyecto.id,'editar']"><i class="fa fa-sign-in text-navy"></i></a></td>
             </tr>
 
             </tbody>

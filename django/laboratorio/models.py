@@ -34,13 +34,17 @@ class Insumo(models.Model):
         ("Lt", "Litro"),
     )
     unidad = models.CharField(max_length=2, choices=Unidad_Medida)
-
-    def __unicode__(self):
-        return self.nombre
+    contenido = models.TextField()
 
 
 class Contenedor(models.Model):
     name = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.nombre
+
+class Herramienta(models.Model):
+    contenido = models.CharField(max_length=50)
 
     def __unicode__(self):
         return self.nombre
@@ -138,3 +142,13 @@ class ExperimentoAsistente(models.Model):
 
     class Meta:
         unique_together = ('experimento', 'asistente')
+
+class ProtocoloInsumo(models.Model):
+    insumo = models.ForeignKey(Insumo)
+    protocolo = models.ForeignKey(Protocolo)
+    contenido = models.TextField()
+
+class ProtocoloHerramienta(models.Model):
+    herramienta = models.ForeignKey(Herramienta)
+    protocolo = models.ForeignKey(Protocolo)
+    contenido = models.TextField()

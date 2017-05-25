@@ -1,4 +1,8 @@
 <div class="ibox-tools">
+    <ng-content></ng-content>
+    <a class="question-link" *ngIf='help'>
+        <i class="fa fa-question"></i>
+    </a>
     <a class="collapse-link" *ngIf='collapse' (click)="clickCollapse($event)">
         <i class="fa fa-chevron-up"></i>
     </a>

@@ -5,9 +5,9 @@ import {Component} from "@angular/core";
 
 
 @Component({
-    selector: 'lab-panel-jefe',
+    selector: "lab-panel-jefe",
     moduleId: module.id,
-    templateUrl: 'panel-control-jefe.component.html'
+    templateUrl: "panel-control-jefe.component.html"
 })
 export class PanelControlComponentJefe {
 

@@ -1,0 +1,39 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>{{_["tit_herramientas"]}}</h2>
+        <breadcrumb prefix="{{_['tit_inicio']}}"></breadcrumb>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{_["tit_nueva_herramienta"]}}</h5>
+                </div>
+                <div class="ibox-content">
+                    <form #nuevaHerramienta="ngForm" (ngSubmit)="guardar(nuevaHerramienta)" class="form-horizontal">
+                        <lab-form-field [label]="_['cmp_nombre']">
+                            <input required type="text" class="form-control panel-warning" name="nombre" ngModel>
+                        </lab-form-field>
+                        <lab-form-field [label]="_['cmp_ubicacion']">
+                            <input required type="text" class="form-control panel-warning" name="ubicacion" ngModel>
+                        </lab-form-field>
+                        <lab-form-field [label]="_['cmp_descripcion']">
+                            <input required type="text" class="form-control panel-warning" name="descripcion" ngModel>
+                        </lab-form-field>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <a [routerLink]="['/herramienta']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>
+                                <button class="btn btn-primary" type="submit" [disabled]="!nuevaHerramienta.form.valid">
+                                    {{_['acc_guardar']}}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

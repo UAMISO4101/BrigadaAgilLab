@@ -1,29 +1,34 @@
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            <input (keyup)="filtrar()" [(ngModel)]="filtro" placeholder="Filtrar" class="input-sm form-control" type="text"/>
+<div class="ibox-content">
+    <div class="ibox-title">
+        <h5>{{_["tit_experimentos"]}}</h5>
+        <div class="ibox-tools">
+            <a [routerLink]="['/experimento/nuevo']" class="btn btn-sm btn-primary pull-right m-t-n-xs">
+                {{_["tit_nuevo_experimento"]}}</a>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12" style="overflow-y: scroll; max-height:400px;">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Experimento</th>
-                <th>Versión</th>
-                <th>Fecha</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tr *ngFor="let item of experimentos">
-                <td>{{ item.experimento }}</td>
-              <td>{{ item.objetivo }}</td>
-                <td>{{ item.fecha }}</td>
-              <td><a [routerLink]="['/experimento', item.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
-            </tr>
-
-        </table>
+    <div class="form-group">
+        <input (keyup)="filtrar()" [(ngModel)]="filtro" placeholder="Filtrar" class="input-sm form-control"
+               type="text"/>
     </div>
+    <div class="row">
+        <div class="col-sm-12" style="overflow-y: scroll; max-height:400px;">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Experimento</th>
+                    <th>Versión</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tr *ngFor="let item of experimentos">
+                    <td>{{ item.experimento }}</td>
+                    <td>{{ item.version }}</td>
+                    <td>{{ item.fecha }}</td>
+                    <td><a [routerLink]="[ item.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
+                </tr>
 
+            </table>
+        </div>
+    </div>
 </div>

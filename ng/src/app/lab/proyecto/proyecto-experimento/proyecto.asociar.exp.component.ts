@@ -1,14 +1,13 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ProyectoService} from "../service/proyecto.service";
 import {Proyecto} from "../service/proyecto";
-import {OnInit} from "@angular/core";
 import {Experimento} from "../../experimento/service/experimento";
 import {ExperimentoService} from "../../experimento/service/experimento.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: "proyecto-experimento",
-    templateUrl: 'proyecto.asociar.exp.component.html',
+    templateUrl: "proyecto.asociar.exp.component.html",
     providers: [ProyectoService, ExperimentoService]
 })
 export class ProyectoAsociarExpComponent implements OnInit {
@@ -22,7 +21,7 @@ export class ProyectoAsociarExpComponent implements OnInit {
     constructor(private _experimentoService: ExperimentoService,
                 private _proyectoService: ProyectoService,
                 route: ActivatedRoute) {
-        this.idProyecto = route.snapshot.params['id'];
+        this.idProyecto = route.snapshot.params["id"];
     }
 
     getExperimentos() {
