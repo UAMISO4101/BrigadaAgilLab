@@ -68,7 +68,7 @@ class ProtocoloVersionView(ContenidoJsonBaseView):
 
         return HttpResponse('[' + versionada + ',' + reciente + ']', content_type="application/json")
 
-    def versiones(self, request, id=None, v1=None, v2=None):
+    def pareja_versiones(self, request, id=None, v1=None, v2=None):
         self._validar_parametros_versiones(id, v1, v2)
         res_v1 = VersionProtocolo.objects.filter(protocolo_id=id, contenido__contains='"version": "' + v1 + '"')
         res_v2 = VersionProtocolo.objects.filter(protocolo_id=id, contenido__contains='"version": "' + v2 + '"')
@@ -83,6 +83,15 @@ class ProtocoloVersionView(ContenidoJsonBaseView):
             protocolo_v2 = res_v2.first().contenido
 
         return HttpResponse('[' + protocolo_v1 + ',' + protocolo_v2 + ']', content_type="application/json")
+
+    def listar_versiones(self, request, id=None):
+        todas_versiones = VersionProtocolo.objects.filter(protocolo_id=id)
+        versiones = []
+        for v in todas_versiones:
+            mapa_json = json.loads(v.contenido)
+            versiones.append(mapa_json["version"])
+
+        return HttpResponse(json.dumps(versiones), content_type="application/json")
 
     @staticmethod
     def _validar_parametros_versiones(id, v1, v2):
