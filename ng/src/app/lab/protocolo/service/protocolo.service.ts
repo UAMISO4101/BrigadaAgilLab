@@ -29,7 +29,7 @@ export class ProtocoloService {
         form["fecha_modificacion"] = date;
         form["version"] = "1";
         form["proceso"] = Utils.serializar(Utils.obj2String(form["proceso"]));
-        form["descripcion"] = Utils.serializar(Utils.obj2String(form["descripcion"]));
+        form["descripcion"] = Utils.serializar(form["descripcion"]);
         return this._http.post(this.url_servicios_protocolo, form, this.buildHeaders())
             .map((response: Response) => <Protocolo[]>response.json());
     }
