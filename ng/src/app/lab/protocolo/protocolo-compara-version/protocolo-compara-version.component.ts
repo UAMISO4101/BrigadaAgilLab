@@ -14,8 +14,10 @@ declare var jQuery: any;
 })
 export class ProtocoloComparaVersionComponent implements OnInit {
 
+
     protocolo: Protocolo;
 
+    versiones: Array<number> = [];
     idProtocolo: string;
     versionLeft: string;
     versionRight: string;
@@ -32,35 +34,49 @@ export class ProtocoloComparaVersionComponent implements OnInit {
     };
 
 
-    constructor(private _el: ElementRef, route: ActivatedRoute, _labelsService: LabelsService,
-                private _protocoloService: ProtocoloService, private _notif: NotificationsService) {
+    constructor(private _el: ElementRef, private route: ActivatedRoute, _labelsService: LabelsService,
+                private router: Router, private _protocoloService: ProtocoloService,
+                private _notif: NotificationsService) {
         this._ = _labelsService.getLabels();
-        this.idProtocolo = route.snapshot.params["id"];
-        this.versionLeft = route.snapshot.params["left"];
-        this.versionRight = route.snapshot.params["right"];
+        route.params.subscribe(val => this.ngOnInit());
+
     }
 
     ngOnInit() {
+        console.log("calling init");
+        this.idProtocolo = this.route.snapshot.params["id"];
+        this.versionLeft = this.route.snapshot.params["left"];
+        this.versionRight = this.route.snapshot.params["right"];
+        this._protocoloService
+            .numerosVersiones(this.idProtocolo)
+            .subscribe(
+                value => this.versiones = value,
+                error => this.restError(error));
+
         this._protocoloService
             .getProtocolo(this.idProtocolo)
             .subscribe(
                 product => this.protocolo = product,
-                error => this._notif.error("Error de Comunicación", error._body));
+                error => this.restError(error));
 
         if (this.versionLeft && this.versionRight) {
             this._protocoloService
                 .versiones(this.idProtocolo, this.versionLeft, this.versionRight)
                 .subscribe(
                     product => this.cargarVersiones(product),
-                    error => this._notif.error("Error de Comunicación", error._body));
+                    error => this.restError(error));
         } else {
             this._protocoloService
                 .ultimasVersiones(this.idProtocolo)
                 .subscribe(
                     product => this.cargarVersiones(product),
-                    error => this._notif.error("Error de Comunicación", error._body));
+                    error => this.restError(error));
         }
 
+    }
+
+    private restError(error) {
+        return this._notif.error("Error de Comunicación", error._body);
     }
 
     private cargarVersiones(versiones: Protocolo[]) {
@@ -68,6 +84,8 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             this.protocoloLeft = versiones[0];
             this.protocoloLeft.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[0].proceso));
             this.protocoloLeft["textoProceso"] = this.aTextoProceso(this.protocoloLeft.proceso);
+            this.versionLeft = this.protocoloLeft.version;
+
         } else {
             this.protocoloLeft = undefined;
         }
@@ -76,6 +94,7 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             this.protocoloRight = versiones[1];
             this.protocoloRight.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[1].proceso));
             this.protocoloRight["textoProceso"] = this.aTextoProceso(this.protocoloRight.proceso);
+            this.versionRight = this.protocoloRight.version;
         } else {
             this.protocoloRight = undefined;
         }
@@ -90,5 +109,9 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             buffer += etapa.pasos ? s + etapa.pasos.join(s) : "";
         });
         return buffer.substring(2);
+    }
+
+    changeVersion() {
+        this.router.navigate(["/protocolo", this.idProtocolo, "version", this.versionLeft, this.versionRight]);
     }
 }

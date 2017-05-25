@@ -52,7 +52,8 @@ urlpatterns = [
     #Buscar protocolo que coincida por el id
     url(r'^protocolo/(?P<id>\d+)/$', ProtocoloView().get_por_id),
     url(r'^protocolo/(?P<id>\d+)/version/$', ProtocoloVersionView().ultimas_dos_versiones),
-    url(r'^protocolo/(?P<id>\d+)/version/(?P<v1>\d+)/(?P<v2>\d+)$', ProtocoloVersionView().versiones),
+    url(r'^protocolo/(?P<id>\d+)/versiones/$', ProtocoloVersionView().listar_versiones),
+    url(r'^protocolo/(?P<id>\d+)/version/(?P<v1>\d+)/(?P<v2>\d+)/$', ProtocoloVersionView().pareja_versiones),
     #Buscar protocolos que contengan en el nombre en una determinado proyecto
     url(r'^protocolo/filtro/(?P<id_experimento>\d+)/(?P<nombre>.+)/$', ProtocoloView().buscar_en_experimento_por_nombre),
     #Buscar protocolos que contengan en nombre

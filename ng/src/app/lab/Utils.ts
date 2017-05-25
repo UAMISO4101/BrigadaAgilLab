@@ -15,7 +15,8 @@ export default class Utils {
      * @returns {string} base 64 representacion
      */
     static serializar(val: string) {
-        return btoa(unescape(encodeURIComponent(val)));
+        // return btoa(unescape(encodeURIComponent(val)));
+        return unescape(encodeURIComponent(val));
     }
 
     /**
@@ -23,7 +24,8 @@ export default class Utils {
      * @returns {string} string plano
      */
     static deserializar(b64: string) {
-        return decodeURIComponent(escape(atob(b64)));
+        // return decodeURIComponent(escape(atob(b64)));
+        return decodeURIComponent(escape(b64));
     }
 
     static obj2String(obj: any) {

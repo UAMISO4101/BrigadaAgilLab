@@ -3,7 +3,7 @@
         <h5>{{_['tit_proceso']}}</h5>
         <ui-ibox-tools [collapse]='true' [help]="true">
             <a *ngIf='editable' (click)="toogleEditor()">
-                <i class="fa fa-pencil"></i>
+                <i class="fa fa-pencil editar-proceso-protocolo"></i>
             </a>
         </ui-ibox-tools>
     </div>
@@ -24,8 +24,7 @@
                         <div class="panel-body">
                             <ol class="list-group" dnd-sortable-container [sortableData]="etapa.pasos">
                                 <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item format-text"
-                                    dnd-sortable [sortableIndex]="i" (onDragSuccess)="updateTexto()">{{i+1+". "+paso}}
-                                </li>
+                                    dnd-sortable [sortableIndex]="i" (onDragSuccess)="updateTexto()">{{i+1+". "+paso}}</li>
                             </ol>
                         </div>
                     </div>
