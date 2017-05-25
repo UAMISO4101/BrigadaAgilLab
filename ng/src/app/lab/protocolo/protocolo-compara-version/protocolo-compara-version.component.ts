@@ -16,6 +16,7 @@ export class ProtocoloComparaVersionComponent implements OnInit {
 
     protocolo: Protocolo;
 
+    versiones: Array<number> = [];
     idProtocolo: string;
     versionLeft: string;
     versionRight: string;
@@ -42,25 +43,35 @@ export class ProtocoloComparaVersionComponent implements OnInit {
 
     ngOnInit() {
         this._protocoloService
+            .numerosVersiones(this.idProtocolo)
+            .subscribe(
+                value => this.versiones = value,
+                error => this.restError(error));
+
+        this._protocoloService
             .getProtocolo(this.idProtocolo)
             .subscribe(
                 product => this.protocolo = product,
-                error => this._notif.error("Error de Comunicación", error._body));
+                error => this.restError(error));
 
         if (this.versionLeft && this.versionRight) {
             this._protocoloService
                 .versiones(this.idProtocolo, this.versionLeft, this.versionRight)
                 .subscribe(
                     product => this.cargarVersiones(product),
-                    error => this._notif.error("Error de Comunicación", error._body));
+                    error => this.restError(error));
         } else {
             this._protocoloService
                 .ultimasVersiones(this.idProtocolo)
                 .subscribe(
                     product => this.cargarVersiones(product),
-                    error => this._notif.error("Error de Comunicación", error._body));
+                    error => this.restError(error));
         }
 
+    }
+
+    private restError(error) {
+        return this._notif.error("Error de Comunicación", error._body);
     }
 
     private cargarVersiones(versiones: Protocolo[]) {
@@ -68,6 +79,8 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             this.protocoloLeft = versiones[0];
             this.protocoloLeft.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[0].proceso));
             this.protocoloLeft["textoProceso"] = this.aTextoProceso(this.protocoloLeft.proceso);
+            this.versionLeft = this.protocoloLeft.version;
+
         } else {
             this.protocoloLeft = undefined;
         }
@@ -76,6 +89,7 @@ export class ProtocoloComparaVersionComponent implements OnInit {
             this.protocoloRight = versiones[1];
             this.protocoloRight.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[1].proceso));
             this.protocoloRight["textoProceso"] = this.aTextoProceso(this.protocoloRight.proceso);
+            this.versionRight = this.protocoloRight.version;
         } else {
             this.protocoloRight = undefined;
         }

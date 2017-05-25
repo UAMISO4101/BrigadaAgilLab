@@ -9,7 +9,7 @@
     <div class="col-sm-12">
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox float-e-margins" *ngIf="editor">
-                <button type="button" class="btn btn-block btn-warning">Guardar Cambios</button>
+                <button type="button" class="btn btn-block btn-warning" (click)="guardar()">Guardar Cambios</button>
             </div>
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -34,7 +34,7 @@
                                 <dt class="m-b-xs">{{_['cmp_fecha_creacion']}}:</dt>
                                 <dd class="m-b-xs">{{protocolo.fecha_creacion | date: 'dd/MM/yyyy'}}</dd>
                                 <dt class="m-b-xs">{{_['cmp_ult_mod']}}:</dt>
-                                <dd class="m-b-xs">{{protocolo.fecha_modificacion | date: 'dd/MM/yyyy'}}</dd>
+                                <dd class="m-b-xs">{{protocolo.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}</dd>
                                 <dt class="m-b-xs">{{_['cmp_version']}}:</dt>
                                 <dd class="m-b-xs">{{protocolo.version}}</dd>
 

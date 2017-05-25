@@ -42,7 +42,6 @@ export class ProtocoloDetalleComponent implements OnInit {
 
     private initProtocolo(protocolo: Protocolo) {
         this.procesoInicial = "" + protocolo.proceso;
-        console.log(this.procesoInicial);
         protocolo.proceso = Utils.json2Obj(Utils.deserializar("" + protocolo.proceso));
         this.protocolo = protocolo;
     }
@@ -53,11 +52,25 @@ export class ProtocoloDetalleComponent implements OnInit {
 
     toogleEditor() {
         this.editor = !this.editor;
-        console.log("click editar");
         jQuery(".editar-proceso-protocolo").click();
     }
 
     editorExterno(editorProceso: boolean) {
         this.editor = editorProceso;
+    }
+
+    guardar() {
+        this.protocolo.proceso = this.pasosProceso;
+
+        this._protocoloService
+            .actualizar(this.protocolo)
+            .subscribe(
+                val => this.ok(),
+                error => this._notif.error("Error de Comunicación", error._body));
+    }
+
+    ok() {
+        this._notif.success("OK", "Protocolo Actualizado Correctamente");
+        this.getProtocolo();
     }
 }
