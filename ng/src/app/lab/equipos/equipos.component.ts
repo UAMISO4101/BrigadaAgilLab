@@ -1,6 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Equipo} from "./equipo";
 import {EquiposService} from "./equipos.service";
+import {HerramientaService} from "../herramientas/service/herramienta.service";
+import {Herramienta} from "../herramientas/service/herramienta";
+
 declare var jQuery: any;
 
 @Component({
@@ -10,21 +13,36 @@ declare var jQuery: any;
 })
 export class EquiposComponent implements OnInit {
     list: Equipo[] = [];
+    herramientas: Herramienta[] = [];
     search = "";
     checkEquipos: Object[] = [];
     selectedOrder = "-nombre";
     dateEquipos: Array<Object> = [];
 
 
-    constructor(private _equipoService: EquiposService) {
-
+    constructor(private _equipoService: EquiposService, private _herramientaService: HerramientaService) {
+        this.getHerramientas();
     }
 
     ngOnInit(): void {
         this.createCalendar();
         this.getEquipos();
-    }
 
+    }
+    getHerramientas(){
+        /*this._herramientaService.listarHerramientas()
+                .subscribe((herramientas: Herramienta[]) => this.herramientas = herramientas);*/
+
+        if (this.search !== "") {
+            this._herramientaService.listarHerramientasFiltroNombre(this.search)
+                .subscribe((herramientas: Herramienta[]) => this.herramientas = herramientas);
+            console.log("get listarHerramientasFiltroNombre");
+        } else {
+            this._herramientaService.listarHerramientas()
+                .subscribe((herramientas: Herramienta[]) => this.herramientas = herramientas);
+            console.log("get listarHerramientas");
+        }
+    }
     getEquipos() {
 
         this.list = this._equipoService.listEquipos(10, this.search, this.selectedOrder);
