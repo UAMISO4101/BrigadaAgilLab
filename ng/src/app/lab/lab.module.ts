@@ -53,6 +53,7 @@ import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.i
 import {ProtocoloHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.herramienta.component";
 import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.asociar.insumo.component";
 import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.asociar.herramienta.component";
+import { HerramientaControladorComponent } from './herramientas/herramienta-controlador/herramienta-controlador.component';
 
 
 @NgModule({
@@ -85,7 +86,7 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
             {path: "experimento", component: ExperimentoControladorComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
             {path: "usuario", component: UsuarioListComponent},
-            {path: "herramienta", component: HerramientaComponent},
+            {path: "herramienta", component: HerramientaControladorComponent},
             {path: "herramienta/nueva", component: HerramientaNuevaComponent},
             {path: "insumos", component: InsumosComponent}
 
@@ -132,7 +133,8 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
         ProtocoloInsumoComponent,
         ProtocoloHerramientaComponent,
         ProtocoloAsociarInsumoComponent,
-        ProtocoloAsociarHerramientaComponent
+        ProtocoloAsociarHerramientaComponent,
+        HerramientaControladorComponent
     ],
     exports: [
         NotificacionesComponent,
@@ -188,6 +190,7 @@ export class LabModule {
         breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]+/version$", "Versiones");
         breadcrumbService.hideRouteRegex("^/protocolo/[0-9]+/version/[0-9]+/[0-9]+$");
         breadcrumbService.hideRouteRegex("^/protocolo/[0-9]+/version/[0-9]+$");
+        breadcrumbService.addFriendlyNameForRoute("/herramienta", "Herramientas");
 
     }
 }
