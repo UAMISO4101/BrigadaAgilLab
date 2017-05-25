@@ -11,11 +11,11 @@
                 <th>Fecha</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody *ngIf="experimento">
             <tr>
-                <td>{{ experimento[0].experimento }}</td>
-                <td>{{ experimento[0].objetivo }}</td>
-                <td>{{ experimento[0].fecha }}</td>
+                <td>{{ experimento.experimento }}</td>
+                <td>{{ experimento.objetivo }}</td>
+                <td>{{ experimento.fecha }}</td>
             </tr>
             </tbody>
         </table>

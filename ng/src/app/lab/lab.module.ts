@@ -83,7 +83,7 @@ import { HerramientaControladorComponent } from './herramientas/herramienta-cont
                 component: ProtocoloAsociarHerramientaComponent
             },
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
-            {path: "experimento", component: ExperimentoControladorComponent},
+            {path: "experimento", component: ExperimentoListComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
             {path: "usuario", component: UsuarioListComponent},
             {path: "herramienta", component: HerramientaControladorComponent},
