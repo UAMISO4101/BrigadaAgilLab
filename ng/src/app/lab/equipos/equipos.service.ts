@@ -23,8 +23,8 @@ export class EquiposService {
 
         items = items.sort(this.dynamicSort(order));
         return items;
-
     }
+
 
     dynamicSort(property: string) {
         let sortOrder = 1;

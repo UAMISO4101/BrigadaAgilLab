@@ -17,6 +17,7 @@ import {ProtocoloBuscadorComponent} from "./protocolo/protocolo.buscador.compone
 import {ProtocoloResumenComponent} from "./protocolo/protocolo.resumen.component";
 import {HerramientaComponent} from "./herramientas/listar/herramienta.component";
 import {HerramientaNuevaComponent} from "./herramientas/nueva/herramienta-nueva.component";
+import {HerramientaAgendarComponent} from "./herramientas/agendar/herramienta.agendar.component";
 import {HerramientaService} from "./herramientas/service/herramienta.service";
 import {NotificacionesComponent} from "./notificaciones/notificaciones.component";
 import {NotificacionesService} from "./notificaciones/notificaciones.service";
@@ -88,6 +89,7 @@ import { HerramientaControladorComponent } from './herramientas/herramienta-cont
             {path: "usuario", component: UsuarioListComponent},
             {path: "herramienta", component: HerramientaControladorComponent},
             {path: "herramienta/nueva", component: HerramientaNuevaComponent},
+            {path: "herramienta/:id/agendar", component: HerramientaAgendarComponent},
             {path: "insumos", component: InsumosComponent}
 
         ]),
@@ -134,7 +136,8 @@ import { HerramientaControladorComponent } from './herramientas/herramienta-cont
         ProtocoloHerramientaComponent,
         ProtocoloAsociarInsumoComponent,
         ProtocoloAsociarHerramientaComponent,
-        HerramientaControladorComponent
+        HerramientaControladorComponent,
+        HerramientaAgendarComponent
     ],
     exports: [
         NotificacionesComponent,

@@ -52,12 +52,13 @@ export class InsumosComponent implements OnInit {
                 error => console.log(<any>error),
                 this.dd
         );
-
+        this.itemInsumo = this.list.length > 0 ? this.list[0] : this.itemInsumoD;
+        this.itemInsumo.imagen = this._insumoService.getImagen();
     }
 
     dd(){
-        this.itemInsumo = this.list.length > 0 ? this.list[0] : this.itemInsumoD;
-        this.itemInsumo.imagen = this._insumoService.getImagen();
+
+
     }
 
     clicked(item: Insumo) {
