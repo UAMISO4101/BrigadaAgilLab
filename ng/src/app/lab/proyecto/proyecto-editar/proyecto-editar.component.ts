@@ -36,14 +36,14 @@ export class ProyectoEditarComponent implements OnInit {
         this.getProyectoForId(this.idProyecto);
     }
 
-    guardar(form: NgForm): void {
+    guardar(): void {
         this.proyecto.descripcion =  this.proyecto.descripcion.trim();
 
         this._proyectoService.setProyecto(this.proyecto).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
     }
 
     okNuevo(): void {
-        this._notif.success("Ok", "Proyecto Creado");
+        this._notif.success("Ok", "Proyecto Editado");
         this.router.navigate(["/proyecto"]);
     }
 

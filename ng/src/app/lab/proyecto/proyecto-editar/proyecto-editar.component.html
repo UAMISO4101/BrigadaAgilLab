@@ -14,7 +14,7 @@
                 </div>
                 <div class="ibox-content">
 
-                    <form (ngSubmit)="guardar()"  class="form-horizontal">
+                    <form  (ngSubmit)="guardar()"  class="form-horizontal">
                         <lab-form-field [label]="_['cmp_nombre']">
                             <input [(ngModel)]="proyecto.nombre" required type="text" class="form-control panel-warning" name="nombre" ngModel>
                         </lab-form-field>

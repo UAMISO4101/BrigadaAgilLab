@@ -40,6 +40,12 @@ export class InsumosService {
         return items;
     }
 
+    getListInsumos(): Observable<Insumo[]> {
+        return this._http.get(this.url_servicios_insumo)
+            .map((response: Response) => <Insumo[]>response.json());
+
+    }
+
     dynamicSort(property: string) {
         let sortOrder = 1;
         if (property[0] === "-") {

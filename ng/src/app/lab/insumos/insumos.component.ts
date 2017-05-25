@@ -14,6 +14,7 @@ export class InsumosComponent implements OnInit {
     _: {};
     list: Insumo[] = [];
     listP: Insumo[] = [];
+    list2: Insumo[] = [];
     itemInsumoD: Insumo = {
         id: 0,
         nombre: "---",
@@ -38,18 +39,30 @@ export class InsumosComponent implements OnInit {
 
 
     ngOnInit(): void {
+
         this.getInsumos();
         this.getInsumosP();
     }
 
 
     getInsumos() {
-        this.list = this._insumoService.listInsumos(5, this.search, this.selectedOrder);
+        //this.list = this._insumoService.listInsumos(5, this.search, this.selectedOrder);
+        this._insumoService.getListInsumos().subscribe(
+                product => this.list = product,
+                error => console.log(<any>error),
+                this.dd
+        );
+
+    }
+
+    dd(){
         this.itemInsumo = this.list.length > 0 ? this.list[0] : this.itemInsumoD;
+        this.itemInsumo.imagen = this._insumoService.getImagen();
     }
 
     clicked(item: Insumo) {
         this.itemInsumo = item;
+        this.itemInsumo.imagen = this._insumoService.getImagen();
     }
 
     getInsumosP() {
