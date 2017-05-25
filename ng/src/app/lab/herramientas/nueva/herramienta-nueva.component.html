@@ -17,6 +17,12 @@
                         <lab-form-field [label]="_['cmp_nombre']">
                             <input required type="text" class="form-control panel-warning" name="nombre" ngModel>
                         </lab-form-field>
+                        <lab-form-field [label]="_['cmp_ubicacion']">
+                            <input required type="text" class="form-control panel-warning" name="ubicacion" ngModel>
+                        </lab-form-field>
+                        <lab-form-field [label]="_['cmp_descripcion']">
+                            <input required type="text" class="form-control panel-warning" name="descripcion" ngModel>
+                        </lab-form-field>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <a [routerLink]="['/herramienta']" class="btn btn-white" type="submit">{{_['acc_cancelar']}}</a>

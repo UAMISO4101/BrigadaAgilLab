@@ -10,7 +10,7 @@ export class iBoxToolsComponent implements OnInit {
     @Input() collapse: boolean;
     @Input() fullscreen: boolean;
     @Input() close: boolean;
-    @Input() help: boolean;
+    @Input() help = false;
 
     ngOnInit(): void {
 

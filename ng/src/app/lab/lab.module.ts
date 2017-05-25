@@ -26,6 +26,7 @@ import {InsumosComponent} from "./insumos/insumos.component";
 import {InsumosService} from "./insumos/insumos.service";
 import {ExperimentoDetalleComponent} from "./experimento/experimento-detalle/experimento.detalle.component";
 import {ProyectoNuevoComponent} from "./proyecto/proyecto-nuevo/proyecto-nuevo.component";
+import {ProyectoEditarComponent} from "./proyecto/proyecto-editar/proyecto-editar.component";
 import {InsumoNuevoComponent} from "./insumos/nuevo/insumo-nuevo.component";
 import {ExperimentoNuevoComponent} from "./experimento/nuevo/experimento-nuevo.component";
 import {ProyectoControladorComponent} from "./proyecto/proyecto-controlador/proyecto-controlador.component";
@@ -52,6 +53,7 @@ import {ProtocoloInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.i
 import {ProtocoloHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.herramienta.component";
 import {ProtocoloAsociarInsumoComponent} from "./protocolo/protocolo-insumo/protocolo.asociar.insumo.component";
 import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herramienta/protocolo.asociar.herramienta.component";
+import { HerramientaControladorComponent } from './herramientas/herramienta-controlador/herramienta-controlador.component';
 
 
 @NgModule({
@@ -63,6 +65,7 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
             {path: "insumo", component: InsumosComponent},
             {path: "proyecto", component: ProyectoControladorComponent},
             {path: "proyecto/nuevo", component: ProyectoNuevoComponent},
+            {path: "proyecto/:id/editar", component: ProyectoEditarComponent},
             {path: "proyecto/:id", component: ProyectoDetalleComponent},
             {path: "proyecto/:id/experimento", component: ProyectoAsociarExpComponent},
             {path: "proyecto/:id/experimento/:id/protocolos", component: ExperimentoAsociarProtocoloComponent},
@@ -71,15 +74,19 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
             {path: "protocolo/nuevo", component: ProtocoloNuevoComponent},
             {path: "protocolo/:id", component: ProtocoloDetalleComponent},
             {path: "protocolo/:id/version", component: ProtocoloComparaVersionComponent},
+            {path: "protocolo/:id/version/:left/:right", component: ProtocoloComparaVersionComponent},
             {path: "protocolo/:id/insumo", component: ProtocoloAsociarInsumoComponent},
             {path: "protocolo/:id_protocolo/herramienta", component: ProtocoloAsociarHerramientaComponent},
             {path: "protocolo/:id_protocolo/insumo/:id_insumo", component: ProtocoloAsociarInsumoComponent},
-            {path: "protocolo/:id_protocolo/herramienta/:id_herramienta", component: ProtocoloAsociarHerramientaComponent},
+            {
+                path: "protocolo/:id_protocolo/herramienta/:id_herramienta",
+                component: ProtocoloAsociarHerramientaComponent
+            },
             {path: "experimento/nuevo", component: ExperimentoNuevoComponent},
-            {path: "experimento", component: ExperimentoControladorComponent},
+            {path: "experimento", component: ExperimentoListComponent},
             {path: "experimento/:id", component: ExperimentoDetalleComponent},
             {path: "usuario", component: UsuarioListComponent},
-            {path: "herramienta", component: HerramientaComponent},
+            {path: "herramienta", component: HerramientaControladorComponent},
             {path: "herramienta/nueva", component: HerramientaNuevaComponent},
             {path: "insumos", component: InsumosComponent}
 
@@ -112,6 +119,7 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
         InsumosComponent,
         InsumoNuevoComponent,
         ProyectoNuevoComponent,
+        ProyectoEditarComponent,
         ExperimentoNuevoComponent,
         ProyectoControladorComponent,
         ProyectoAsociarExpComponent,
@@ -125,7 +133,8 @@ import {ProtocoloAsociarHerramientaComponent} from "./protocolo/protocolo-herram
         ProtocoloInsumoComponent,
         ProtocoloHerramientaComponent,
         ProtocoloAsociarInsumoComponent,
-        ProtocoloAsociarHerramientaComponent
+        ProtocoloAsociarHerramientaComponent,
+        HerramientaControladorComponent
     ],
     exports: [
         NotificacionesComponent,
@@ -174,10 +183,14 @@ export class LabModule {
     constructor(private breadcrumbService: BreadcrumbService) {
         breadcrumbService.addFriendlyNameForRoute("/proyecto", "Proyectos");
         breadcrumbService.addFriendlyNameForRoute("/proyecto/nuevo", "Nuevo Proyecto");
-        breadcrumbService.addFriendlyNameForRouteRegex("/proyecto/[0-9]", "Detalle de Proyecto");
+        breadcrumbService.addFriendlyNameForRouteRegex("/proyecto/[0-9]+", "Detalle de Proyecto");
         breadcrumbService.addFriendlyNameForRoute("/protocolo", "Protocolos");
         breadcrumbService.addFriendlyNameForRoute("/protocolo/nuevo", "Nuevo Protocolo");
-        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]", "Detalle de Protocolo");
-        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]/version", "Versiones");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]+$", "Detalle de Protocolo");
+        breadcrumbService.addFriendlyNameForRouteRegex("/protocolo/[0-9]+/version$", "Versiones");
+        breadcrumbService.hideRouteRegex("^/protocolo/[0-9]+/version/[0-9]+/[0-9]+$");
+        breadcrumbService.hideRouteRegex("^/protocolo/[0-9]+/version/[0-9]+$");
+        breadcrumbService.addFriendlyNameForRoute("/herramienta", "Herramientas");
+
     }
 }

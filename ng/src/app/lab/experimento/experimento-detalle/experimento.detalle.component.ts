@@ -11,7 +11,7 @@ import {Experimento} from "../service/experimento";
 })
 export class ExperimentoDetalleComponent implements OnInit {
     private idExperimento: string;
-    public experimento: Experimento[] = [];
+    public experimento: Experimento;
 
 
     constructor(route: ActivatedRoute, private _experimentoService: ExperimentoService) {
@@ -23,10 +23,10 @@ export class ExperimentoDetalleComponent implements OnInit {
         this._experimentoService
             .getExperimentos()
             .subscribe((experimentos: Experimento[]) =>
-                    this.experimento = JSON.parse(JSON.stringify(experimentos.filter(p => p.id === this.idExperimento)
-                        .pop())),
+                    this.experimento = experimentos.filter(p=>p.id==this.idExperimento).pop()
+                        ,
                 error => console.log(error),
-                () => console.log(this.experimento));
+                () => console.log(JSON.stringify(this.experimento)));
     }
 
     ngOnInit(): any {

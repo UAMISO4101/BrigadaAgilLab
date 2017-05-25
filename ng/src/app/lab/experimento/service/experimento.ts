@@ -6,4 +6,5 @@ export interface Experimento {
     descripcion: string;
     insumos: string;
     asistentes: string;
+    version: string;
 }

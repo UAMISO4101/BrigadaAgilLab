@@ -5,6 +5,7 @@ import {NgForm} from "@angular/forms";
 import {NotificationsService} from "angular2-notifications";
 import {Router} from "@angular/router";
 import {Etapa, Protocolo} from "../service/protocolo";
+import Utils from "../../Utils";
 
 @Component({
     templateUrl: "protocolo-nuevo.component.html",
@@ -24,7 +25,7 @@ export class ProtocoloNuevoComponent implements OnInit {
     }
 
     guardar(form: NgForm): void {
-        console.log(form.value["nombre"]);
+        form.value["proceso"] = this.pasosProceso;
         this._protocoloService.nuevo(form.value).subscribe(res => this.okNuevo(), error => this.errorNuevo(error));
 
     }
@@ -38,5 +39,9 @@ export class ProtocoloNuevoComponent implements OnInit {
     errorNuevo(error): void {
         console.log(error);
         this._notif.error("Error en la Creación", error._body);
+    }
+
+    syncProceso(event) {
+        this.pasosProceso = event;
     }
 }

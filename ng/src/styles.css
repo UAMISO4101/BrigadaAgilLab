@@ -3,3 +3,15 @@
 .format-text {
     white-space: pre-wrap;
 }
+
+.ibox-content .ibox {
+    margin-bottom: 0px;
+}
+
+.ibox-content .ibox .ibox-title {
+    border-width: 1px 0 0;
+}
+
+.ibox-content .ibox .ibox-content {
+    padding-bottom: 10px;
+}

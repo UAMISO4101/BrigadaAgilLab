@@ -7,6 +7,8 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
+EMPTY_JSON = "{}"
+
 
 class LaboratorioException(Exception):
     def __init__(self, message):
@@ -52,7 +54,7 @@ class LaboratorioBaseView(View):
             except:
                 raise LaboratorioException("JSON Invalido: " + contenido_json)
         else:
-            return "{}"
+            return EMPTY_JSON
 
 
 class ContenidoJsonBaseView(LaboratorioBaseView):
@@ -73,7 +75,7 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         """
         LaboratorioBaseView.contenido_json_valido(request.body)
         self.pre_validar_creacion(request, *args, **kwargs)
-        modelo = self.model(contenido="{}")
+        modelo = self.model(contenido=EMPTY_JSON)
         return LaboratorioBaseView.guardar_y_agregar_id_contenido_json(modelo, request)
 
     def put(self, request, *args, **kwargs):
@@ -96,7 +98,7 @@ class ContenidoJsonBaseView(LaboratorioBaseView):
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")
 
-    def get_por_name(self, request, nombre=None):
+    def get_autocomplete(self, request, nombre=None):
         contenido_modelo = self.model.objects.values('contenido')
         lista = map(lambda x: json.loads(x["contenido"]), contenido_modelo)
         return HttpResponse(json.dumps(lista), content_type="application/json")

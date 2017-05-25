@@ -6,19 +6,17 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Protocolo</th>
-                <th>Actualizado en</th>
-                <th>version</th>
-                <th>Acciones</th>
+                <th>{{_['cmp_nombre']}}</th>
+                <th>{{_['cmp_ult_mod']}}</th>
+                <th>{{_['cmp_version']}}</th>
+                <th>{{_['tit_acciones']}}</th>
 
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let protocolo of protocolos">
-                <td>
-                    <small>{{ protocolo.nombre }}</small>
-                </td>
-                <td>{{ protocolo.fecha }}</td>
+                <td>{{ protocolo.nombre }}</td>
+                <td>{{ protocolo.fecha_modificacion | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
                 <td>{{ protocolo.version }}</td>
                 <td><a [routerLink]="['/protocolo', protocolo.id ]"><i class="fa fa-sign-in text-navy"></i></a></td>
             </tr>

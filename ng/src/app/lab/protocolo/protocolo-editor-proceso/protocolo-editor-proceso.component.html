@@ -1,7 +1,11 @@
 <div class="ibox float-e-margins">
     <div class="ibox-title">
         <h5>{{_['tit_proceso']}}</h5>
-        <ui-ibox-tools [collapse]='true' [help]="true"></ui-ibox-tools>
+        <ui-ibox-tools [collapse]='true' [help]="true">
+            <a *ngIf='editable' (click)="toogleEditor()">
+                <i class="fa fa-pencil editar-proceso-protocolo"></i>
+            </a>
+        </ui-ibox-tools>
     </div>
     <div class="ibox-content">
         <div class="row" *ngIf="editor">
@@ -19,9 +23,8 @@
                         </div>
                         <div class="panel-body">
                             <ol class="list-group" dnd-sortable-container [sortableData]="etapa.pasos">
-                                <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item"
-                                    dnd-sortable [sortableIndex]="i" (onDragSuccess)="updateTexto()">{{i+1+". "+paso}}
-                                </li>
+                                <li *ngFor="let paso of etapa.pasos; let i = index" class="list-group-item format-text"
+                                    dnd-sortable [sortableIndex]="i" (onDragSuccess)="updateTexto()">{{i+1+". "+paso}}</li>
                             </ol>
                         </div>
                     </div>

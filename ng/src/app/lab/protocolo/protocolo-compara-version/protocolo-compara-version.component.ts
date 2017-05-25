@@ -1,9 +1,10 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit} from "@angular/core";
 import {LabelsService} from "../../labels.service";
 import {NotificationsService} from "angular2-notifications/dist";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Protocolo} from "../service/protocolo";
+import {Etapa, Protocolo} from "../service/protocolo";
 import {ProtocoloService} from "../service/protocolo.service";
+import Utils from "../../Utils";
 
 declare var jQuery: any;
 
@@ -11,10 +12,20 @@ declare var jQuery: any;
     templateUrl: "./protocolo-compara-version.component.html",
     providers: [ProtocoloService, LabelsService]
 })
-export class ProtocoloComparaVersionComponent implements OnInit, AfterViewInit {
+export class ProtocoloComparaVersionComponent implements OnInit {
+
 
     protocolo: Protocolo;
+
+    versiones: Array<number> = [];
     idProtocolo: string;
+    versionLeft: string;
+    versionRight: string;
+
+    protocoloLeft: Protocolo;
+    protocoloRight: Protocolo;
+
+    initVersiones = false;
     _: {};
 
     verDiffs = {
@@ -22,42 +33,85 @@ export class ProtocoloComparaVersionComponent implements OnInit, AfterViewInit {
         proceso: false
     };
 
-    constructor(private _el: ElementRef, route: ActivatedRoute, _labelsService: LabelsService,
-                private _protocoloService: ProtocoloService, private _notif: NotificationsService) {
+
+    constructor(private _el: ElementRef, private route: ActivatedRoute, _labelsService: LabelsService,
+                private router: Router, private _protocoloService: ProtocoloService,
+                private _notif: NotificationsService) {
         this._ = _labelsService.getLabels();
-        this.idProtocolo = route.snapshot.params["id"];
+        route.params.subscribe(val => this.ngOnInit());
+
     }
 
     ngOnInit() {
-        this.getProtocolo();
-    }
+        console.log("calling init");
+        this.idProtocolo = this.route.snapshot.params["id"];
+        this.versionLeft = this.route.snapshot.params["left"];
+        this.versionRight = this.route.snapshot.params["right"];
+        this._protocoloService
+            .numerosVersiones(this.idProtocolo)
+            .subscribe(
+                value => this.versiones = value,
+                error => this.restError(error));
 
-    ngAfterViewInit(): void {
-        this.initComparacion();
-    }
-
-    left = "Lorem Ipsum is simply dummy text of the printing and typesetting\
- industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\
- when an unknown printer took a galley of type and scrambled it to make a type specimen\
- book. It has survived not only centuries, but also the leap into electronic typesetting.";
-
-    right = "Lorem Ipsum is simply typesetting dummy text of the printing and has\
- been the \nindustry's typesetting. Lorem Ipsum has been the industry's standard dummy text\
- ever the 1500s, when an printer took a galley of type and simply it to make a type. It\
- has survived not only five centuries, but survived not also the leap into electronic\
- typesetting.";
-
-    private getProtocolo() {
         this._protocoloService
             .getProtocolo(this.idProtocolo)
             .subscribe(
                 product => this.protocolo = product,
-                error => this._notif.error("Error de Comunicación", error._body));
+                error => this.restError(error));
+
+        if (this.versionLeft && this.versionRight) {
+            this._protocoloService
+                .versiones(this.idProtocolo, this.versionLeft, this.versionRight)
+                .subscribe(
+                    product => this.cargarVersiones(product),
+                    error => this.restError(error));
+        } else {
+            this._protocoloService
+                .ultimasVersiones(this.idProtocolo)
+                .subscribe(
+                    product => this.cargarVersiones(product),
+                    error => this.restError(error));
+        }
+
     }
 
-    private initComparacion() {
-        jQuery(document).ready(function () {
+    private restError(error) {
+        return this._notif.error("Error de Comunicación", error._body);
+    }
 
+    private cargarVersiones(versiones: Protocolo[]) {
+        if (versiones[0].id) {
+            this.protocoloLeft = versiones[0];
+            this.protocoloLeft.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[0].proceso));
+            this.protocoloLeft["textoProceso"] = this.aTextoProceso(this.protocoloLeft.proceso);
+            this.versionLeft = this.protocoloLeft.version;
+
+        } else {
+            this.protocoloLeft = undefined;
+        }
+
+        if (versiones[1].id) {
+            this.protocoloRight = versiones[1];
+            this.protocoloRight.proceso = Utils.json2Obj(Utils.deserializar("" + versiones[1].proceso));
+            this.protocoloRight["textoProceso"] = this.aTextoProceso(this.protocoloRight.proceso);
+            this.versionRight = this.protocoloRight.version;
+        } else {
+            this.protocoloRight = undefined;
+        }
+        this.initVersiones = true;
+    }
+
+    aTextoProceso(pasosProceso: Array<Etapa>): string {
+        let buffer = "";
+        const s = "\n- ";
+        pasosProceso.forEach(function (etapa) {
+            buffer += "\n\n" + etapa.nombre;
+            buffer += etapa.pasos ? s + etapa.pasos.join(s) : "";
         });
+        return buffer.substring(2);
+    }
+
+    changeVersion() {
+        this.router.navigate(["/protocolo", this.idProtocolo, "version", this.versionLeft, this.versionRight]);
     }
 }
