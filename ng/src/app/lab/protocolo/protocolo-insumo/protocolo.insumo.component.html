@@ -10,12 +10,12 @@
 
             <div class="row" >
                 <div class="col-sm-12">
-                <table class="table table-bordered"  *ngIf="insumos">
-                    <thead class="panel panel-primary">
-                    <th class="panel-heading">Nombre</th>
-                    <th class="panel-heading">Descripción</th>
-                    <th class="panel-heading">Unidad</th>
-                    <th class="panel-heading">Precio</th>
+                <table class="table table-condensed"  *ngIf="insumos">
+                    <thead >
+                    <th >Nombre</th>
+                    <th >Descripción</th>
+                    <th >Unidad</th>
+                    <th >Precio</th>
                     </thead>
                     <tbody  >
                     <tr *ngFor="let item of insumos">
