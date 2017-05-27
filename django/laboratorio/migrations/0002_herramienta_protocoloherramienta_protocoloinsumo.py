@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='Herramienta',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('contenido', models.CharField(max_length=50)),
+                ('contenido', models.TextField()),
             ],
         ),
         migrations.CreateModel(

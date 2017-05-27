@@ -29,7 +29,7 @@ export class ProtocoloService {
         form["fecha_modificacion"] = date;
         form["version"] = "1";
         form["proceso"] = Utils.serializar(Utils.obj2String(form["proceso"]));
-        form["descripcion"] = Utils.serializar(form["descripcion"]);
+        //form["descripcion"] = Utils.serializar(form["descripcion"]);
         return this._http.post(this.url_servicios_protocolo, form, this.buildHeaders())
             .map((response: Response) => <Protocolo[]>response.json());
     }
@@ -38,6 +38,7 @@ export class ProtocoloService {
         protocolo.fecha_modificacion = new Date().toString();
         const _protocolo = <any> protocolo;
         _protocolo["proceso"] = Utils.serializar(Utils.obj2String(protocolo["proceso"]));
+        //_protocolo["descripcion"] = Utils.serializar(protocolo["descripcion"]);
         return this._http.put(this.url_servicios_protocolo, protocolo, this.buildHeaders())
             .map((response: Response) => <Protocolo>response.json());
     }

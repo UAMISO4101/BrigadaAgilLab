@@ -7,10 +7,10 @@
             <dd class="m-b-xs">{{proyecto.nombre}}</dd>
             <dt class="m-b-xs">{{_['cmp_estado']}}:</dt>
             <dd class="m-b-xs"><span class="label label-primary">{{proyecto.estado}}</span></dd>
-            <dt class="m-b-xs">{{_['cmp_fecha_creacion'| date: 'dd/MM/yyyy']}}:</dt>
-            <dd class="m-b-xs">{{proyecto.fecha_creacion}}</dd>
-            <dt class="m-b-xs">{{_['cmp_fecha_inicio'| date: 'dd/MM/yyyy']}}:</dt>
-            <dd class="m-b-xs">{{proyecto.fecha_inicio}}</dd>
+            <dt class="m-b-xs">{{_['cmp_fecha_creacion']}}:</dt>
+            <dd class="m-b-xs">{{proyecto.fecha_creacion | date: 'dd/MM/yyyy' }}</dd>
+            <dt class="m-b-xs">{{_['cmp_fecha_inicio']}}:</dt>
+            <dd class="m-b-xs">{{proyecto.fecha_inicio }}</dd>
             <dt class="m-b-xs">{{_['cmp_descripcion']}}:</dt>
             <dd class="m-b-xs"><span style="white-space: pre-wrap; text-align: justify;">{{proyecto.descripcion}}</span>
             </dd>

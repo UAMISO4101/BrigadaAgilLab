@@ -46,9 +46,6 @@ class Contenedor(models.Model):
 class Herramienta(models.Model):
     contenido = models.CharField(max_length=50)
 
-    def __unicode__(self):
-        return self.nombre
-
 
 class Inventario(models.Model):
     insumo = models.ForeignKey(Insumo)
@@ -59,9 +56,6 @@ class Inventario(models.Model):
 class Proveedor(models.Model):
     name = models.CharField(max_length=50)
     nit = models.DecimalField(max_digits=10, decimal_places=0, default=0)
-
-    def __unicode__(self):
-        return self.nombre
 
 
 class Pedido(models.Model):
