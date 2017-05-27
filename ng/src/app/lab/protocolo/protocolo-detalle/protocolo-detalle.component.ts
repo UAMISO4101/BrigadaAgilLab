@@ -28,7 +28,7 @@ export class ProtocoloDetalleComponent implements OnInit {
     }
 
     ngOnInit() {
-        //this.getProtocolo();
+        this.getProtocolo();
 
     }
 
